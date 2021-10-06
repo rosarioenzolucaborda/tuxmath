@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta charset="utf-8"/>
+
+  <script src="js/jquery.min.js"></script>
+  
+  <script src="js/game.js"></script>
+  <script src="js/gameElements.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/mathcards.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/utils.js"></script>
+  
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+
+<body>
+  <div class="layout-game">
+    <div class="layout-game__tuxComand"></div>
+    <div class="layout-game__laser"></div>
+    <div class="layout-game__commetsIgloosColmuns">
+      <div class="layout-game__commetsIgloosColmuns__col layout-col--1"></div>
+      <div class="layout-game__commetsIgloosColmuns__col layout-col--2"></div>
+      <div class="layout-game__commetsIgloosColmuns__col layout-col--3"></div>
+      <div class="layout-game__commetsIgloosColmuns__col layout-col--4"></div>
+    </div>
+    <div class="layout-game__backgound js-background"></div>
+  </div>
+  
+
+
+  <script>
+  $(function(){
+  //   let cardsCol= new MathCardsCollection();
+  //   cardsCol.genCards("test", 8);
+  //   
+  //   for (let i in cardsCol.arCards)
+  //     console.log(cardsCol.arCards[i].calcResult(), "###", cardsCol.arCards[i].questionText());
+  //     
+
+    tmGlob_objTheme=new Theme();
+  
+    const urlParams = new URLSearchParams(window.location.search);
+    let objGame=new Game($(".layout-game"));
+    objGame.startGame(urlParams.get("lvlId"));
+  });
+  </script>
+
+</body>
+</html>
