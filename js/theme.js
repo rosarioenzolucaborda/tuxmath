@@ -9,7 +9,8 @@ const THEME_DEFAULT_BACKGROUDS=[
   "images/backgrounds/7.jpg"
 ];
 
-const THEME_DEFAULT_IMAGE_COMET="";
+const THEME_DEFAULT_IMAGE_COMET="images/sprites/comet.png";
+const THEME_DEFAULT_IMAGE_STEAM="images/sprites/steam.png";
 
 class Theme
 {
@@ -17,6 +18,7 @@ class Theme
   {
     this.backgrounds=THEME_DEFAULT_BACKGROUDS;
     this.image_comet=THEME_DEFAULT_IMAGE_COMET;
+    this.image_steam=THEME_DEFAULT_IMAGE_STEAM;
   }
   
   chooseBackground()

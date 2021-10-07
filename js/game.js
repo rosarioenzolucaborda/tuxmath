@@ -8,6 +8,8 @@ class Game
     this.init();
   }
   
+  getObjJqContainer() { return this.objJqContainer; }
+  
   init()
   {
   }
@@ -40,8 +42,8 @@ class Game
       return false;
     }
     
-    this.runningWave=new GameWave(this, arMathCards);
-    this.startWave();
+    this.runningWave=new GameWave(this, waveCards);
+    this.runningWave.startWave();
   }
   
   gameFinished(boolSuccess)
@@ -50,6 +52,10 @@ class Game
       alert("Bravo tu as gagné!");
     else
       alert("Tu as perdu, ça ira mieux en t'entrainant...");
+  }
+  
+  evtNotAnswered(cometId, mathCard, colNumber) //comet reached bottom and exploded...
+  {
   }
 }
 
@@ -66,7 +72,7 @@ class GameWave
   
   startWave()
   {
-    this.objIntervalLaunchComet=setTimeout(this.evtIntervLaunchComet, GAMEWAVE_ADDCOMET_DELAY);
+    this.objIntervalLaunchComet=setInterval(this.evtIntervLaunchComet.bind(this), GAMEWAVE_ADDCOMET_DELAY);
   }
   
   launchComet()

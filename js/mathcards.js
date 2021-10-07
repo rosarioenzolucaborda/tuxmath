@@ -1,10 +1,5 @@
 const MATHCARD_QUESTION_LOC_END=-1;
 
-
-
-  
-
-
 class MathCard
 {
   constructor()
@@ -61,6 +56,14 @@ class MathCard
       genString=this.calcResult().toString();
     
     return genString;
+  }
+  
+  getAnswer()
+  {
+    if (this.questionLocation==MATHCARD_QUESTION_LOC_END)
+      return this.calcResult();
+    else
+      return this.operands[this.questionLocation+1];
   }
 
 }
