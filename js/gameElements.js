@@ -11,11 +11,13 @@ class Comet
     this.answer=this.mathCard.getAnswer();
     this.colNumber=getRandomInt(1, GAME_COLUMNS_NUMBER);
     this.id=tmGlob_cometIdCounter;
-    this.tmGlob_cometIdCounter++;
+    tmGlob_cometIdCounter++;
     console.log(this.id);
     
     this.draw();
   }
+  
+  getId() { return this.id; }
   
   draw()
   {
@@ -51,5 +53,64 @@ class Comet
     this.objJqQuestion.text(this.answer);
     
     this.objGame.evtNotAnswered(this.id, this.mathCard, this.colNumber);
+  }
+  
+  cleanUp()
+  {
+    this.removeCometDraw();
+  }
+}
+
+
+const IGLOO_HEALTH_OK=2;
+const IGLOO_HEALTH_HALF=1;
+const IGLOO_HEALTH_DESTROYED=0;
+
+class Igloo
+{
+  constructor(objGame, columnId)
+  {
+    this.objGame=objGame;
+    this.columnId=columnId;
+    this.health=IGLOO_HEALTH_OK;
+    
+    this.draw();
+  }
+  
+  draw()
+  {
+    this.objJq=$("<div class=\"obj_igloo\"></div>");
+    this.objJqImage=$("<img>").appendTo(this.objJq);
+    this.updateImage();
+    
+    let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--"+this.columnId);
+    ojbJqTargetCol.append(this.objJq);
+  }
+  
+  updateImage()
+  {
+    this.objJqImage[0].src=tmGlob_objTheme.image_iglooHealthStatus[this.health];
+  }
+  
+  removeIglooDraw()
+  {
+    this.objJq.remove();
+  }
+  
+  evtGotHit()
+  {
+    if (this.health==IGLOO_HEALTH_DESTROYED)
+      return;
+    
+    this.health--;
+    this.updateImage();
+    
+    if (this.isDestroyed())
+      setTimeout(this.removeIglooDraw.bind(this), 3000); //prevent bug of redisplaying melting water animation when another igloo is destroyed.
+  }
+  
+  isDestroyed()
+  {
+    return this.health==IGLOO_HEALTH_DESTROYED;
   }
 }

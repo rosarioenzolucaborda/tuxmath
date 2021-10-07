@@ -1,6 +1,7 @@
 .obj_commet
 {
   position: absolute;
+  z-index: 10;
 }
 
 .obj_commet__question {
@@ -26,4 +27,11 @@
 @keyframes cometfall {
   from {bottom: 100%; }      
   to {bottom: 10%; }      
+}
+
+
+.obj_igloo {
+    position: absolute;
+    bottom: 5%;
+    z-index: 0;
 }
