@@ -49,6 +49,10 @@ body {
 /*   overflow: hidden; */ /*inutile?*/
 }
 
+.layout-game__commetsIgloosColmuns__col > * {
+  transform: translate(-50%, 0%);
+}
+
 .layout-game__backgound {
   width: 100%;
   height: 100%;

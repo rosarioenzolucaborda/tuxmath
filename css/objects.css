@@ -45,3 +45,20 @@
     bottom: 5%;
     z-index: 0;
 }
+
+.obj_console {
+    bottom: 0px;
+    position: absolute;
+}
+
+.obj_console__tux {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+}
+
+.obj_console__led {
+  position: absolute;
+}

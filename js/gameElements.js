@@ -133,3 +133,49 @@ class Igloo
     return this.health==IGLOO_HEALTH_DESTROYED;
   }
 }
+
+
+
+
+
+const CONSOLE_TUX_NORMAL=0;
+const CONSOLE_TUX_ANIMSTART=1;
+const CONSOLE_TUX_TYPING=2;
+const CONSOLE_TUX_MISTAKE=3;
+const CONSOLE_TUX_IGLOODESTROYED=4;
+
+class TuxConsole
+{
+  constructor(objGame)
+  {
+    this.objGame=objGame;
+    
+    this.draw();
+  }
+  
+  draw()
+  {
+    this.objJq=$("<div class=\"obj_console\"></div>");
+    this.objJq.css({backgroundImage: "url('"+tmGlob_objTheme.image_console+"')", width: tmGlob_objTheme.image_console_dims[0]+"px", height: tmGlob_objTheme.image_console_dims[1]+"px"});
+
+    this.objJqImgTux=$("<img class=\"obj_console__tux\">").appendTo(this.objJq);
+    this.setTuxImage(CONSOLE_TUX_NORMAL);
+
+    let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--console");
+    ojbJqTargetCol.append(this.objJq);
+  }
+  
+  setTuxImage(imageId)
+  {
+    switch(imageId)
+    {
+      case CONSOLE_TUX_NORMAL:    this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_normal; break;
+      case CONSOLE_TUX_ANIMSTART: this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_animstart; break;
+      case CONSOLE_TUX_MISTAKE:   this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_mistake; break;
+      case CONSOLE_TUX_IGLOODESTROYED:  this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_animigloodestroyed; break;
+      case CONSOLE_TUX_TYPING:    
+        this.objJqImgTux[0].src=getRandomArrayElt(tmGlob_objTheme.images_consoletux_typing); 
+      break;
+    }
+  }
+}

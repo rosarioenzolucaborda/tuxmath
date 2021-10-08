@@ -35,6 +35,7 @@ class Game
   
   init()
   {
+    this.tuxConsole=new TuxConsole(this);
   }
   
   startGame(levelId)
@@ -71,6 +72,8 @@ class Game
     
     this.runningWave=new GameWave(this, waveCards);
     this.runningWave.startWave();
+    
+    this.tuxConsole.setTuxImage(CONSOLE_TUX_ANIMSTART);
   }
   
   initIgloos()
@@ -94,6 +97,7 @@ class Game
   evtNotAnswered(cometId, mathCard, colNumber) //comet reached bottom and exploded...
   {
     this.arIgloos[colNumber-1].evtGotHit();
+    this.tuxConsole.setTuxImage(CONSOLE_TUX_IGLOODESTROYED);
     this.checkGameOver();
     
     
