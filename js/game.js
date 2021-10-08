@@ -36,6 +36,15 @@ class Game
   init()
   {
     this.tuxConsole=new TuxConsole(this);
+    this.keyboardManager=new KeyboardManager();
+    this.keyboardManager.fctCallBackKeyStroke.push(this.tuxConsole.updateText.bind(this.tuxConsole));
+    this.keyboardManager.fctCallBackEntryValidated.push(this.evtUserValidatedAnswer.bind(this));
+  }
+  
+  evtUserValidatedAnswer(answer)
+  {
+    if ((this.runningWave) && (this.runningWave.evtUserValidatedAnswer))
+      this.runningWave.evtUserValidatedAnswer(answer);
   }
   
   startGame(levelId)
@@ -170,6 +179,11 @@ class GameWave
   {
     this.removeComet(cometId);
     this.checkWaveFinished();
+  }
+  
+  evtUserValidatedAnswer(answer)
+  {
+    
   }
   
   removeComet(cometId)

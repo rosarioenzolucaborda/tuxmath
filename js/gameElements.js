@@ -161,6 +161,9 @@ class TuxConsole
     this.objJqImgTux=$("<img class=\"obj_console__tux\">").appendTo(this.objJq);
     this.setTuxImage(CONSOLE_TUX_NORMAL);
 
+    this.objJqDisplay=$("<div class=\"obj_console__display\"></div>").appendTo(this.objJq);
+    this.updateText("0");
+
     let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--console");
     ojbJqTargetCol.append(this.objJq);
   }
@@ -177,5 +180,10 @@ class TuxConsole
         this.objJqImgTux[0].src=getRandomArrayElt(tmGlob_objTheme.images_consoletux_typing); 
       break;
     }
+  }
+  
+  updateText(txt)
+  {
+    this.objJqDisplay.text(txt);
   }
 }
