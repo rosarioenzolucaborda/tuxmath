@@ -32,6 +32,8 @@ class Comet
     this.id=tmGlob_cometIdCounter;
     tmGlob_cometIdCounter++;
     console.log(this.id);
+    this.alive=true;
+    this.ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--"+this.colNumber);
     
     this.draw();
   }
@@ -47,8 +49,7 @@ class Comet
     this.objJq.on("animationend", this.evtAnimationFallEnd.bind(this));
     this.objJq.css("animation-duration", COMTE_FALL_TIME+"s");
     
-    let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--"+this.colNumber);
-    ojbJqTargetCol.append(this.objJq);
+    this.ojbJqTargetCol.append(this.objJq);
   }
   
   
@@ -57,19 +58,36 @@ class Comet
     this.objJq.remove();
   }
   
+  hideImage()
+  {
+    this.objJqImage.hide();
+  }
+  
+  destroy()
+  {
+    this.objJqImage[0].src=tmGlob_objTheme.image_comet_explode;
+    this.alive=false;
+    this.objJq.addClass("obj_commet--destroyed");
+    this.objJqQuestion.text(this.mathCard.questionText(true)).fadeOut(3000);
+    setTimeout(this.hideImage.bind(this), 1500);
+    setTimeout(this.removeCometDraw.bind(this), 3100);
+  }
+  
   evtExplodeFinished()
   { 
     this.objJqImage.remove();
-    this.objJq.fadeOut(30000, this.removeCometDraw.bind(this));
+    this.objJq.fadeOut(10000, this.removeCometDraw.bind(this));
   }
   
   evtAnimationFallEnd()
   {
+    if (! this.alive) return;
+    
     //CSS Animation ended, it's means comet reached screen bottom
     this.objJqImage[0].src=tmGlob_objTheme.image_steam; //known BUG: all images having the same URL will have there anuimations restarted
     setTimeout(this.evtExplodeFinished.bind(this), 700);
     this.objJq.addClass("obj_commet--exploded");
-    this.objJqQuestion.text(this.answer);
+    this.objJqQuestion.text(this.mathCard.questionText(true));
     
     this.objGame.evtNotAnswered(this.id, this.mathCard, this.colNumber);
   }
@@ -77,6 +95,19 @@ class Comet
   cleanUp()
   {
     this.removeCometDraw();
+  }
+  
+  getCenterCoords()
+  {
+//     this.objJq.css("border-color", "yellow");
+//     this.objJq.css("border-style", "solid");
+//     this.objJq.css("border-width", "1px");
+    
+    
+    let  br=this.objJq[0].getBoundingClientRect();
+    let yOffset=50; //target the core of the comet as the center of drawing is on tail...
+    console.log("br compute", [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2)]);
+    return [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2+yOffset)];
   }
 }
 
@@ -155,7 +186,7 @@ class TuxConsole
   
   draw()
   {
-    this.objJq=$("<div class=\"obj_console\"></div>");
+    this.objJq=$("<div class=\"obj_console js-laser-origin\"></div>");
     this.objJq.css({backgroundImage: "url('"+tmGlob_objTheme.image_console+"')", width: tmGlob_objTheme.image_console_dims[0]+"px", height: tmGlob_objTheme.image_console_dims[1]+"px"});
 
     this.objJqImgTux=$("<img class=\"obj_console__tux\">").appendTo(this.objJq);
@@ -164,7 +195,7 @@ class TuxConsole
     this.objJqDisplay=$("<div class=\"obj_console__display\"></div>").appendTo(this.objJq);
     this.updateText("0");
 
-    let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--console");
+    let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__tuxComand");
     ojbJqTargetCol.append(this.objJq);
   }
   
@@ -185,5 +216,61 @@ class TuxConsole
   updateText(txt)
   {
     this.objJqDisplay.text(txt);
+  }
+}
+
+
+
+
+class Laser
+{
+  constructor(objGame, target)
+  {
+    this.objGame=objGame;
+    
+    
+    this.fireLaser(target);
+  }
+  
+  fireLaser(target)
+  {
+    let originJqObject=this.objGame.getObjJqContainer().find(".js-laser-origin");
+    let br=originJqObject[0].getBoundingClientRect();
+    let originCoords=[Math.round(br.x+br.width/2), Math.round(br.y+br.height/2)];
+    
+    let targetCoords;
+    if (target instanceof Comet)
+      targetCoords=target.getCenterCoords();
+    else 
+    {
+      console.log("NO TARGET FOUND");
+      targetCoords=[0, 0];
+    }
+    
+    this.objJqLaser=this.drawLaser(originCoords[0], originCoords[1], targetCoords[0], targetCoords[1]);
+    //let objJqLaser=this.drawLaser(originCoords[0], originCoords[1], 500, 100);
+    this.objJqLaser.fadeOut(750, this.removeLaser.bind(this));
+  }
+  
+  removeLaser() { this.objJqLaser.remove(); }
+  
+  drawLaser(oX, oY, tX, tY)
+  {
+    console.log(oX, oY, tX, tY);
+    
+    let deltaX=oX-tX;
+		let deltaY=oY-tY;
+		let longeur=Math.sqrt(deltaX*deltaX+deltaY*deltaY);
+    let angle;
+		if(Math.abs(deltaX)>Math.abs(deltaY)) angle=(Math.acos(Math.abs(deltaX)/longeur)*180)/Math.PI;
+		else angle=(Math.asin(Math.abs(deltaY)/longeur)*180)/Math.PI;
+		if(deltaX*deltaY<0) angle=180-angle;
+		if(deltaY>0) angle+=180;
+		
+    let objJqContainer=this.objGame.getObjJqContainer().find(".layout-game__lasers");
+    let objJqLaser=$('<div class="obj_laser"></div>').offset({left: oX, top: oY}).appendTo(objJqContainer);
+		objJqLaser.css("width", Math.round(longeur)+"px").css("transform", "rotate("+Math.round(angle*100)/100+"deg)");
+    
+    return objJqLaser;
   }
 }

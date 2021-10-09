@@ -183,7 +183,21 @@ class GameWave
   
   evtUserValidatedAnswer(answer)
   {
+    let cometsMatched=false;
+    for (let i=this.arLaunchedCommets.length-1; i>=0; i--) //process array reverse order, to prevent index skip bugs
+      if (this.arLaunchedCommets[i].answer==answer)
+      {
+        cometsMatched=true;
+        this.arLaunchedCommets[i].destroy();
+        new Laser(this.objGame, this.arLaunchedCommets[i]);
+        this.removeComet(this.arLaunchedCommets[i].getId()); //remove at end of iteration!
+      }
+      
+    if (cometsMatched)
+      this.checkWaveFinished();
     
+    //TODO: manage if nothing matched
+      
   }
   
   removeComet(cometId)
@@ -203,7 +217,7 @@ class GameWave
   
   checkWaveFinished()
   {
-    if (this.arLaunchedCommets.length==0) 
+    if ((this.arLaunchedCommets.length==0)  && (this.arMathCardsToLaunch.length==0))
       this.objGame.evtWaveFinished();
   }
 

@@ -8,6 +8,11 @@
 
 
 
+/*
+ * Comets
+ * 
+ */
+
 .obj_commet
 {
   position: absolute;
@@ -46,9 +51,19 @@
     z-index: 0;
 }
 
+
+
+
+/*
+ * Console
+ * 
+ */
+
 .obj_console {
     bottom: 0px;
     position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 .obj_console__tux {
@@ -57,8 +72,37 @@
   left: 50%;
   transform: translate(-50%, 0%);
 }
-}
 
-.obj_console__led {
+.obj_console__display {
   position: absolute;
 }
+
+.obj_console__display {
+    position: absolute;
+    top: 5;
+    left: 24px;
+    width: 118;
+    height: 46;
+    color: white;
+    font-family: fixed;
+    text-align: right;
+    font-size: 40;
+}
+
+
+
+
+/*
+ * Lasers
+ * 
+ */
+
+.obj_laser { 
+  height: 0px;
+  border-bottom: 3px solid #fffb00;
+  position: absolute;
+  transform-origin: top left;
+  -webkit-transform-origin: top left;
+  box-shadow: 0px 0px 3px 3px #ffb300;
+}
+

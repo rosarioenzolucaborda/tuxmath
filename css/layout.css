@@ -27,10 +27,12 @@ body {
 .layout-game__tuxComand {
   position: absolute;
   z-index: 30;
+  height: 100%;
+  width: 100%;
 }
 
 
-.layout-game__laser {
+.layout-game__lasers {
   position: absolute;
   z-index: 20;
 }

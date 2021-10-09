@@ -50,7 +50,7 @@ class MathCard
   }
 
   
-  questionText()
+  questionText(withResponse=false)
   {
     let genString=this.operands[0].toString();
     let txtOperator;
@@ -62,17 +62,17 @@ class MathCard
       if (txtOperator=="/") txtOperator="÷";
       genString+=txtOperator;
       
-      if (this.questionLocation!=i)
+      if ((this.questionLocation!=i) || (withResponse))
         genString+=this.operands[i+1].toString();
       else 
         genString+="?";
     }
 
     genString+="=";
-    if (this.questionLocation==MATHCARD_QUESTION_LOC_END)
+    if ((this.questionLocation==MATHCARD_QUESTION_LOC_END) && (!withResponse))
       genString+="?";
     else
-      genString=this.calcResult().toString();
+      genString+=this.calcResult().toString();
     
     return genString;
   }
