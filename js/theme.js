@@ -50,6 +50,29 @@ const THEME_DEFAULT_IMAGES_CONSOLETUX_TYPING=[DEF_BASE+"sprites/tux-console1.png
 const THEME_DEFAULT_IMAGE_CONSOLETUX_MISTAKE=DEF_BASE+"sprites/tux-yipe.png";
 const THEME_DEFAULT_IMAGE_CONSOLETUX_ANIMIGLOODESTROYED=DEF_BASE+"sprites/tux-fist-anim.png";
 
+
+
+const THEME_DEFAULT_BACKGROUND_MUSICS=[
+  "music/01_rush.ogg",
+  "music/02_on_the_edge_of_the_universe.ogg",
+  "music/03_gravity.ogg",
+  "music/game.ogg",
+  "music/game2.ogg",
+  "music/game3.ogg"
+];
+
+const THEME_DEFAULT_SFX_LEVELSTART="sfx/alarm.wav";
+const THEME_DEFAULT_SFX_ANSWER_BAD="sfx/buzz.wav";
+const THEME_DEFAULT_SFX_COMETDESTROY="sfx/sizzling.wav";
+const THEME_DEFAULT_SFX_COMETDESTROY_MULTIPLE="sfx/cheer.wav";
+const THEME_DEFAULT_SFX_LASER="sfx/laser.wav";
+const THEME_DEFAULT_SFX_IGLOO_DESTROY_HALF="sfx/sizzling.wav";
+const THEME_DEFAULT_SFX_IGLOO_DESTROY_FULL="sfx/sizzling.wav";
+const THEME_DEFAULT_SFX_KEYPRESS="sfx/tock.wav";
+const THEME_DEFAULT_SFX_BONUS_INCOMING="sfx/cheer.wav";
+const THEME_DEFAULT_SFX_BONUS_DESTROYED="sfx/cheer.wav";
+
+
 class Theme
 {
   constructor()
@@ -59,7 +82,9 @@ class Theme
   
   loadDefault()
   {
-    this.backgrounds=THEME_DEFAULT_BACKGROUDS;
+    this.background_images=THEME_DEFAULT_BACKGROUDS;
+    this.background_musics=THEME_DEFAULT_BACKGROUND_MUSICS;
+    
     this.image_comet=THEME_DEFAULT_IMAGE_COMET;
     this.image_comet_explode=THEME_DEFAULT_IMAGE_COMET_EXPLODE;
     this.image_steam=THEME_DEFAULT_IMAGE_STEAM;
@@ -72,10 +97,26 @@ class Theme
     this.images_consoletux_typing=THEME_DEFAULT_IMAGES_CONSOLETUX_TYPING;
     this.image_consoletux_mistake=THEME_DEFAULT_IMAGE_CONSOLETUX_MISTAKE;
     this.image_consoletux_animigloodestroyed=THEME_DEFAULT_IMAGE_CONSOLETUX_ANIMIGLOODESTROYED;
+    
+    this.sfx_levelstart=THEME_DEFAULT_SFX_LEVELSTART;
+    this.sfx_answer_bad=THEME_DEFAULT_SFX_ANSWER_BAD;
+    this.sfx_cometdestroy=THEME_DEFAULT_SFX_COMETDESTROY;
+    this.sfx_cometdestroy_multiple=THEME_DEFAULT_SFX_COMETDESTROY_MULTIPLE;
+    this.sfx_laser=THEME_DEFAULT_SFX_LASER;
+    this.sfx_igloo_destroy_half=THEME_DEFAULT_SFX_IGLOO_DESTROY_HALF;
+    this.sfx_igloo_destroy_full=THEME_DEFAULT_SFX_IGLOO_DESTROY_FULL;    this.sfx_keypress=THEME_DEFAULT_SFX_KEYPRESS;
+    this.sfx_bonus_incoming=THEME_DEFAULT_SFX_BONUS_INCOMING;
+    this.sfx_bonus_destroyed=THEME_DEFAULT_SFX_BONUS_DESTROYED;
   }  
   
   chooseBackground()
   {
-    return getRandomArrayElt(this.backgrounds);
+    return getRandomArrayElt(this.background_images);
   }
+  
+  chooseBackgroundMusic()
+  {
+    return getRandomArrayElt(this.background_musics);
+  }
+  
 }

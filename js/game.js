@@ -38,6 +38,7 @@ class Game
     this.tuxConsole=new TuxConsole(this);
     this.keyboardManager=new KeyboardManager();
     this.keyboardManager.fctCallBackKeyStroke.push(this.tuxConsole.updateText.bind(this.tuxConsole));
+    this.keyboardManager.fctCallBackKeyStroke.push(this.tuxConsole.evtTyping.bind(this.tuxConsole));
     this.keyboardManager.fctCallBackEntryValidated.push(this.evtUserValidatedAnswer.bind(this));
   }
   
@@ -194,7 +195,9 @@ class GameWave
       }
       
     if (cometsMatched)
+    {
       this.checkWaveFinished();
+    }
     
     //TODO: manage if nothing matched
       

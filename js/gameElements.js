@@ -213,6 +213,12 @@ class TuxConsole
     }
   }
   
+  evtTyping()
+  {
+    tmGlob_objSfxPlayer.playSfx(SFX_KEYPRESS);
+    this.setTuxImage(CONSOLE_TUX_TYPING);
+  }
+  
   updateText(txt)
   {
     this.objJqDisplay.text(txt);
@@ -250,6 +256,8 @@ class Laser
     this.objJqLaser=this.drawLaser(originCoords[0], originCoords[1], targetCoords[0], targetCoords[1]);
     //let objJqLaser=this.drawLaser(originCoords[0], originCoords[1], 500, 100);
     this.objJqLaser.fadeOut(750, this.removeLaser.bind(this));
+    
+    tmGlob_objSfxPlayer.playSfx(SFX_LASER);
   }
   
   removeLaser() { this.objJqLaser.remove(); }

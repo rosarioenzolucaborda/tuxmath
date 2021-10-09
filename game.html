@@ -9,6 +9,7 @@
   <script src="js/levels.js"></script>
   <script src="js/mathcards.js"></script>
   <script src="js/keyboardManager.js"></script>
+  <script src="js/soundplayer.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/utils.js"></script>
   
@@ -43,6 +44,7 @@
   //     
 
     tmGlob_objTheme=new Theme();
+    tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme);
   
     const urlParams = new URLSearchParams(window.location.search);
     let objGame=new Game($(".layout-game"));
