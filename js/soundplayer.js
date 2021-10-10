@@ -49,7 +49,10 @@ class SfxPlayer
   
   playSfx(id)
   {
-    this.arObjDomPlayers[id].play();
+    if (this.arObjDomPlayers[id].playing)
+      this.arObjDomPlayers[id].currentTime=0;
+    else
+      this.arObjDomPlayers[id].play();
   }
 }
 

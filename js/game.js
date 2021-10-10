@@ -161,6 +161,8 @@ class Game
 
 //const GAMEWAVE_ADDCOMET_DELAY=6000;
 const GAMEWAVE_ADDCOMET_DELAY=1000; //DEBUG HACK
+const FALSE_LOCATION_SEARCH_TRIES=4;
+const FALSE_LOCATION_SEARCH_MAXCOMETDISTANCEALLOWED=65;
 
 class GameWave
 {
@@ -220,9 +222,50 @@ class GameWave
     }
     else
     {
-      //TODO: manage if nothing matched
+      tmGlob_objSfxPlayer.playSfx(SFX_ANSWER_BAD);
+      new Laser(this.objGame, this.searchFalseLocation());
+      this.objGame.tuxConsole.redBlink();
     }
+    
+    return (cometsMatched>0); //return true if user writen validen answer, false otherwise.
+  }
+  
+  searchFalseLocation()
+  {
+    let originJqObject=this.objGame.getObjJqContainer().find(".js-laser-origin");
+    let br=originJqObject[0].getBoundingClientRect();
+    let originCoords=[Math.round(br.x+br.width/2), Math.round(br.y+br.height/2)];
+    let origLaserObj={x: originCoords[0], y: originCoords[1]};
+
+    
+    tryLoop: for (let triesLeft=FALSE_LOCATION_SEARCH_TRIES; triesLeft>0; triesLeft--)
+    {
+      //let targetCoords=[getRandomInt(0, this.objGame.getObjJqContainer().width()-1), getRandomInt(0,this.objGame.getObjJqContainer().height()*.8-1)]; //*.8 to prevent laser going down
+      //target random plot of screen is not good, we shoud olny target borders
       
+      let border=getRandomInt(0, 2);
+      let targetCoords;
+      if (border==0) targetCoords=[0, getRandomInt(0,this.objGame.getObjJqContainer().height()*.8-1)];
+      if (border==1) targetCoords=[getRandomInt(0,this.objGame.getObjJqContainer().width()-1), 0];
+      if (border==2) targetCoords=[this.objGame.getObjJqContainer().width(), getRandomInt(0,this.objGame.getObjJqContainer().height()*.8-1)];
+      
+      let targetLaserObj={x: targetCoords[0], y: targetCoords[1]};
+      
+      for (let i in this.arLaunchedCommets)
+      {
+        let commetCoords=this.arLaunchedCommets[i].getCenterCoords();
+        let objCommetCoords={x: commetCoords[0], y: commetCoords[1]};
+        
+        if (distToSegment(objCommetCoords, origLaserObj, targetLaserObj)<FALSE_LOCATION_SEARCH_MAXCOMETDISTANCEALLOWED)
+          continue tryLoop;
+      }
+      
+      //continue not called, the point is correct
+      return targetCoords;
+    }
+    
+    //tries exhausted, firing vertical
+    return [Math.round(this.objGame.getObjJqContainer().width()/2), 0];
   }
   
   removeComet(cometId)

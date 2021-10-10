@@ -260,6 +260,10 @@ class Laser
     let targetCoords;
     if (target instanceof Comet)
       targetCoords=target.getCenterCoords();
+    else if ((Array.isArray(target)) && (target.length==2))
+    {
+      targetCoords=target;
+    }
     else 
     {
       console.log("NO TARGET FOUND");
