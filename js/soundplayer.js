@@ -52,3 +52,48 @@ class SfxPlayer
     this.arObjDomPlayers[id].play();
   }
 }
+
+class MusicPlayer
+{
+  constructor(objTheme)
+  {
+    this.objTheme=objTheme;
+    this.genPlayer();
+    
+    this.playing=false;
+  }
+  
+  genPlayer()
+  {
+    this.objDomPlayer=document.createElement('audio');
+    this.objDomPlayer.onended=this.evtEnded.bind(this);
+  }
+  
+  evtEnded()
+  {
+    this.playNewSong();
+  }
+  
+  play()
+  {
+    this.playNewSong();
+  }
+  
+  playNewSong()
+  {
+    this.objDomPlayer.src=this.objTheme.chooseBackgroundMusic();
+    this.objDomPlayer.play();
+    this.playing=true;
+  }
+  
+  giveUserInputEvent()
+  {
+    if ((this.playing) && (!this.objDomPlayer.playing))
+      this.objDomPlayer.play();
+  }
+  
+  stop()
+  {
+    this.playing=false;
+  }
+}

@@ -45,6 +45,7 @@ const THEME_DEFAULT_IMAGE_CONSOLE=DEF_BASE+"sprites/console_led.png";
 const THEME_DEFAULT_IMAGE_CONSOLE_DIMS=[168, 110];
 
 const THEME_DEFAULT_IMAGE_CONSOLETUX_NORMAL=DEF_BASE+"sprites/tux-sit.png";
+const THEME_DEFAULT_IMAGE_CONSOLETUX_PRESTART=DEF_BASE+"sprites/tux-relax-prestart.png";
 const THEME_DEFAULT_IMAGE_CONSOLETUX_ANIMSTART=DEF_BASE+"sprites/tux-startLevel-anim.png";
 const THEME_DEFAULT_IMAGES_CONSOLETUX_TYPING=[DEF_BASE+"sprites/tux-console1.png", DEF_BASE+"sprites/tux-console2.png", DEF_BASE+"sprites/tux-console3.png", DEF_BASE+"sprites/tux-console4.png"];
 const THEME_DEFAULT_IMAGE_CONSOLETUX_MISTAKE=DEF_BASE+"sprites/tux-yipe.png";
@@ -93,6 +94,7 @@ class Theme
     this.image_console=THEME_DEFAULT_IMAGE_CONSOLE;
     this.image_console_dims=THEME_DEFAULT_IMAGE_CONSOLE_DIMS;
     this.image_consoletux_normal=THEME_DEFAULT_IMAGE_CONSOLETUX_NORMAL;
+    this.image_consoletux_prestart=THEME_DEFAULT_IMAGE_CONSOLETUX_PRESTART;
     this.image_consoletux_animstart=THEME_DEFAULT_IMAGE_CONSOLETUX_ANIMSTART;
     this.images_consoletux_typing=THEME_DEFAULT_IMAGES_CONSOLETUX_TYPING;
     this.image_consoletux_mistake=THEME_DEFAULT_IMAGE_CONSOLETUX_MISTAKE;

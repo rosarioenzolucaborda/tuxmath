@@ -18,7 +18,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 const GAME_COLUMNS_NUMBER=4;
-const COMTE_FALL_TIME=50;
+//const COMTE_FALL_TIME=50;
+const COMTE_FALL_TIME=10; //DEBUG HACK
 
 let tmGlob_cometIdCounter=0;
 class Comet
@@ -69,6 +70,7 @@ class Comet
     this.alive=false;
     this.objJq.addClass("obj_commet--destroyed");
     this.objJqQuestion.text(this.mathCard.questionText(true)).fadeOut(3000);
+    tmGlob_objSfxPlayer.playSfx(SFX_COMETDESTROY);
     setTimeout(this.hideImage.bind(this), 1500);
     setTimeout(this.removeCometDraw.bind(this), 3100);
   }
@@ -155,6 +157,9 @@ class Igloo
     this.health--;
     this.updateImage();
     
+    if(this.health==IGLOO_HEALTH_HALF) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_HALF);
+    if(this.health==IGLOO_HEALTH_DESTROYED) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_FULL);
+    
     if (this.isDestroyed())
       setTimeout(this.removeIglooDraw.bind(this), 3000); //prevent bug of redisplaying melting water animation when another igloo is destroyed.
   }
@@ -170,10 +175,11 @@ class Igloo
 
 
 const CONSOLE_TUX_NORMAL=0;
-const CONSOLE_TUX_ANIMSTART=1;
-const CONSOLE_TUX_TYPING=2;
-const CONSOLE_TUX_MISTAKE=3;
-const CONSOLE_TUX_IGLOODESTROYED=4;
+const CONSOLE_TUX_PRESTART=1;
+const CONSOLE_TUX_ANIMSTART=2;
+const CONSOLE_TUX_TYPING=3;
+const CONSOLE_TUX_MISTAKE=4;
+const CONSOLE_TUX_IGLOODESTROYED=5;
 
 class TuxConsole
 {
@@ -204,6 +210,7 @@ class TuxConsole
     switch(imageId)
     {
       case CONSOLE_TUX_NORMAL:    this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_normal; break;
+      case CONSOLE_TUX_PRESTART:    this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_prestart; break;
       case CONSOLE_TUX_ANIMSTART: this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_animstart; break;
       case CONSOLE_TUX_MISTAKE:   this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_mistake; break;
       case CONSOLE_TUX_IGLOODESTROYED:  this.objJqImgTux[0].src=tmGlob_objTheme.image_consoletux_animigloodestroyed; break;
@@ -222,6 +229,12 @@ class TuxConsole
   updateText(txt)
   {
     this.objJqDisplay.text(txt);
+  }
+  
+  redBlink()
+  {
+    this.objJqDisplay.addClass("obj_console__display--redblink");
+    setTimeout(function(){ this.objJqDisplay.removeClass("obj_console__display--redblink"); }.bind(this), 1000);
   }
 }
 

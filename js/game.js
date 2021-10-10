@@ -39,6 +39,7 @@ class Game
     this.keyboardManager=new KeyboardManager();
     this.keyboardManager.fctCallBackKeyStroke.push(this.tuxConsole.updateText.bind(this.tuxConsole));
     this.keyboardManager.fctCallBackKeyStroke.push(this.tuxConsole.evtTyping.bind(this.tuxConsole));
+    this.keyboardManager.fctCallBackKeyStroke.push(MusicPlayer.giveUserInputEvent.bind(MusicPlayer));
     this.keyboardManager.fctCallBackEntryValidated.push(this.evtUserValidatedAnswer.bind(this));
   }
   
@@ -59,6 +60,7 @@ class Game
     this.startWave();
     
     this.initIgloos();
+    MusicPlayer.play();
   }
   
   getWaveComets(waveNum)
@@ -81,9 +83,23 @@ class Game
     }
     
     this.runningWave=new GameWave(this, waveCards);
-    this.runningWave.startWave();
     
-    this.tuxConsole.setTuxImage(CONSOLE_TUX_ANIMSTART);
+    let startOffset=0;
+    if (this.waveNum>1) startOffset=2000;
+    
+    //Launching programming wave start events
+    setTimeout(this.tuxConsole.setTuxImage.bind(this.tuxConsole, CONSOLE_TUX_PRESTART), 100); //overridden if called directly, override check not simple to implement...
+    setTimeout(function(){
+      tmGlob_objSfxPlayer.playSfx(SFX_LEVELSTART)
+      this.tuxConsole.redBlink();
+    }.bind(this), startOffset+2000);
+    setTimeout(function(){
+      this.tuxConsole.setTuxImage(CONSOLE_TUX_ANIMSTART);
+    }.bind(this), startOffset+3000);    
+    
+
+    setTimeout(this.runningWave.startWave.bind(this.runningWave), startOffset+4000);
+    
   }
   
   initIgloos()
@@ -143,7 +159,8 @@ class Game
 
 
 
-const GAMEWAVE_ADDCOMET_DELAY=6000;
+//const GAMEWAVE_ADDCOMET_DELAY=6000;
+const GAMEWAVE_ADDCOMET_DELAY=1000; //DEBUG HACK
 
 class GameWave
 {
@@ -184,22 +201,27 @@ class GameWave
   
   evtUserValidatedAnswer(answer)
   {
-    let cometsMatched=false;
+    let cometsMatched=0;
     for (let i=this.arLaunchedCommets.length-1; i>=0; i--) //process array reverse order, to prevent index skip bugs
       if (this.arLaunchedCommets[i].answer==answer)
       {
-        cometsMatched=true;
+        cometsMatched++;
         this.arLaunchedCommets[i].destroy();
         new Laser(this.objGame, this.arLaunchedCommets[i]);
         this.removeComet(this.arLaunchedCommets[i].getId()); //remove at end of iteration!
       }
       
-    if (cometsMatched)
+    if (cometsMatched>1)
+      tmGlob_objSfxPlayer.playSfx(SFX_COMETDESTROY_MULTIPLE);
+
+    if (cometsMatched>0)
     {
       this.checkWaveFinished();
     }
-    
-    //TODO: manage if nothing matched
+    else
+    {
+      //TODO: manage if nothing matched
+    }
       
   }
   
