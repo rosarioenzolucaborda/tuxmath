@@ -39,6 +39,7 @@ class SfxPlayer
     
     for (let i in this.sfxUrls)
     {
+      //d'apres une réponse stackoverflow, ajouter preload="auto" pourait aider chrome (peut être)...
       this.arObjDomPlayers[i]=document.createElement('audio');
 //       objPlay.volume = 1;           Pas utiles????
 //       objPlay.loop   = false;

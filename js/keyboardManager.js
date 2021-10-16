@@ -52,6 +52,7 @@ class KeyboardManager
   {
     this.typedContent="";
     $("body").bind("keydown", this.evtKeyDown.bind(this));
+    $(".js-osk").bind("click", this.evtOskClick.bind(this));
     this.negative=false;
   }
   
@@ -100,21 +101,33 @@ class KeyboardManager
     this.negative=false;
     this.callCallBackKeyStroke();
   }
-  
-  evtKeyDown(event)
+
+  processKey(kc)
   {
-    let kc=event.keyCode;
-    //console.log(kc);
-    
-    let toCatch=true;
+    let catched=true;
     if ((kc>=KEYCODE_0) && (kc<=KEYCODE_9)) this.evtInputNum(kc-KEYCODE_0);
     else if ((kc>=KEYCODE_NUMPAD_0) && (kc<=KEYCODE_NUMPAD_9)) this.evtInputNum(kc-KEYCODE_NUMPAD_0);
     else if ((kc==KEYCODE_ENTER) || (kc==KEYCODE_SPACE)) this.evtInputValidated();
     else if (kc==KEYCODE_SUBTRACT) this.evtReverseSign();
     else if ((kc==KEYCODE_BACKSPACE) || (kc==KEYCODE_DELETE)) this.evtDelete();
-    else toCatch=false;
+    else catched=false;
     
-    if(toCatch) 
+    return (catched)
+  }
+  
+  evtKeyDown(event)
+  {
+    let kc=event.keyCode;
+    let catched=this.processKey(kc);
+    if(catched)
       event.preventDefault();
+  }
+  
+  evtOskClick(event)
+  {
+    let kc=$(event.target).attr("data-osk-kcode");
+    if(typeof kc!=undefined)
+      this.processKey(kc)
+    event.preventDefault();
   }
 }

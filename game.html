@@ -1,6 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8"/>
+  <meta id="js-vp" name="viewport" content="" />
 
   <script src="js/jquery.min.js"></script>
   
@@ -18,21 +19,49 @@
 </head>
 
 <body>
-  <div class="layout-game">
-    <div class="layout-game__counters"></div>
-    <div class="layout-game__overlay-anims"></div>
-    <div class="layout-game__tuxComand"></div>
-    <div class="layout-game__lasers"></div>
-    <div class="layout-game__commetsIgloosColmuns">
-      <div class="layout-game__commetsIgloosColmuns__col layout-col--1"></div>
-      <div class="layout-game__commetsIgloosColmuns__col layout-col--2"></div>
-      <div class="layout-game__commetsIgloosColmuns__col layout-col--console"></div>
-      <div class="layout-game__commetsIgloosColmuns__col layout-col--3"></div>
-      <div class="layout-game__commetsIgloosColmuns__col layout-col--4"></div>
+  <div class="layout-page">
+    <div class="layout-game">
+      <div class="layout-game__counters"></div>
+      <div class="layout-game__overlay-anims"></div>
+      <div class="layout-game__tuxComand"></div>
+      <div class="layout-game__lasers"></div>
+      <div class="layout-game__commetsIgloosColmuns">
+        <div class="layout-game__commetsIgloosColmuns__col layout-col--1"></div>
+        <div class="layout-game__commetsIgloosColmuns__col layout-col--2"></div>
+        <div class="layout-game__commetsIgloosColmuns__col layout-col--console"></div>
+        <div class="layout-game__commetsIgloosColmuns__col layout-col--3"></div>
+        <div class="layout-game__commetsIgloosColmuns__col layout-col--4"></div>
+      </div>
+      <div class="layout-game__backgound js-background"></div>
     </div>
-    <div class="layout-game__backgound js-background"></div>
+    
+    <div class="layout-osk obj-osk js-osk" style="display: none;">
+      <div class="obj-osk__block obj-osk__block--logo"></div>
+      <div class="obj-osk__block">
+        <a class="obj-osk__key" data-osk-kcode=103>7</a>
+        <a class="obj-osk__key" data-osk-kcode=104>8</a>
+        <a class="obj-osk__key" data-osk-kcode=105>9</a>
+      </div>
+      <div class="obj-osk__block">
+        <a class="obj-osk__key" data-osk-kcode=100>4</a>
+        <a class="obj-osk__key" data-osk-kcode=101>5</a>
+        <a class="obj-osk__key" data-osk-kcode=102>6</a>
+      </div>
+      <div class="obj-osk__block">
+        <a class="obj-osk__key" data-osk-kcode=97>1</a>
+        <a class="obj-osk__key" data-osk-kcode=98>2</a>
+        <a class="obj-osk__key" data-osk-kcode=99>3</a>
+      </div>
+      <div class="obj-osk__block">
+        <a class="obj-osk__key" data-osk-kcode=96>0</a>
+        <a class="obj-osk__key" data-osk-kcode=109>+ / -</a>
+      </div>
+      <div class="obj-osk__block">
+        <a class="obj-osk__key osk__key--enter" data-osk-kcode=13>Enter</a>
+        <a class="obj-osk__key osk__key--backspace" data-osk-kcode=8>x</a>
+      </div>
+    </div>
   </div>
-  
 
 
   <script>
@@ -44,6 +73,12 @@
   //     console.log(cardsCol.arCards[i].calcResult(), "###", cardsCol.arCards[i].questionText());
   //     
 
+    /*if (detectMobile())*/ $(".js-osk").show();
+    
+    if ((screen.width < 800) && (screen.width > screen.height) && (detectMobile())) $("#js-vp").attr("content", "width=800, user-scalable=no");
+    else if (screen.width < 600) $("#js-vp").attr("content", "width=600, user-scalable=no");
+    else $("#js-vp").attr("content", "width=device-width, initial-scale=1.0, user-scalable=no");
+  
     tmGlob_objTheme=new Theme();
     tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme);
     MusicPlayer=new MusicPlayer(tmGlob_objTheme);
