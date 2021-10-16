@@ -118,6 +118,8 @@ const IGLOO_HEALTH_OK=2;
 const IGLOO_HEALTH_HALF=1;
 const IGLOO_HEALTH_DESTROYED=0;
 
+const PENGUIN_LEAVE_IMG_Y_DELTA=-12; //walking penguin height minus sit panguin height 
+
 class Igloo
 {
   constructor(objGame, columnId)
@@ -132,17 +134,26 @@ class Igloo
   draw()
   {
     this.objJq=$("<div class=\"obj_igloo\"></div>");
-    this.objJqImage=$("<img>").appendTo(this.objJq);
-    this.updateImage();
+    this.objJqImagePeng=$("<img class=\"obj_igloo__imgpenguin\">").appendTo(this.objJq);
+    this.objJqImageIgloo=$("<img class=\"obj_igloo__imgigloo\">").appendTo(this.objJq);
+    this.updateIglooImage();
+    this.updatePenguinImageSit();
     
     let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--"+this.columnId);
     ojbJqTargetCol.append(this.objJq);
   }
   
-  updateImage()
+  updateIglooImage()
   {
-    this.objJqImage[0].src=tmGlob_objTheme.image_iglooHealthStatus[this.health];
+    this.objJqImageIgloo[0].src=tmGlob_objTheme.image_iglooHealthStatus[this.health];
   }
+  
+  updatePenguinImageSit()
+  {
+    this.objJqImagePeng[0].src=getRandomArrayElt(tmGlob_objTheme.images_penguin_sit);
+    this.toUpdatePengImage=setTimeout(this.updatePenguinImageSit.bind(this), getRandomInt(1000, 4000));
+  }
+  
   
   removeIglooDraw()
   {
@@ -155,13 +166,39 @@ class Igloo
       return;
     
     this.health--;
-    this.updateImage();
+    this.updateIglooImage();
     
     if(this.health==IGLOO_HEALTH_HALF) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_HALF);
     if(this.health==IGLOO_HEALTH_DESTROYED) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_FULL);
     
     if (this.isDestroyed())
       setTimeout(this.removeIglooDraw.bind(this), 3000); //prevent bug of redisplaying melting water animation when another igloo is destroyed.
+      
+    //image du pinguin:
+    if (! this.isDestroyed())
+    {
+      clearTimeout(this.toUpdatePengImage);
+      this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
+      this.toUpdatePengImage=setTimeout(this.updatePenguinImageSit.bind(this), 3000);
+    }
+    else
+    {
+      clearTimeout(this.toUpdatePengImage);
+      let br=$(this.objJqImagePeng)[0].getBoundingClientRect(); //br is lost at time penguinMoveOut is called...
+      this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
+      setTimeout(function(){this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_standup;}.bind(this), 2000);
+      setTimeout(this.penguinMoveOut.bind(this, br), 3000);
+    }
+  }
+  
+  penguinMoveOut(br)
+  {
+    let dirClass=(this.columnId-1<(GAME_COLUMNS_NUMBER/2))?"obj_penguinleave--left":"obj_penguinleave--right";
+    let objJqPenguinLeaveContainer=this.objGame.getObjJqContainer().find(".layout-game__overlay-anims");
+    let objJqPenguinLeave=$("<img src=\""+tmGlob_objTheme.anim_penguin_animwalk+"\" class=\""+dirClass+"\">").appendTo(objJqPenguinLeaveContainer).offset({top: br.y+PENGUIN_LEAVE_IMG_Y_DELTA, left: br.x});
+    objJqPenguinLeave.on("animationend", function(){this.remove();});
+//     ;
+//     
   }
   
   isDestroyed()

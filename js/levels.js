@@ -24,15 +24,15 @@ let tmGlob_levelsSettings={
     "oper": ["add"],
     "first_operand_min": 1,
     "first_operand_max": 10,
-    "add_right_addend_min": 1,
-    "add_right_addend_max": 10
+    "add_addend_min": 1,
+    "add_addend_max": 10
   },
   "add2":  {
     "oper": ["add"],
     "first_operand_min": 1,
     "first_operand_max": 10,
-    "add_right_addend_min": 4,
-    "add_right_addend_max": 20
+    "add_addend_min": 4,
+    "add_addend_max": 20
   },
   
   
@@ -47,7 +47,7 @@ let tmGlob_levelsSettings={
   "sub2":  {
     "oper": ["sub"],
     "first_operand_min": 1,
-    "first_operand_max": 10,
+    "first_operand_max": 20,
     "sub_subtrahend_min": 1,
     "sub_subtrahend_max": 10
   },

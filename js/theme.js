@@ -40,6 +40,10 @@ const THEME_DEFAULT_IGLOOHEALTHSTATUS=[
   DEF_BASE+"sprites/igloo-half.png",
   DEF_BASE+"sprites/igloo-intact.png"
 ];
+const THEME_DEFAULT_IMAGES_PENGUIN_SIT=[DEF_BASE+"sprites/penguin-flapdown.png", DEF_BASE+"sprites/penguin-flapup.png"];
+const THEME_DEFAULT_IMAGE_PENGUIN_HIT=DEF_BASE+"sprites/penguin-incoming.png";
+const THEME_DEFAULT_IMAGE_PENGUIN_STANDUP=DEF_BASE+"sprites/penguin-standing-up.png";
+const THEME_DEFAULT_ANIM_PENGUIN_ANIMWALK=DEF_BASE+"sprites/penguin-walk.png";
 
 const THEME_DEFAULT_IMAGE_CONSOLE=DEF_BASE+"sprites/console_led.png";
 const THEME_DEFAULT_IMAGE_CONSOLE_DIMS=[168, 110];
@@ -90,6 +94,11 @@ class Theme
     this.image_comet_explode=THEME_DEFAULT_IMAGE_COMET_EXPLODE;
     this.image_steam=THEME_DEFAULT_IMAGE_STEAM;
     this.image_iglooHealthStatus=THEME_DEFAULT_IGLOOHEALTHSTATUS;
+    
+    this.images_penguin_sit=THEME_DEFAULT_IMAGES_PENGUIN_SIT;
+    this.image_penguin_hit=THEME_DEFAULT_IMAGE_PENGUIN_HIT;
+    this.image_penguin_standup=THEME_DEFAULT_IMAGE_PENGUIN_STANDUP;
+    this.anim_penguin_animwalk=THEME_DEFAULT_ANIM_PENGUIN_ANIMWALK;
     
     this.image_console=THEME_DEFAULT_IMAGE_CONSOLE;
     this.image_console_dims=THEME_DEFAULT_IMAGE_CONSOLE_DIMS;

@@ -21,7 +21,15 @@ body {
 
 .layout-game__counters {
   position: absolute;
+  z-index: 50;
+}
+
+.layout-game__overlay-anims {
+  position: absolute;
   z-index: 40;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; 
 }
 
 .layout-game__tuxComand {
@@ -35,6 +43,9 @@ body {
 .layout-game__lasers {
   position: absolute;
   z-index: 20;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .layout-game__commetsIgloosColmuns {

@@ -41,17 +41,66 @@
   
 @keyframes cometfall {
   from {bottom: 100%; }      
-  to {bottom: 10%; }      
+  to { bottom: 4rem; bottom: calc(1rem + 57px); }      
 }
 
+/*
+ * Igloos
+ * 
+ */
 
 .obj_igloo {
     position: absolute;
-    bottom: 5%;
+    bottom: 1rem;
+    z-index: 0;
+}
+
+.obj_igloo__imgigloo {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    z-index: 1;
+}
+
+.obj_igloo__imgpenguin{
+    position: absolute;
+    transform: translate(-43%, -113%);
     z-index: 0;
 }
 
 
+/*
+ * Leaving penguins
+ * 
+ * */
+
+@keyframes penguinleave--left {
+  from { margin-left: 0px; }      
+  to { margin-left: -900px; }      
+}
+
+.obj_penguinleave--left
+{
+  position:absolute;
+  animation-name: penguinleave--left;
+  animation-duration: 13s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  transform: scaleX(-1);
+}
+
+@keyframes penguinleave--right {
+  from { margin-left: 0px; }      
+  to { margin-left: 900px; }
+}
+
+.obj_penguinleave--right
+{
+  position:absolute;
+  animation-name: penguinleave--right;
+  animation-duration: 13s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
 
 
 /*
