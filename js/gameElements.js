@@ -273,6 +273,12 @@ class TuxConsole
     this.objJqDisplay.addClass("obj_console__display--redblink");
     setTimeout(function(){ this.objJqDisplay.removeClass("obj_console__display--redblink"); }.bind(this), 1000);
   }
+
+  yellowBlink()
+  {
+    this.objJqDisplay.addClass("obj_console__display--yellowblink");
+    setTimeout(function(){ this.objJqDisplay.removeClass("obj_console__display--yellowblink"); }.bind(this), 1000);
+  }
 }
 
 

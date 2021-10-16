@@ -156,6 +156,24 @@
   animation-timing-function: linear;
 }
 
+@keyframes yellowblink {
+  from  { background-color: black; }      
+  10%   { background-color: black; }      
+  30%   { background-color: #fbcd16; }      
+  50%   { background-color: black; }      
+  70%   { background-color: #fbcd16; }
+  90%   { background-color: black; }
+  to    { background-color: black; }      
+}
+.obj_console__display--yellowblink
+{
+  animation-name: yellowblink;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+
 
 /*
  * Lasers

@@ -91,7 +91,7 @@ class Game
     setTimeout(this.tuxConsole.setTuxImage.bind(this.tuxConsole, CONSOLE_TUX_PRESTART), 100); //overridden if called directly, override check not simple to implement...
     setTimeout(function(){
       tmGlob_objSfxPlayer.playSfx(SFX_LEVELSTART)
-      this.tuxConsole.redBlink();
+      this.tuxConsole.yellowBlink();
     }.bind(this), startOffset+2000);
     setTimeout(function(){
       this.tuxConsole.setTuxImage(CONSOLE_TUX_ANIMSTART);
