@@ -45,12 +45,21 @@ class Comet
   {
     this.objJq=$("<div class=\"obj_commet anim-cometfall\"></div>");
     this.objJqImage=$("<img src='"+tmGlob_objTheme.image_comet+"'>").appendTo(this.objJq);
+    
     this.objJqQuestion=$("<div class=\"obj_commet__question\"></div>").text(this.mathCard.questionText()).appendTo(this.objJq).hide().fadeIn(3000);
+      
     
     this.objJq.on("animationend", this.evtAnimationFallEnd.bind(this));
     this.objJq.css("animation-duration", COMTE_FALL_TIME+"s");
     
     this.ojbJqTargetCol.append(this.objJq);
+    
+    //move question if out of screen (must be done AFTER of was added to dom for correct size calculations)
+    let questionRightPosMargin=20;
+    let questionRightPos=this.objJqQuestion.offset().left+this.objJqQuestion.width()+questionRightPosMargin;
+    let gameWidth=this.objGame.getObjJqContainer().width();
+    if (questionRightPos>gameWidth)
+      this.objJqQuestion.css("margin-left", (gameWidth-questionRightPos)+"px");0
   }
   
   

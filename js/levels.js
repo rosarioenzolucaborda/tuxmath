@@ -90,7 +90,8 @@ let tmGlob_levelsSettings={
     "first_operand_max": 20,
     "sub_subtrahend_min": 0,
     "sub_subtrahend_max": 50,
-    "max_operators":  5,
+    "max_operators":  6,
+    "min_operators":  4,
     "oper_mix_allowed": true
   }
 }

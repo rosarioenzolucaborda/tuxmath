@@ -13,6 +13,23 @@ body {
   height: 100%;
 }
 
+.layout-overlay-buttons {
+  position: absolute;
+  z-index: 10;
+  top: .5rem;
+  right: .5rem;
+}
+
+.layout-overlay-buttons__button{
+  position: relative;
+  display: block
+}
+
+.layout-overlay-buttons__icon
+{
+  width: 2rem;
+}
+
 .layout-page {
   width: 100%;
   height: 100%;

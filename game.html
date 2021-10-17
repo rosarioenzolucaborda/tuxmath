@@ -19,6 +19,11 @@
 </head>
 
 <body>
+  <div class="layout-overlay-buttons">
+    <a class="layout-overlay-buttons__button" onclick="requestFullScreen();">
+      <img src="images/icons/expand.svg" class="layout-overlay-buttons__icon">
+    </a>
+  </div>
   <div class="layout-page">
     <div class="layout-game">
       <div class="layout-game__counters"></div>
@@ -75,9 +80,12 @@
 
     /*if (detectMobile())*/ $(".js-osk").show();
     
-    if ((screen.width < 800) && (screen.width > screen.height) && (detectMobile())) $("#js-vp").attr("content", "width=800, user-scalable=no");
-    else if (screen.width < 600) $("#js-vp").attr("content", "width=600, user-scalable=no");
-    else $("#js-vp").attr("content", "width=device-width, initial-scale=1.0, user-scalable=no");
+    
+    $(window).on("resize", function(){
+      if ((screen.width < 1100) && (screen.width > screen.height) && (detectMobile())) $("#js-vp").attr("content", "width=1100, user-scalable=no");
+      else if (screen.width < 700) $("#js-vp").attr("content", "width=700, user-scalable=no");
+      else $("#js-vp").attr("content", "width=device-width, initial-scale=1.0, user-scalable=no");
+    }).resize();
   
     tmGlob_objTheme=new Theme();
     tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme);
