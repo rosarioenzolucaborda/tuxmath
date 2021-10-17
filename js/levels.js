@@ -52,6 +52,36 @@ let tmGlob_levelsSettings={
     "sub_subtrahend_max": 10
   },
   
+    //multiplications
+  "mul1":  {
+    "oper": ["mul"],
+    "first_operand_min": -5,
+    "first_operand_max": 5,
+    "mul_multiplacand_min": -3,
+    "mul_multiplacand_max": 3,
+    "max_operators": 3
+  },  "ba":  {
+    "oper": ["mul", "div"],
+    "first_operand_min": -5,
+    "first_operand_max": 5,
+    "div_dividand_min": -100,
+    "div_dividand_max": 100,
+    "mul_multiplacand_min": -3,
+    "mul_multiplacand_max": 3,
+    "max_operators": 3,
+    "oper_mix_allowed": true,
+    "mul_multiplacand_zeroallowed": false
+  },
+
+    //divisions
+  "div1":  {
+    "oper": ["div"],
+    "first_operand_min": -100,
+    "first_operand_max": 100,
+    "div_divisor_min": -20,
+    "div_divisor_max": 20
+    
+  },
   
   
   "test":  {

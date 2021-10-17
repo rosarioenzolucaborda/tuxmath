@@ -18,8 +18,8 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 const GAME_COLUMNS_NUMBER=4;
-//const COMTE_FALL_TIME=50;
-const COMTE_FALL_TIME=10; //DEBUG HACK
+const COMTE_FALL_TIME=50;
+// const COMTE_FALL_TIME=10; //DEBUG HACK
 
 let tmGlob_cometIdCounter=0;
 class Comet

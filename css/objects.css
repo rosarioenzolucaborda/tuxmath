@@ -29,6 +29,7 @@
     background: #000000b3;
     padding: .5rem;
     border-radius: 2rem;
+    transform: translate(-25%, 0%);
 }
 
 .anim-cometfall

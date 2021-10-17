@@ -113,6 +113,15 @@ class MathsCardsGenerator
       "sub_subtrahend_min": 0,
       "sub_subtrahend_max": 10,
       "sub_negative_result_allowed": false,
+      "mul_multiplacand_min": 1,
+      "mul_multiplacand_max": 10,
+      "mul_multiplacand_zeroallowed": true,
+      "div_dividand_min": 0,
+      "div_dividand_max": 100,
+      "div_divisor_min": 1,
+      "div_divisor_max": 10,
+      "div_result_min": -10,
+      "div_result_max": 10,
       "min_operators" : 1,
       "max_operators" : 1
     };
@@ -121,16 +130,21 @@ class MathsCardsGenerator
 
   checkGenParams()
   {
-    if ((this.genSettings.oper.indexOf("div")!=1) && (this.genSettings.max_operators>1) && (this.genSettings.oper.length==1))
+    if ((this.genSettings.oper.indexOf("div")!=-1) && (this.genSettings.max_operators>1) && (this.genSettings.oper.length==1))
     {
-      this.genSettings.max_operators=1;
-      throw "many chained division are note possible, max_operators was set to 1";
+      throw "many chained division are note possible for now on...";
     }
     
-    if ((! this.genSettings.sub_negative_result_allowed) && (this.genSettings.oper.indexOf("sub")!=1) && ( (this.genSettings.oper.indexOf("mul")!=-1) || (this.genSettings.oper.indexOf("div")!=-1) ) )
+    if ((! this.genSettings.sub_negative_result_allowed) && (this.genSettings.oper.indexOf("sub")!=-1) && ( (this.genSettings.oper.indexOf("mul")!=-1) || (this.genSettings.oper.indexOf("div")!=-1) ) )
     {
       throw "sub_negative_result_allowed can't be correcctly enforced when sub mixed with higher priority ops like mul or div.";
     }
+    
+    if ((this.genSettings.oper.indexOf("div")!=-1) &&  (this.genSettings.max_operators>1) && (! this.genSettings.oper_mix_allowed))
+    {
+      throw "many chained division are note possible for now on... but you asked more than one operator without allowing mixing of operation types";
+    }
+    
   }
   
   genCard()
@@ -166,6 +180,26 @@ class MathsCardsGenerator
           let max_subtrahend=Math.min(this.genSettings.sub_subtrahend_max, mathcard.calcResult());
           mathcard.operands.push(getRandomInt(this.genSettings.sub_subtrahend_min, max_subtrahend));
           mathcard.operators.push("-");
+        break;
+        case "mul":
+          let multiplicand=getRandomInt(this.genSettings.mul_multiplacand_min, this.genSettings.mul_multiplacand_max);
+          if ((multiplicand==0) && (!this.genSettings.mul_multiplacand_zeroallowed))
+            multiplicand=getRandomInt(1, this.genSettings.mul_multiplacand_max);
+          mathcard.operands.push(multiplicand);
+          mathcard.operators.push("*");
+        break;
+        case "div":
+          if (mathcard.operators.length>0) continue; //can't handle cases where division is not in first place
+          let divisor=getRandomInt(this.genSettings.div_divisor_min, this.genSettings.div_divisor_max);
+          let minResult=Math.ceil(this.genSettings.div_dividand_min/divisor);
+          let maxResult=Math.floor(this.genSettings.div_dividand_max/divisor);
+          minResult=Math.max(minResult, this.genSettings.div_result_min);
+          maxResult=Math.min(maxResult, this.genSettings.div_result_max);
+          let result=getRandomInt(minResult, maxResult);
+          mathcard.operands[0]=result*divisor;
+          mathcard.operands[1]=divisor;
+          mathcard.operators[0]='/';
+          //only 
         break;
         default:
           throw "unknown operator type: "+actOperator;
