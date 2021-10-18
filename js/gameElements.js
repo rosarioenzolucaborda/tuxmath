@@ -32,7 +32,6 @@ class Comet
     this.colNumber=getRandomInt(1, GAME_COLUMNS_NUMBER);
     this.id=tmGlob_cometIdCounter;
     tmGlob_cometIdCounter++;
-    console.log(this.id);
     this.alive=true;
     this.ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--"+this.colNumber);
     

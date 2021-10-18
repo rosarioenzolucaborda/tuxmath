@@ -12,6 +12,7 @@
   <script src="js/keyboardManager.js"></script>
   <script src="js/soundplayer.js"></script>
   <script src="js/theme.js"></script>
+  <script src="js/Lang.js"></script>
   <script src="js/utils.js"></script>
   
   <link rel="stylesheet" href="css/layout.css">
@@ -26,7 +27,26 @@
   </div>
   <div class="layout-page">
     <div class="layout-game">
-      <div class="layout-game__counters"></div>
+      <div class="layout-game__overlay">
+        <div class="layout-game__overlay__topline">
+          <div class="layout-game__overlay__topline__cell layout-topline_cell_level">
+            <span data-lang-item=counters_level></span> <span class="js-level"></span>
+          </div>
+          <div class="layout-game__overlay__topline__cell layout-topline_cell_counters">
+            <div class="layout-topline_cell_counters__cell">
+              <img class="layout-topline__image" src="images/icons/fireball.png"> <span class="js-cometsleft"></span>
+            </div>
+            <div class="layout-topline_cell_counters__cell">
+              <img class="layout-topline__image" src="images/icons/answer_correct.png"> <span class="js-anwsers-goods"></span>
+            </div>
+            <div class="layout-topline_cell_counters__cell">
+              <img class="layout-topline__image" src="images/icons/answer_incorrect.png"> <span class="js-anwsers-wrongs"></span>
+            </div>
+          </div>
+          <div class="layout-game__overlay__topline__cell layout-topline_cell_buttons">
+          </div>
+        </div>
+      </div>
       <div class="layout-game__overlay-anims"></div>
       <div class="layout-game__tuxComand"></div>
       <div class="layout-game__lasers"></div>
@@ -62,7 +82,7 @@
         <a class="obj-osk__key" data-osk-kcode=109>+ / -</a>
       </div>
       <div class="obj-osk__block">
-        <a class="obj-osk__key osk__key--enter" data-osk-kcode=13>Enter</a>
+        <a class="obj-osk__key osk__key--enter" data-osk-kcode=13 data-lang-item=kp_enter>Enter</a>
         <a class="obj-osk__key osk__key--backspace" data-osk-kcode=8>x</a>
       </div>
     </div>
@@ -87,6 +107,7 @@
       else $("#js-vp").attr("content", "width=device-width, initial-scale=1.0, user-scalable=no");
     }).resize();
   
+    tmGlob_Lang=new Lang();
     tmGlob_objTheme=new Theme();
     tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme);
     MusicPlayer=new MusicPlayer(tmGlob_objTheme);

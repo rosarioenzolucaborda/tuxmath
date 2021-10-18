@@ -46,13 +46,20 @@ class Game
   evtUserValidatedAnswer(answer)
   {
     if ((this.runningWave) && (this.runningWave.evtUserValidatedAnswer))
-      this.runningWave.evtUserValidatedAnswer(answer);
+    {
+      let boolCorrect=this.runningWave.evtUserValidatedAnswer(answer);
+      if (boolCorrect) this.totalAnswersGood++;
+      else this.totalAnswersBad++;
+      this.updateCountersDisplay();
+    }
   }
   
   startGame(levelId)
   {
     this.running=true;
     this.waveNum=0;
+    this.totalAnswersGood=0;
+    this.totalAnswersBad=0;
     
     this.mathCardsCollection=new MathCardsCollection();
     this.mathCardsCollection.genCards(levelId, LEVEL_CARDS_NUM);
@@ -84,10 +91,12 @@ class Game
     
     this.runningWave=new GameWave(this, waveCards);
     
+    this.updateCountersDisplay();
+    
+    //Launching programming wave start animation events
     let startOffset=0;
     if (this.waveNum>1) startOffset=2000;
     
-    //Launching programming wave start events
     setTimeout(this.tuxConsole.setTuxImage.bind(this.tuxConsole, CONSOLE_TUX_PRESTART), 100); //overridden if called directly, override check not simple to implement...
     setTimeout(function(){
       tmGlob_objSfxPlayer.playSfx(SFX_LEVELSTART)
@@ -153,6 +162,17 @@ class Game
     if (this.running)
       this.startWave();
   }
+  
+  updateCountersDisplay()
+  {
+    let objJqCounters=this.objJqContainer.find(".layout-game__overlay");
+    objJqCounters.find(".js-level").text(this.waveNum);
+    
+    let cometsLeft=this.mathCardsCollection.getSize()+this.runningWave.getRemainingComets();
+    objJqCounters.find(".js-cometsleft").text(cometsLeft);
+    objJqCounters.find(".js-anwsers-goods").text(this.totalAnswersGood);
+    objJqCounters.find(".js-anwsers-wrongs").text(this.totalAnswersBad);
+  }
 }
 
 
@@ -171,6 +191,9 @@ class GameWave
     this.objGame=objGame;
     this.arMathCardsToLaunch=arMathCards;
     this.arLaunchedCommets=[];
+    this.answersGood=0;
+    this.answersBad=0;
+
   }
   
   startWave()
@@ -218,10 +241,12 @@ class GameWave
 
     if (cometsMatched>0)
     {
+      this.answersGood++;
       this.checkWaveFinished();
     }
     else
     {
+      this.answersBad++;
       tmGlob_objSfxPlayer.playSfx(SFX_ANSWER_BAD);
       new Laser(this.objGame, this.searchFalseLocation());
       this.objGame.tuxConsole.redBlink();
@@ -287,6 +312,11 @@ class GameWave
   {
     if ((this.arLaunchedCommets.length==0)  && (this.arMathCardsToLaunch.length==0))
       this.objGame.evtWaveFinished();
+  }
+  
+  getRemainingComets()
+  {
+    return this.arLaunchedCommets.length+this.arMathCardsToLaunch.length;
   }
 
 }

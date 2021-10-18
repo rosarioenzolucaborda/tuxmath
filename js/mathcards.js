@@ -104,7 +104,7 @@ class MathsCardsGenerator
   {
     return {
       "oper": ["add", "sub"],
-      "oper_mix_allowed": false,
+      "oper_mix_allowed": true,
       
       "first_operand_min": 0,
       "first_operand_max": 10,
@@ -229,5 +229,10 @@ class MathCardsCollection
   takeCards(num)
   {
     return this.arCards.splice(0, num);
+  }
+  
+  getSize()
+  {
+    return this.arCards.length;
   }
 }
