@@ -5,9 +5,10 @@ const SFX_COMETDESTROY_MULTIPLE=3;
 const SFX_LASER=4;
 const SFX_IGLOO_DESTROY_HALF=5;
 const SFX_IGLOO_DESTROY_FULL=6;
-const SFX_KEYPRESS=7;
-const SFX_BONUS_INCOMING=8;
-const SFX_BONUS_DESTROYED=9;
+const SFX_IGLOO_DESTROY_LASER=7;
+const SFX_KEYPRESS=8;
+const SFX_BONUS_INCOMING=9;
+const SFX_BONUS_DESTROYED=10;
 
 class SfxPlayer
 {
@@ -28,6 +29,7 @@ class SfxPlayer
     this.sfxUrls[SFX_LASER]=this.objTheme.sfx_laser;;
     this.sfxUrls[SFX_IGLOO_DESTROY_HALF]=this.objTheme.sfx_igloo_destroy_half;
     this.sfxUrls[SFX_IGLOO_DESTROY_FULL]=this.objTheme.sfx_igloo_destroy_full;
+    this.sfxUrls[SFX_IGLOO_DESTROY_LASER]=this.objTheme.sfx_igloo_destroy_laser;
     this.sfxUrls[SFX_KEYPRESS]=this.objTheme.sfx_keypress;
     this.sfxUrls[SFX_BONUS_INCOMING]=this.objTheme.sfx_bonus_incoming;
     this.sfxUrls[SFX_BONUS_DESTROYED]=this.objTheme.sfx_bonus_destroyed;

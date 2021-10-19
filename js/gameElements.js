@@ -109,11 +109,6 @@ class Comet
   
   getCenterCoords()
   {
-//     this.objJq.css("border-color", "yellow");
-//     this.objJq.css("border-style", "solid");
-//     this.objJq.css("border-width", "1px");
-    
-    
     let  br=this.objJq[0].getBoundingClientRect();
     let yOffset=50; //target the core of the comet as the center of drawing is on tail...
     return [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2+yOffset)];
@@ -150,6 +145,13 @@ class Igloo
     ojbJqTargetCol.append(this.objJq);
   }
   
+  getCenterCoords()
+  {
+    let  br=this.objJqImageIgloo[0].getBoundingClientRect();
+    return [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2)];
+  }
+  
+  
   updateIglooImage()
   {
     this.objJqImageIgloo[0].src=tmGlob_objTheme.image_iglooHealthStatus[this.health];
@@ -167,7 +169,18 @@ class Igloo
     this.objJq.remove();
   }
   
-  evtGotHit()
+  evtGotHitByLaser()
+  {
+    let  br=this.objJqImageIgloo[0].getBoundingClientRect();
+    let objJqSteamContainer=this.objGame.getObjJqContainer().find(".layout-game__overlay-anims");
+    let objJqSteam=$("<img>").appendTo(objJqSteamContainer).offset({top: br.top, left: br.left});
+    objJqSteam[0].src=tmGlob_objTheme.image_steam;
+    setTimeout(function(){ this.remove(); }.bind(objJqSteam), 1000);
+    this.evtGotHit(true);
+  }
+
+  
+  evtGotHit(byLaser=false)
   {
     if (this.health==IGLOO_HEALTH_DESTROYED)
       return;
@@ -175,8 +188,13 @@ class Igloo
     this.health--;
     this.updateIglooImage();
     
-    if(this.health==IGLOO_HEALTH_HALF) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_HALF);
-    if(this.health==IGLOO_HEALTH_DESTROYED) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_FULL);
+    if(!byLaser)
+    {
+      if(this.health==IGLOO_HEALTH_HALF) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_HALF);
+      if(this.health==IGLOO_HEALTH_DESTROYED) tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_FULL);
+    }
+    else
+      tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_LASER)
     
     if (this.isDestroyed())
       setTimeout(this.removeIglooDraw.bind(this), 3000); //prevent bug of redisplaying melting water animation when another igloo is destroyed.

@@ -49,8 +49,13 @@ class Game
     if ((this.runningWave) && (this.runningWave.evtUserValidatedAnswer))
     {
       let boolCorrect=this.runningWave.evtUserValidatedAnswer(answer);
-      if (boolCorrect) this.totalAnswersGood++;
-      else this.totalAnswersBad++;
+      if (boolCorrect) 
+        this.totalAnswersGood++;
+      else 
+      {
+        this.totalAnswersBad++;
+        this.checkGameOver();
+      }
       this.updateCountersDisplay();
     }
   }
@@ -117,6 +122,19 @@ class Game
     this.arIgloos=[]
     for (let i=1; i<=GAME_COLUMNS_NUMBER; i++)
       this.arIgloos.push(new Igloo(this, i));
+  }
+  
+  //get random alive igloo
+  getAliveIgloo()
+  {
+    let rndMap=[];
+    for (let i in this.arIgloos)
+      rndMap[i]=i;
+    array_shuffle(rndMap);
+    
+    for (let i in this.arIgloos)
+      if (! this.arIgloos[rndMap[i]].isDestroyed())
+        return  this.arIgloos[rndMap[i]];
   }
   
   gameFinished(boolSuccess)
@@ -186,6 +204,7 @@ const GAMEWAVE_ADDCOMET_DELAY=6000;
 //const GAMEWAVE_ADDCOMET_DELAY=1000; //DEBUG HACK
 const FALSE_LOCATION_SEARCH_TRIES=4;
 const FALSE_LOCATION_SEARCH_MAXCOMETDISTANCEALLOWED=65;
+const NB_ANSWER_BAD_DESTROY_IGLOO=6;
 
 class GameWave
 {
@@ -251,8 +270,18 @@ class GameWave
     {
       this.answersBad++;
       tmGlob_objSfxPlayer.playSfx(SFX_ANSWER_BAD);
-      new Laser(this.objGame, this.searchFalseLocation());
       this.objGame.tuxConsole.redBlink();
+      
+      if (this.answersBad%NB_ANSWER_BAD_DESTROY_IGLOO==0)
+      { //to many bad anwser -> Destroy igloo
+        let targetIgloo=this.objGame.getAliveIgloo();
+        new Laser(this.objGame, targetIgloo.getCenterCoords());
+        targetIgloo.evtGotHitByLaser();
+      }
+      else
+      {
+        new Laser(this.objGame, this.searchFalseLocation());
+      }
     }
     
     return (cometsMatched>0); //return true if user writen validen answer, false otherwise.

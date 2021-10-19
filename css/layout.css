@@ -22,7 +22,12 @@ body {
 
 .layout-overlay-buttons__button{
   position: relative;
-  display: block
+  display: block;
+  
+  /*Make it bigger, else doesn't well work on Chrome*/
+  width: 4rem;
+  text-align: right;
+  height: 4rem;
 }
 
 .layout-overlay-buttons__icon

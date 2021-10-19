@@ -73,6 +73,7 @@ const THEME_DEFAULT_SFX_COMETDESTROY_MULTIPLE="sfx/cheer.wav";
 const THEME_DEFAULT_SFX_LASER="sfx/laser.wav";
 const THEME_DEFAULT_SFX_IGLOO_DESTROY_HALF="sfx/sizzling.wav";
 const THEME_DEFAULT_SFX_IGLOO_DESTROY_FULL="sfx/sizzling.wav";
+const THEME_DEFAULT_SFX_IGLOO_DESTROY_LASER="sfx/explosion.wav";
 const THEME_DEFAULT_SFX_KEYPRESS="sfx/tock.wav";
 const THEME_DEFAULT_SFX_BONUS_INCOMING="sfx/cheer.wav";
 const THEME_DEFAULT_SFX_BONUS_DESTROYED="sfx/cheer.wav";
@@ -115,7 +116,9 @@ class Theme
     this.sfx_cometdestroy_multiple=THEME_DEFAULT_SFX_COMETDESTROY_MULTIPLE;
     this.sfx_laser=THEME_DEFAULT_SFX_LASER;
     this.sfx_igloo_destroy_half=THEME_DEFAULT_SFX_IGLOO_DESTROY_HALF;
-    this.sfx_igloo_destroy_full=THEME_DEFAULT_SFX_IGLOO_DESTROY_FULL;    this.sfx_keypress=THEME_DEFAULT_SFX_KEYPRESS;
+    this.sfx_igloo_destroy_full=THEME_DEFAULT_SFX_IGLOO_DESTROY_FULL;
+    this.sfx_igloo_destroy_laser=THEME_DEFAULT_SFX_IGLOO_DESTROY_LASER;
+    this.sfx_keypress=THEME_DEFAULT_SFX_KEYPRESS;
     this.sfx_bonus_incoming=THEME_DEFAULT_SFX_BONUS_INCOMING;
     this.sfx_bonus_destroyed=THEME_DEFAULT_SFX_BONUS_DESTROYED;
   }  
