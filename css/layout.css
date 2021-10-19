@@ -65,10 +65,12 @@ body {
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;
+  justify-content: space-between;
 }
 
 .layout-game__overlay__topline__cell {
     flex-grow: 1;
+    flex-basis: 0px; /* make all elements same size. source: https://stackoverflow.com/questions/29503227/how-to-make-flexbox-items-the-same-size */
     margin: .25rem;
     font-size: 1.5rem;
     color: #ececec;
