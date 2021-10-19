@@ -20,6 +20,7 @@
 
 
 const LEVEL_CARDS_NUM=40;
+const NOT_ANSWERED_REPEAT=2;
 
 class Game
 {
@@ -134,9 +135,11 @@ class Game
     this.arIgloos[colNumber-1].evtGotHit();
     this.tuxConsole.setTuxImage(CONSOLE_TUX_IGLOODESTROYED);
     this.checkGameOver();
-    
+    this.mathCardsCollection.addMathCard(mathCard, NOT_ANSWERED_REPEAT);
     
     this.runningWave.evtNotAnswered(cometId, mathCard, colNumber);
+    
+    this.updateCountersDisplay();
   }
   
   cleanUp()
@@ -295,11 +298,9 @@ class GameWave
   
   removeComet(cometId)
   {
-    console.log("before", this.arLaunchedCommets.length);
     for (let i in this.arLaunchedCommets)
       if (this.arLaunchedCommets[i].getId()==cometId)
         this.arLaunchedCommets.splice(i, 1);
-    console.log("after", this.arLaunchedCommets.length);
   }
   
   cleanUp()

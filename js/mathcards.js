@@ -226,6 +226,30 @@ class MathCardsCollection
       this.arCards.push(cardGenerator.genCard());
   }
   
+  addMathCard(mathCard, copies)
+  {
+    for (let i=0; i<copies; i++)
+      this.arCards.push(mathCard);
+    
+    if (copies>0)
+      this.shuffle();
+  }
+  
+  shuffle() //took from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+  {
+    let currentIndex = this.arCards.length,  randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      // And swap it with the current element.
+      [this.arCards[currentIndex], this.arCards[randomIndex]] = [
+        this.arCards[randomIndex], this.arCards[currentIndex]];
+    }
+  }
+  
   takeCards(num)
   {
     return this.arCards.splice(0, num);

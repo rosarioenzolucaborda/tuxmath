@@ -116,7 +116,6 @@ class Comet
     
     let  br=this.objJq[0].getBoundingClientRect();
     let yOffset=50; //target the core of the comet as the center of drawing is on tail...
-    console.log("br compute", [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2)]);
     return [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2+yOffset)];
   }
 }
@@ -332,8 +331,6 @@ class Laser
   
   drawLaser(oX, oY, tX, tY)
   {
-    console.log(oX, oY, tX, tY);
-    
     let deltaX=oX-tX;
 		let deltaY=oY-tY;
 		let longeur=Math.sqrt(deltaX*deltaX+deltaY*deltaY);
