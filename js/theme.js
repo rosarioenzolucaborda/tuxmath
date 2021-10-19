@@ -33,6 +33,8 @@ const THEME_DEFAULT_BACKGROUDS=[
 
 const THEME_DEFAULT_IMAGE_COMET=DEF_BASE+"sprites/comet-anim.png";
 const THEME_DEFAULT_IMAGE_COMET_EXPLODE=DEF_BASE+"sprites/cometex-anim.png";
+const THEME_DEFAULT_IMAGE_COMET_BONUS=DEF_BASE+"sprites/bonus-comet-anim.png";
+const THEME_DEFAULT_IMAGE_COMET_BONUS_EXPLODE=DEF_BASE+"sprites/bonus-cometex-anim.png";
 const THEME_DEFAULT_IMAGE_STEAM=DEF_BASE+"sprites/steam-anim.png";
 
 const THEME_DEFAULT_IGLOOHEALTHSTATUS=[
@@ -75,7 +77,7 @@ const THEME_DEFAULT_SFX_IGLOO_DESTROY_HALF="sfx/sizzling.wav";
 const THEME_DEFAULT_SFX_IGLOO_DESTROY_FULL="sfx/sizzling.wav";
 const THEME_DEFAULT_SFX_IGLOO_DESTROY_LASER="sfx/explosion.wav";
 const THEME_DEFAULT_SFX_KEYPRESS="sfx/tock.wav";
-const THEME_DEFAULT_SFX_BONUS_INCOMING="sfx/cheer.wav";
+const THEME_DEFAULT_SFX_BONUS_INCOMING="sfx/towerclock.wav";
 const THEME_DEFAULT_SFX_BONUS_DESTROYED="sfx/cheer.wav";
 
 
@@ -93,6 +95,8 @@ class Theme
     
     this.image_comet=THEME_DEFAULT_IMAGE_COMET;
     this.image_comet_explode=THEME_DEFAULT_IMAGE_COMET_EXPLODE;
+    this.image_comet_bonus=THEME_DEFAULT_IMAGE_COMET_BONUS;
+    this.image_comet_bonus_explode=THEME_DEFAULT_IMAGE_COMET_BONUS_EXPLODE;
     this.image_steam=THEME_DEFAULT_IMAGE_STEAM;
     this.image_iglooHealthStatus=THEME_DEFAULT_IGLOOHEALTHSTATUS;
     
@@ -121,6 +125,8 @@ class Theme
     this.sfx_keypress=THEME_DEFAULT_SFX_KEYPRESS;
     this.sfx_bonus_incoming=THEME_DEFAULT_SFX_BONUS_INCOMING;
     this.sfx_bonus_destroyed=THEME_DEFAULT_SFX_BONUS_DESTROYED;
+    
+    this.boolRepairAnim=false;
   }  
   
   chooseBackground()

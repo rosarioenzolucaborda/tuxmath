@@ -27,6 +27,7 @@ class Comet
   constructor(objGame, mathCard)
   {
     this.objGame=objGame;
+    this.isBonus=this.objGame.nextCometIsBonus();
     this.mathCard=mathCard;
     this.answer=this.mathCard.getAnswer();
     this.colNumber=getRandomInt(1, GAME_COLUMNS_NUMBER);
@@ -36,6 +37,7 @@ class Comet
     this.ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--"+this.colNumber);
     
     this.draw();
+    this.launch();
   }
   
   getId() { return this.id; }
@@ -43,7 +45,8 @@ class Comet
   draw()
   {
     this.objJq=$("<div class=\"obj_commet anim-cometfall\"></div>");
-    this.objJqImage=$("<img src='"+tmGlob_objTheme.image_comet+"'>").appendTo(this.objJq);
+    let urlImg=this.isBonus?tmGlob_objTheme.image_comet_bonus:tmGlob_objTheme.image_comet;
+    this.objJqImage=$("<img src='"+urlImg+"'>").appendTo(this.objJq);
     
     this.objJqQuestion=$("<div class=\"obj_commet__question\"></div>").text(this.mathCard.questionText()).appendTo(this.objJq).hide().fadeIn(3000);
       
@@ -61,6 +64,12 @@ class Comet
       this.objJqQuestion.css("margin-left", (gameWidth-questionRightPos)+"px");0
   }
   
+  launch()
+  {
+    if (this.isBonus)
+      tmGlob_objSfxPlayer.playSfx(SFX_BONUS_INCOMING);
+  }
+  
   
   removeCometDraw()
   {
@@ -74,11 +83,20 @@ class Comet
   
   destroy()
   {
-    this.objJqImage[0].src=tmGlob_objTheme.image_comet_explode;
+    if (this.isBonus)
+    {
+      this.objJqImage[0].src=tmGlob_objTheme.image_comet_bonus_explode;
+      tmGlob_objSfxPlayer.playSfx(SFX_BONUS_DESTROYED);
+      this.objGame.evtBonusCometDestroyed();
+    }
+    else
+    {
+      this.objJqImage[0].src=tmGlob_objTheme.image_comet_explode;
+      tmGlob_objSfxPlayer.playSfx(SFX_COMETDESTROY);
+    }
     this.alive=false;
     this.objJq.addClass("obj_commet--destroyed");
     this.objJqQuestion.text(this.mathCard.questionText(true)).fadeOut(3000);
-    tmGlob_objSfxPlayer.playSfx(SFX_COMETDESTROY);
     setTimeout(this.hideImage.bind(this), 1500);
     setTimeout(this.removeCometDraw.bind(this), 3100);
   }
@@ -164,9 +182,9 @@ class Igloo
   }
   
   
-  removeIglooDraw()
+  hideIglooDraw()
   {
-    this.objJq.remove();
+    this.objJq.hide();
   }
   
   evtGotHitByLaser()
@@ -196,9 +214,6 @@ class Igloo
     else
       tmGlob_objSfxPlayer.playSfx(SFX_IGLOO_DESTROY_LASER)
     
-    if (this.isDestroyed())
-      setTimeout(this.removeIglooDraw.bind(this), 3000); //prevent bug of redisplaying melting water animation when another igloo is destroyed.
-      
     //image du pinguin:
     if (! this.isDestroyed())
     {
@@ -208,11 +223,12 @@ class Igloo
     }
     else
     {
+      setTimeout(this.hideIglooDraw.bind(this), 4000); //prevent bug of redisplaying melting water animation when another igloo is destroyed.
       clearTimeout(this.toUpdatePengImage);
       let br=$(this.objJqImagePeng)[0].getBoundingClientRect(); //br is lost at time penguinMoveOut is called...
       this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
-      setTimeout(function(){this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_standup;}.bind(this), 2000);
-      setTimeout(this.penguinMoveOut.bind(this, br), 3000);
+      setTimeout(function(){this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_standup;}.bind(this), 3000);
+      setTimeout(this.penguinMoveOut.bind(this, br), 4000);
     }
   }
   
@@ -229,6 +245,17 @@ class Igloo
   isDestroyed()
   {
     return this.health==IGLOO_HEALTH_DESTROYED;
+  }
+  
+  repair() //TODO: repair animation
+  {
+    if (!tmGlob_objTheme.boolRepairAnim)
+    {
+      this.health=IGLOO_HEALTH_OK;
+      this.updateIglooImage();
+      this.updatePenguinImageSit();
+      this.objJq.fadeIn(3000);
+    }
   }
 }
 

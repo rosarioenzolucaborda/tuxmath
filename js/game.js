@@ -21,6 +21,8 @@
 
 const LEVEL_CARDS_NUM=40;
 const NOT_ANSWERED_REPEAT=2;
+//const NB_CORRECT_ANSWER_BONUS=10;
+const NB_CORRECT_ANSWER_BONUS=3; //HACK DEBUG
 
 class Game
 {
@@ -66,6 +68,7 @@ class Game
     this.waveNum=0;
     this.totalAnswersGood=0;
     this.totalAnswersBad=0;
+    this.nextBonusAt=NB_CORRECT_ANSWER_BONUS;
     
     this.mathCardsCollection=new MathCardsCollection();
     this.mathCardsCollection.genCards(levelId, LEVEL_CARDS_NUM);
@@ -193,6 +196,32 @@ class Game
     objJqCounters.find(".js-cometsleft").text(cometsLeft);
     objJqCounters.find(".js-anwsers-goods").text(this.totalAnswersGood);
     objJqCounters.find(".js-anwsers-wrongs").text(this.totalAnswersBad);
+  }
+  
+  nextCometIsBonus()
+  {
+    if (this.totalAnswersGood>this.nextBonusAt)
+    {
+      this.nextBonusAt=this.totalAnswersGood+NB_CORRECT_ANSWER_BONUS;
+      return true;
+    }
+    else return false;
+  }
+  
+  evtBonusCometDestroyed()
+  {
+    let mostDestroyedId=-1;
+    let mostDestroyedHealth=IGLOO_HEALTH_OK;
+    
+    for (let i in this.arIgloos)
+      if (this.arIgloos[i].health<mostDestroyedHealth)
+      {
+        mostDestroyedId=i;
+        mostDestroyedHealth=this.arIgloos[i].health;
+      }
+    
+    if (mostDestroyedHealth<IGLOO_HEALTH_OK)
+      this.arIgloos[mostDestroyedId].repair();
   }
 }
 
