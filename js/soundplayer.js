@@ -52,10 +52,9 @@ class SfxPlayer
   
   playSfx(id)
   {
-    if (this.arObjDomPlayers[id].playing)
-      this.arObjDomPlayers[id].currentTime=0;
-    else
-      this.arObjDomPlayers[id].play();
+//     this.arObjDomPlayers[id].pause();
+    this.arObjDomPlayers[id].currentTime=0;
+    this.arObjDomPlayers[id].play();    
   }
 }
 
@@ -94,12 +93,28 @@ class MusicPlayer
   
   giveUserInputEvent()
   {
-    if ((this.playing) && (!this.objDomPlayer.playing))
+    if (this.playing)
+      this.objDomPlayer.play();
+  }
+  
+  pause()
+  {
+    this.playingStateBeforePause=this.playing;
+    this.playing=false;
+    this.objDomPlayer.pause();
+  }
+  
+  unPause()
+  {
+    this.playing=this.playingStateBeforePause;
+    if (this.playing)
       this.objDomPlayer.play();
   }
   
   stop()
   {
+    this.playingStateBeforePause=false;
     this.playing=false;
+    this.objDomPlayer.pause();
   }
 }

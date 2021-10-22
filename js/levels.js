@@ -18,7 +18,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-let tmGlob_levelsSettings={
+let tmGlob_levelsSettings={ //keep this header unchanged for python proccess it
   //Additions
   "add1":  {
     "oper": ["add"],
@@ -94,4 +94,4 @@ let tmGlob_levelsSettings={
     "min_operators":  4,
     "oper_mix_allowed": true
   }
-}
+}//END_tmGlob_levelsSettings leave this so python can detect/extract data.

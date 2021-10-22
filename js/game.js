@@ -44,6 +44,7 @@ class Game
     this.keyboardManager.fctCallBackKeyStroke.push(this.tuxConsole.evtTyping.bind(this.tuxConsole));
     this.keyboardManager.fctCallBackKeyStroke.push(MusicPlayer.giveUserInputEvent.bind(MusicPlayer));
     this.keyboardManager.fctCallBackEntryValidated.push(this.evtUserValidatedAnswer.bind(this));
+    this.keyboardManager.fctCallBackPauseUnpause.push(this.evtPauseUnpause.bind(this));    
   }
   
   evtUserValidatedAnswer(answer)
@@ -65,6 +66,7 @@ class Game
   startGame(levelId)
   {
     this.running=true;
+    this.paused=false;
     this.waveNum=0;
     this.totalAnswersGood=0;
     this.totalAnswersBad=0;
@@ -139,6 +141,19 @@ class Game
       if (! this.arIgloos[rndMap[i]].isDestroyed())
         return  this.arIgloos[rndMap[i]];
   }
+  
+  evtPauseUnpause()
+  {
+    this.paused=!this.paused;
+    $("body").toggleClass("gamePaused", this.paused);
+    
+    if (this.paused)
+      MusicPlayer.pause();
+    else
+      MusicPlayer.unPause();
+  }
+  
+  ispaused() { return this.paused; }
   
   gameFinished(boolSuccess)
   {
@@ -260,6 +275,8 @@ class GameWave
   
   evtIntervLaunchComet()
   {
+    if (this.objGame.ispaused()) return;
+    
     if (this.arMathCardsToLaunch.length==0)
     {
       clearInterval(this.objIntervalLaunchComet);

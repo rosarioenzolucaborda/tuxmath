@@ -42,7 +42,7 @@ class KeyboardManager
   {
     this.fctCallBackKeyStroke=[];
     this.fctCallBackEntryValidated=[];
-    this.fctCallBackPause=[];
+    this.fctCallBackPauseUnpause=[];
     this.fctCallBackExit=[];
     
     this.init();
@@ -102,6 +102,12 @@ class KeyboardManager
     this.callCallBackKeyStroke();
   }
 
+  evtPauseUnpause()
+  {
+    for (let i in this.fctCallBackPauseUnpause)
+      this.fctCallBackPauseUnpause[i]();
+  }
+  
   processKey(kc)
   {
     let catched=true;
@@ -110,6 +116,7 @@ class KeyboardManager
     else if ((kc==KEYCODE_ENTER) || (kc==KEYCODE_SPACE)) this.evtInputValidated();
     else if (kc==KEYCODE_SUBTRACT) this.evtReverseSign();
     else if ((kc==KEYCODE_BACKSPACE) || (kc==KEYCODE_DELETE)) this.evtDelete();
+    else if (kc==KEYCODE_TAB) this.evtPauseUnpause();
     else catched=false;
     
     return (catched)
