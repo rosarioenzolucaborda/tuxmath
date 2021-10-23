@@ -18,6 +18,14 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+let tmGlob_levelsGroups={ //keep this header unchanged for python proccess it
+  "sum": ["add1", "add2"],
+  "sub": ["sub1", "sub2"],
+  "mul": ["mul1"],
+  "div": ["div1"]
+}//END_tmGlob_levelsGroups leave this so python can detect/extract data.
+
+
 let tmGlob_levelsSettings={ //keep this header unchanged for python proccess it
   //Additions
   "add1":  {
@@ -95,3 +103,5 @@ let tmGlob_levelsSettings={ //keep this header unchanged for python proccess it
     "oper_mix_allowed": true
   }
 }//END_tmGlob_levelsSettings leave this so python can detect/extract data.
+
+

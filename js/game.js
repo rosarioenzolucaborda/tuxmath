@@ -265,6 +265,7 @@ class GameWave
   startWave()
   {
     this.objIntervalLaunchComet=setInterval(this.evtIntervLaunchComet.bind(this), GAMEWAVE_ADDCOMET_DELAY);
+    this.evtIntervLaunchComet(); //don't wait for launching first comet
   }
   
   launchComet()

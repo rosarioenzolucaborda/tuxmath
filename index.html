@@ -1,13 +1,63 @@
 <html>
-<head>
-  <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/Lang.js"></script>
+    <link rel="stylesheet" href="menuassets/css/menus.css">
+  </head>
+  <body>
+    <div class="o-title">
+      <img src="menuassets/img/title1.svg">
+    </div>
+    <div class="o-bigtux">
+      <img src="menuassets/img/bigtux-anim.png">
+    </div>
+    <ul class="o-menu">
+            
+      <a href="index_sum.html" class="o-menu__item">
+        <li class="o-menuitemblock">
+          <div class="o-menuitemblock__imgcont">
+            <img height=100% src="menuassets/img/icon_lvlgroup_sum.svg" class="o-menuitemblock__imgcont__img">
+          </div>
+          <div data-lang-item="lgroup_sum" class="o-menuitemblock__txt"></div>
+        </li>
+      </a>
+            
+      <a href="index_sub.html" class="o-menu__item">
+        <li class="o-menuitemblock">
+          <div class="o-menuitemblock__imgcont">
+            <img height=100% src="menuassets/img/icon_lvlgroup_sub.svg" class="o-menuitemblock__imgcont__img">
+          </div>
+          <div data-lang-item="lgroup_sub" class="o-menuitemblock__txt"></div>
+        </li>
+      </a>
+            
+      <a href="index_mul.html" class="o-menu__item">
+        <li class="o-menuitemblock">
+          <div class="o-menuitemblock__imgcont">
+            <img height=100% src="menuassets/img/icon_lvlgroup_mul.svg" class="o-menuitemblock__imgcont__img">
+          </div>
+          <div data-lang-item="lgroup_mul" class="o-menuitemblock__txt"></div>
+        </li>
+      </a>
+            
+      <a href="index_div.html" class="o-menu__item">
+        <li class="o-menuitemblock">
+          <div class="o-menuitemblock__imgcont">
+            <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
+          </div>
+          <div data-lang-item="lgroup_div" class="o-menuitemblock__txt"></div>
+        </li>
+      </a>
+    
+    </ul>
+    
+    <script>
+      $(function(){
+        tmGlob_Lang=new Lang();
+      });
+    </script>
+  </body>
 
-  <script src="js/jquery.min.js"></script>
-</head>
-<body>
-  <p><a href="game.html?lvlId=add1">Additions 1</a></p>
-  <p><a href="game.html?lvlId=add2">Additions 2</a></p>
-  <p><a href="game.html?lvlId=sub1">Soustractions mini</a></p>
-  <p><a href="game.html?lvlId=sub2">Soustractions maxi</a></p>
-</body>
 </html>
+<!-- 94 46 22 81 -->

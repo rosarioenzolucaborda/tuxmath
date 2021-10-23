@@ -50,6 +50,20 @@ class Lang_en
     
     //Mobile Keypad
     this.kp_enter="Enter";
+    
+    //Level groups
+    this.lgroup_sum="Additions";
+    this.lgroup_sub="Subtractions";
+    this.lgroup_mul="Multiplications";
+    this.lgroup_div="Divisions";
+    
+    //Levels
+    this.level_add1="Add 1";
+    this.level_add2="Add 2";
+    this.level_sub1="Sub 1";
+    this.level_sub2="Sub 2";
+    this.level_mul1="Mul 1";
+    this.level_div1="Div 1";
   }
 }
 
@@ -64,6 +78,12 @@ class Lang_fr extends Lang_en
     
     //Mobile Keypad
     this.kp_enter="Valider";
+    
+    //Level groups
+    this.lgroup_sum="Additions";
+    this.lgroup_sub="Soustractions";
+    this.lgroup_mul="Multiplications";
+    this.lgroup_div="Divisions";
   }
 }
 
@@ -78,6 +98,12 @@ class Lang_es extends Lang_en
     
     //Mobile Keypad
     this.kp_enter="Validar";
+    
+    //Level groups
+    this.lgroup_sum="Sumas";
+    this.lgroup_sub="Restas";
+    this.lgroup_mul="Multiplicaciónes";
+    this.lgroup_div="Divisiónes";
   }
 }
 
