@@ -7,8 +7,8 @@
   
   <script src="js/game.js"></script>
   <script src="js/gameElements.js"></script>
-  <script src="js/levels.js"></script>
   <script src="js/mathcards.js"></script>
+  <script src="js/levels.js"></script>
   <script src="js/keyboardManager.js"></script>
   <script src="js/soundplayer.js"></script>
   <script src="js/theme.js"></script>
@@ -121,7 +121,11 @@
     const urlParams = new URLSearchParams(window.location.search);
     let objGame=new Game($(".layout-game"));
     objGame.startGame(urlParams.get("lvlId"));
+    
+    window.dumpCards=function(){ objGame.mathCardsCollection.dump() }
   });
+  
+  
   </script>
 
 </body>

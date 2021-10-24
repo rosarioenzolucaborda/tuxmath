@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-const MATHCARD_QUESTION_LOC_END=-1;
+const MATHCARD_QUESTION_LOC_ANSWER=-1;
 
 class MathCard
 {
@@ -28,7 +28,7 @@ class MathCard
     
     this.operands=[];
     this.operators=[];
-    this.questionLocation=MATHCARD_QUESTION_LOC_END;
+    this.questionLocation=MATHCARD_QUESTION_LOC_ANSWER;
   }
   
   getNumOperators()
@@ -38,22 +38,34 @@ class MathCard
   
   calcResult()
   {
-    let calcString=this.operands[0].toString();
+    let calcString=this.formatNegNumStr(this.operands[0]); //Formated negstrings needed, else "--" will cause erros
     
     for (let i = 0; i < this.operators.length; i++) 
     {
       calcString+=this.operators[i];
-      calcString+=this.operands[i+1].toString();
+      calcString+=this.formatNegNumStr(this.operands[i+1]);
     }
     
     return eval(calcString);
   }
-
+  
+  formatNegNumStr(num)
+  {
+    if (num>=0) 
+      return num.toString();
+    else 
+      return "("+num.toString()+")";
+  }
   
   questionText(withResponse=false)
   {
-    let genString=this.operands[0].toString();
+    let genString;
     let txtOperator;
+    
+    if ((this.questionLocation!=0) || (withResponse))
+      genString=this.formatNegNumStr(this.operands[0]);
+    else 
+      genString="?";
 
     for (let i = 0; i < this.operators.length; i++) 
     {
@@ -62,14 +74,14 @@ class MathCard
       if (txtOperator=="/") txtOperator="÷";
       genString+=txtOperator;
       
-      if ((this.questionLocation!=i) || (withResponse))
-        genString+=this.operands[i+1].toString();
+      if ((this.questionLocation!=i+1) || (withResponse))
+        genString+=this.formatNegNumStr(this.operands[i+1]);
       else 
         genString+="?";
     }
 
     genString+="=";
-    if ((this.questionLocation==MATHCARD_QUESTION_LOC_END) && (!withResponse))
+    if ((this.questionLocation==MATHCARD_QUESTION_LOC_ANSWER) && (!withResponse))
       genString+="?";
     else
       genString+=this.calcResult().toString();
@@ -79,10 +91,10 @@ class MathCard
   
   getAnswer()
   {
-    if (this.questionLocation==MATHCARD_QUESTION_LOC_END)
+    if (this.questionLocation==MATHCARD_QUESTION_LOC_ANSWER)
       return this.calcResult();
     else
-      return this.operands[this.questionLocation+1];
+      return this.operands[this.questionLocation];
   }
 
 }
@@ -110,6 +122,7 @@ class MathsCardsGenerator
       "first_operand_max": 10,
       "add_addend_min": 1,
       "add_addend_max": 10,
+      "add_result_max": false,
       "sub_subtrahend_min": 0,
       "sub_subtrahend_max": 10,
       "sub_negative_result_allowed": false,
@@ -123,7 +136,9 @@ class MathsCardsGenerator
       "div_result_min": -10,
       "div_result_max": 10,
       "min_operators" : 1,
-      "max_operators" : 1
+      "max_operators" : 1,
+      
+      "allowed_question_location" : [MATHCARD_QUESTION_LOC_ANSWER]
     };
   }
   
@@ -139,6 +154,12 @@ class MathsCardsGenerator
     {
       throw "sub_negative_result_allowed can't be correcctly enforced when sub mixed with higher priority ops like mul or div.";
     }
+
+    if ((this.genSettings.add_result_max!==false) && (this.genSettings.oper.indexOf("add")!=-1) && ( (this.genSettings.oper.indexOf("mul")!=-1) || (this.genSettings.oper.indexOf("div")!=-1) ) )
+    {
+      throw "add_result_max can't be correcctly enforced when sub mixed with higher priority ops like mul or div.";
+    }
+
     
     if ((this.genSettings.oper.indexOf("div")!=-1) &&  (this.genSettings.max_operators>1) && (! this.genSettings.oper_mix_allowed))
     {
@@ -157,6 +178,8 @@ class MathsCardsGenerator
     
     this.checkGenParams();
     
+    mathcard.questionLocation=getRandomArrayElt(this.genSettings.allowed_question_location);
+    
     while (mathcard.getNumOperators()<targetedNumOperators)
     {
       if (mathcard.getNumOperators()==0)
@@ -173,11 +196,12 @@ class MathsCardsGenerator
       switch(actOperator)
       {
         case "add":
-          mathcard.operands.push(getRandomInt(this.genSettings.add_addend_min, this.genSettings.add_addend_max));
+          let max_addend=(this.genSettings.add_result_max!==false)?this.genSettings.add_result_max-mathcard.calcResult():this.genSettings.add_addend_max;
+          mathcard.operands.push(getRandomInt(this.genSettings.add_addend_min, max_addend));
           mathcard.operators.push("+");
         break;
         case "sub":
-          let max_subtrahend=Math.min(this.genSettings.sub_subtrahend_max, mathcard.calcResult());
+          let max_subtrahend=(this.genSettings.sub_negative_result_allowed===false)?Math.min(this.genSettings.sub_subtrahend_max, mathcard.calcResult()):this.genSettings.sub_subtrahend_max;
           mathcard.operands.push(getRandomInt(this.genSettings.sub_subtrahend_min, max_subtrahend));
           mathcard.operators.push("-");
         break;
@@ -194,6 +218,8 @@ class MathsCardsGenerator
           let minResult=Math.ceil(this.genSettings.div_dividand_min/divisor);
           let maxResult=Math.floor(this.genSettings.div_dividand_max/divisor);
           minResult=Math.max(minResult, this.genSettings.div_result_min);
+          minResult=Math.min(minResult, this.genSettings.div_result_max);
+          maxResult=Math.max(maxResult, this.genSettings.div_result_min);
           maxResult=Math.min(maxResult, this.genSettings.div_result_max);
           let result=getRandomInt(minResult, maxResult);
           mathcard.operands[0]=result*divisor;
@@ -243,5 +269,11 @@ class MathCardsCollection
   getSize()
   {
     return this.arCards.length;
+  }
+  
+  dump()
+  {
+    for (let i in this.arCards)
+      console.log(this.arCards[i].questionText(), this.arCards[i].getAnswer())
   }
 }
