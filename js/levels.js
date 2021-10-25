@@ -573,3 +573,85 @@ let tmGlob_levelsSettings={ //keep this header unchanged for python proccess it
 }//END_tmGlob_levelsSettings leave this so python can detect/extract data.
 
 
+let tmGlob_levelJumps={ //Format: ["big_jump_back", "jump_back", "jump_forward", "big_jump_forward"]
+                        
+  "add_1_to_3":           ["add_1_to_3", "add_1_to_3",              "add_sum_to_10", "add_sum_to_20"],
+  "add_0_to_5":           ["add_1_to_3", "add_1_to_3",              "add_sum_to_10", "add_sum_to_20"],
+  "add_sum_to_10":        ["add_1_to_3", "add_0_to_5",              "add_sum_to_15", "add_sum_to_20"], 
+  "add_sum_to_15":        ["add_0_to_5", "add_sum_to_10",           "add_sum_to_20", "add_3_terms_0_10"], 
+  "add_sum_to_20":        ["add_sum_to_10", "add_sum_to_15",        "add_3_terms_0_10", "add_3_terms_0_20"], 
+  "add_3_terms_0_10":     ["add_sum_to_15", "add_sum_to_20",        "add_3_terms_0_20", "add_miss_num"], 
+  "add_3_terms_0_20":     ["add_sum_to_20", "add_3_terms_0_10",     "add_miss_num", "add_2_digits"], 
+  "add_miss_num":         ["add_3_terms_0_10", "add_3_terms_0_20",  "add_2_digits", "add_2_digits"], 
+  "add_2_digits":         ["add_3_terms_0_20", "add_miss_num",      "sub_0_to_5", "sub_0_to_5"], 
+  "add_up_to_5_terms":    ["add_3_terms_0_20", "add_3_terms_0_20", "add_up_to_5_terms", "add_up_to_5_terms"],
+  "add_3_digits":         ["add_2_digits", "add_2_digits",          "add_3_digits", "add_3_digits"],
+  "add_harder":           ["add_2_digits", "add_3_digits",          "add_harder", "add_harder"],
+  
+  
+  "sub_0_to_5":           ["sub_0_to_5", "sub_0_to_5",              "sub_0_to_10", "sub_0_to_20_20"],
+  "sub_0_to_10":          ["sub_0_to_5", "sub_0_to_5",              "sub_0_to_10", "sub_0_to_20_20"],
+  "sub_0_to_20_10":       ["sub_0_to_5", "sub_0_to_10",             "sub_0_to_20_20", "sub_3_terms_0_10"],
+  "sub_0_to_20_20":       ["sub_0_to_10", "sub_0_to_20_10",         "sub_3_terms_0_10", "mix_add_sum_0_15_3_terms"],
+  "mix_add_sum_0_20":     ["sub_0_to_10", "sub_0_to_20_10",         "sub_3_terms_0_10", "mix_add_sum_0_15_3_terms"],
+  "sub_miss_num":         ["sub_0_to_10", "sub_0_to_20_10",         "sub_3_terms_0_10", "mix_add_sum_0_15_3_terms"],
+  "sub_3_terms_0_10":     ["sub_0_to_20_10", "sub_0_to_20_20",      "mul_table_2", "mul_table_3"],
+  "mix_add_sum_0_15_3_terms": ["mix_add_sum_0_20", "sub_3_terms_0_10",      "mix_add_sum_0_15_up_to_5_terms", "mix_add_sum_0_15_up_to_5_terms"],
+  "mix_add_sum_0_15_up_to_5_terms": ["mix_add_sum_0_15_3_terms", "mix_add_sum_0_15_3_terms",      "mix_add_sum_0_15_up_to_5_terms", "mix_add_sum_0_15_up_to_5_terms"],
+  "sub_2_digits":         ["sub_0_to_20_20", "sub_2_digits",              "sub_3_digits", "sub_3_digits"],
+  "sub_3_digits":         ["sub_2_digits", "sub_2_digits",              "sub_harder", "sub_harder"],
+  "sub_harder":           ["sub_2_digits", "sub_3_digits",              "sub_harder", "sub_harder"],
+  
+  
+  
+  "mul_table_2":          ["sub_2_digits", "mul_table_2",              "mul_table_3", "mul_table_1_to_5"],
+  "mul_table_3":          ["mul_table_2", "mul_table_3",               "mul_table_4", "mul_table_1_to_5"],
+  "mul_table_4":          ["mul_table_3", "mul_table_4",               "mul_table_5", "mul_table_0_to_7"],
+  "mul_table_5":          ["mul_table_4", "mul_table_5",               "mul_table_6", "mul_table_0_to_7"],
+  "mul_table_1_to_5":     ["mul_table_3", "mul_table_1_to_5",          "mul_table_0_to_7", "mul_table_0_to_10"],
+  "mul_table_6":          ["mul_table_4", "mul_table_6",               "mul_table_7", "mul_table_0_to_10"],
+  "mul_table_7":          ["mul_table_4", "mul_table_7",               "mul_table_7", "mul_table_0_to_10"],
+  "mul_table_0_to_7":     ["mul_table_4", "mul_table_0_to_7",          "mul_table_0_to_10", "mul_table_0_to_10_miss_num"],
+  "mul_table_8":          ["mul_table_6", "mul_table_8",               "mul_table_9", "mul_table_0_to_10_miss_num"],
+  "mul_table_9":          ["mul_table_7", "mul_table_9",               "mul_table_0_to_10", "mul_table_0_to_10_miss_num"],
+  "mul_table_10":         ["mul_table_7", "mul_table_9",               "mul_table_0_to_10", "mul_table_0_to_10_miss_num"],
+  "mul_table_0_to_10":     ["mul_table_1_to_5", "mul_table_0_to_7",    "mul_table_0_to_10_miss_num", "mul_table_0_to_10_miss_num"],
+  "mul_table_2_3_miss_num": ["mul_table_2", "mul_table_3",             "mul_table_4_5_miss_num", "mul_table_0_to_10_miss_num"],
+  "mul_table_4_5_miss_num": ["mul_table_4", "mul_table_5",             "mul_table_6_7_miss_num", "mul_table_0_to_10_miss_num"],
+  "mul_table_6_7_miss_num": ["mul_table_6", "mul_table_7",             "mul_table_8_9_miss_num", "mul_table_0_to_10_miss_num"],
+  "mul_table_8_9_miss_num": ["mul_table_8", "mul_table_9",             "div_by_1_to_5", "div_by_1_to_10"],
+  "mul_table_0_to_10_miss_num": ["mul_table_0_to_10", "mul_table_0_to_10", "div_by_1_to_5", "div_by_1_to_10"],
+  "mul_table_11_to_12":   ["mul_table_0_to_10", "mul_table_0_to_10",   "mul_table_13_to_15", "mul_table_13_to_15"],
+  "mul_table_13_to_15":   ["mul_table_0_to_10", "mul_table_0_to_10",   "div_by_11_to_12", "div_by_13_to_15"],
+  
+  
+  
+  "div_by_2":             ["mul_table_2", "div_by_2",                  "div_by_3", "div_by_1_to_5"],
+  "div_by_3":             ["mul_table_3", "div_by_3",                  "div_by_4", "div_by_1_to_5"],
+  "div_by_4":             ["mul_table_4", "div_by_4",                  "div_by_5", "div_by_1_to_5"],
+  "div_by_5":             ["mul_table_5", "div_by_5",                  "div_by_6", "div_by_7"],
+  "div_by_1_to_5":        ["mul_table_1_to_5", "div_by_1_to_5",        "div_by_1_to_10", "div_by_1_to_10"],
+  "div_by_6":             ["mul_table_6", "div_by_6",                  "div_by_7", "div_by_1_to_10"],
+  "div_by_7":             ["mul_table_7", "div_by_7",                  "div_by_8", "div_by_1_to_10"],
+  "div_by_8":             ["mul_table_8", "div_by_8",                  "div_by_9", "div_by_1_to_10"],
+  "div_by_9":             ["mul_table_9", "div_by_9",                  "div_by_1_to_10", "div_by_1_to_10_missnum"],
+  "div_by_10":            ["mul_table_10", "div_by_10",                "div_by_1_to_10", "div_by_1_to_10_missnum"],
+  "div_by_1_to_10":       ["mul_table_0_to_10", "div_by_1_to_10",      "div_by_1_to_10_missnum", "sub_0_to_20_negresults"],
+  "mix_div_mul":          ["div_by_1_to_5", "div_by_1_to_5",           "div_by_1_to_10_missnum", "sub_0_to_20_negresults"],
+  "div_by_1_to_10_missnum": ["div_by_1_to_10", "div_by_1_to_10",       "sub_0_to_20_negresults", "sub_0_to_20_negresults"],
+  "div_by_11_to_12":      ["mul_table_11_to_12", "div_by_11_to_12",    "div_by_13_to_15", "div_by_13_to_15"],
+  "div_by_13_to_15":      ["mul_table_13_to_15", "div_by_11_to_12",    "div_by_13_to_15", "div_by_13_to_15"],
+  
+  
+  
+  "sub_0_to_20_negresults":  ["sub_0_to_20_negresults", "sub_0_to_20_negresults",    "add_0_to_10_relatives", "sub_0_to_10_relatives"],
+  "add_0_to_10_relatives":  ["sub_0_to_20_negresults", "sub_0_to_20_negresults",    "add_0_to_20_relatives", "sub_0_to_10_relatives"],
+  "add_0_to_20_relatives":  ["sub_0_to_20_negresults", "add_0_to_10_relatives",    "sub_0_to_10_relatives", "sub_0_to_20_relatives"],
+  "sub_0_to_10_relatives":  ["sub_0_to_20_negresults", "sub_0_to_10_relatives",    "sub_0_to_20_relatives", "mix_add_sub_relatives_3_terms"],
+  "sub_0_to_20_relatives":  ["sub_0_to_20_negresults", "sub_0_to_10_relatives",    "mix_add_sub_relatives_3_terms", "mix_add_sub_relatives_3_terms"],
+  "mix_add_sub_relatives_3_terms":  ["sub_0_to_20_negresults", "sub_0_to_20_relatives",    "mix_add_sub_relatives_up_to_5_terms", "mul_table_0_to_10_relatives"],
+  "mix_add_sub_relatives_up_to_5_terms":  ["sub_0_to_20_negresults", "mix_add_sub_relatives_3_terms",    "mul_table_0_to_10_relatives", "mix_mul_div_relatives_up_to_4_terms"],
+  "mul_table_0_to_10_relatives":  ["sub_0_to_20_relatives", "mix_add_sub_relatives_3_terms",    "div_by_1_to_10_relatives", "mix_mul_div_relatives_up_to_4_terms"],
+  "div_by_1_to_10_relatives":  ["sub_0_to_20_relatives", "mul_table_0_to_10_relatives",    "mix_mul_div_relatives_up_to_4_terms", "mix_mul_div_relatives_up_to_4_terms"],
+  "mix_mul_div_relatives_up_to_4_terms":  ["mul_table_0_to_10_relatives", "div_by_1_to_10_relatives",    "mix_mul_div_relatives_up_to_4_terms", "mix_mul_div_relatives_up_to_4_terms"]
+}
