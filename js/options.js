@@ -1,0 +1,66 @@
+const OPT_LANG="opt_lang";
+const OPT_THEME="opt_theme";
+const OPT_AUTOLEVEL="opt_autolevel";
+
+const OPTIONS_LIST=[OPT_LANG, OPT_THEME, OPT_AUTOLEVEL];
+
+class TmOptions
+{
+  constructor()
+  {
+    this.options={};
+    
+    this.loadDefaults();
+    this.loadCookies();
+    this.processHttpOptions();
+  }
+  
+  loadDefaults()
+  {
+    this.options[OPT_LANG]=false; //if OPT_LANG is false, Lang class will detect drowser language
+    this.options[OPT_THEME]="classic";
+    this.options[OPT_AUTOLEVEL]="1";
+  }
+  
+  loadCookies()
+  {
+    let cooksArray=document.cookie.split("; ");
+    
+    for (let i in cooksArray)
+    {
+      let prm, val;
+      [prm, val]=cooksArray[i].split("=");
+      
+      for (let j in OPTIONS_LIST)
+        if (OPTIONS_LIST[j]==prm) this.options[OPTIONS_LIST[j]]=val;
+    }
+  }
+  
+  processHttpOptions()
+  {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    for (let i in OPTIONS_LIST)
+      if (urlParams.has(OPTIONS_LIST[i]))
+        this.setOption([OPTIONS_LIST[i]], urlParams.get(OPTIONS_LIST[i]));
+  }
+  
+  setOption(prm, val)
+  {
+    this.options[prm]=val;
+    this.setCookie(prm, val);
+  }
+  
+  setCookie(cookieName, cookieVal)  
+  {
+    let expDays=3650; // ~10 years
+    let expDate = new Date();
+    expDate.setTime(expDate.getTime() + (expDays*24*60*60*1000));
+    document.cookie = cookieName + "=" + cookieVal + "; expires=" + expDate.toUTCString()+"; SameSite=lax";
+  }
+  
+  get(prm)
+  {
+    return this.options[prm];
+  }
+}

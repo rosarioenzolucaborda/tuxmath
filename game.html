@@ -12,6 +12,7 @@
   <script src="js/keyboardManager.js"></script>
   <script src="js/soundplayer.js"></script>
   <script src="js/theme.js"></script>
+  <script src="js/options.js"></script>
   <script src="js/Lang.js"></script>
   <script src="js/utils.js"></script>
   
@@ -113,6 +114,7 @@
       else $("#js-vp").attr("content", "width=device-width, initial-scale=1.0, user-scalable=no");
     }).resize();
   
+    tmGlob_Options=new TmOptions();
     tmGlob_Lang=new Lang();
     tmGlob_objTheme=new Theme();
     tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme);

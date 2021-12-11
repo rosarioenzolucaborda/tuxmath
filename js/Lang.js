@@ -13,9 +13,9 @@ class Lang
   {
     let navLang;
     
-    if (false) //TODO: get+return lang cookie if exists
-    {
-    }
+    let optLang=tmGlob_Options.get(OPT_LANG);
+    if (optLang!==false)
+      navLang=optLang;
     else
       navLang=navigator.language || navigator.userLanguage;
 
