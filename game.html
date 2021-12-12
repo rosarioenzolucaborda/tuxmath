@@ -116,7 +116,7 @@
   
     tmGlob_Options=new TmOptions();
     tmGlob_Lang=new Lang();
-    tmGlob_objTheme=new Theme();
+    tmGlob_objTheme=new THEMES[tmGlob_Options.get(OPT_THEME)]();
     tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme);
     MusicPlayer=new MusicPlayer(tmGlob_objTheme);
   

@@ -140,3 +140,74 @@ class Theme
   }
   
 }
+
+class Theme_classic extends Theme
+{
+  //nothing to do here, just loads defaults...
+}
+
+
+//
+// Thème original
+//
+
+
+class Theme_original extends Theme
+{
+  constructor()
+  {
+    super();
+    this.overrideAssets();
+  }
+  
+  overrideAssets()
+  {
+  }
+}
+
+
+
+
+//
+// Thème Afrikalan
+//
+
+const THEME_AFRIKALAN_BACKGROUDS=[
+  DEF_BASE+"backgrounds/theme-afrikalan/0.jpg",
+  DEF_BASE+"backgrounds/theme-afrikalan/1.jpg",
+  DEF_BASE+"backgrounds/theme-afrikalan/2.jpg",
+  DEF_BASE+"backgrounds/theme-afrikalan/3.jpg",
+  DEF_BASE+"backgrounds/theme-afrikalan/4.jpg",
+  DEF_BASE+"backgrounds/theme-afrikalan/5.jpg",
+  DEF_BASE+"backgrounds/theme-afrikalan/6.jpg",
+  DEF_BASE+"backgrounds/theme-afrikalan/7.jpg"
+];
+
+const THEME_AFRIKALAN_IGLOOHEALTHSTATUS=[
+  DEF_BASE+"sprites/theme-afrikalan/igloo-melted-anim.png",
+  DEF_BASE+"sprites/theme-afrikalan/igloo-half.png",
+  DEF_BASE+"sprites/theme-afrikalan/igloo-intact.png"
+];
+
+class Theme_afrikalan extends Theme
+{
+  constructor()
+  {
+    super();
+    this.overrideAssets();
+  }
+  
+  overrideAssets()
+  {
+    this.background_images=THEME_AFRIKALAN_BACKGROUDS;
+    this.image_iglooHealthStatus=THEME_AFRIKALAN_IGLOOHEALTHSTATUS;
+  }
+}
+
+
+
+//
+// Allow dynamic theme class call
+//
+
+const THEMES={"classic": Theme_classic, "original": Theme_original, "afrikalan": Theme_afrikalan}
