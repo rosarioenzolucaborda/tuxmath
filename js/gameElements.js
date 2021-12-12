@@ -154,10 +154,13 @@ class Igloo
   draw()
   {
     this.objJq=$("<div class=\"obj_igloo\"></div>");
-    this.objJqImagePeng=$("<img class=\"obj_igloo__imgpenguin\">").appendTo(this.objJq);
+    if (tmGlob_objTheme.hasPenguins)
+      this.objJqImagePeng=$("<img class=\"obj_igloo__imgpenguin\">").appendTo(this.objJq);
     this.objJqImageIgloo=$("<img class=\"obj_igloo__imgigloo\">").appendTo(this.objJq);
     this.updateIglooImage();
-    this.updatePenguinImageSit();
+
+    if (tmGlob_objTheme.hasPenguins)
+      this.updatePenguinImageSit();
     
     let ojbJqTargetCol=this.objGame.getObjJqContainer().find(".layout-game__commetsIgloosColmuns__col.layout-col--"+this.columnId);
     ojbJqTargetCol.append(this.objJq);
@@ -217,18 +220,24 @@ class Igloo
     //image du pinguin:
     if (! this.isDestroyed())
     {
-      clearTimeout(this.toUpdatePengImage);
-      this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
-      this.toUpdatePengImage=setTimeout(this.updatePenguinImageSit.bind(this), 3000);
+      if (tmGlob_objTheme.hasPenguins)
+      {
+        clearTimeout(this.toUpdatePengImage);
+        this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
+        this.toUpdatePengImage=setTimeout(this.updatePenguinImageSit.bind(this), 3000);
+      }
     }
     else
     {
       setTimeout(this.hideIglooDraw.bind(this), 4000); //prevent bug of redisplaying melting water animation when another igloo is destroyed.
-      clearTimeout(this.toUpdatePengImage);
-      let br=$(this.objJqImagePeng)[0].getBoundingClientRect(); //br is lost at time penguinMoveOut is called...
-      this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
-      setTimeout(function(){this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_standup;}.bind(this), 3000);
-      setTimeout(this.penguinMoveOut.bind(this, br), 4000);
+      if (tmGlob_objTheme.hasPenguins)
+      {
+        clearTimeout(this.toUpdatePengImage);
+        let br=$(this.objJqImagePeng)[0].getBoundingClientRect(); //br is lost at time penguinMoveOut is called...
+        this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
+        setTimeout(function(){this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_standup;}.bind(this), 3000);
+        setTimeout(this.penguinMoveOut.bind(this, br), 4000);
+      }
     }
   }
   
@@ -253,7 +262,7 @@ class Igloo
     {
       this.health=IGLOO_HEALTH_OK;
       this.updateIglooImage();
-      this.updatePenguinImageSit();
+      if (tmGlob_objTheme.hasPenguins) this.updatePenguinImageSit();
       this.objJq.fadeIn(3000);
     }
   }

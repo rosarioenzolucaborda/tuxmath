@@ -100,6 +100,7 @@ class Theme
     this.image_steam=THEME_DEFAULT_IMAGE_STEAM;
     this.image_iglooHealthStatus=THEME_DEFAULT_IGLOOHEALTHSTATUS;
     
+    this.hasPenguins=true;
     this.images_penguin_sit=THEME_DEFAULT_IMAGES_PENGUIN_SIT;
     this.image_penguin_hit=THEME_DEFAULT_IMAGE_PENGUIN_HIT;
     this.image_penguin_standup=THEME_DEFAULT_IMAGE_PENGUIN_STANDUP;
@@ -151,6 +152,14 @@ class Theme_classic extends Theme
 // Thème original
 //
 
+const THEME_CLASSIC_IGLOOHEALTHSTATUS=[
+  DEF_BASE+"sprites/theme-classic/csplode-orange-anim.png",
+  DEF_BASE+"sprites/theme-classic/city-orange-noshield.png",
+  DEF_BASE+"sprites/theme-classic/city-orange-shield-anim.png"
+];
+
+const THEME_AFRIKALAN_SFX_IGLOO_DESTROY_HALF="sfx/theme-classic/shieldsdown.wav";
+const THEME_AFRIKALAN_SFX_IGLOO_DESTROY_FULL="sfx/explosion.wav";
 
 class Theme_original extends Theme
 {
@@ -162,6 +171,11 @@ class Theme_original extends Theme
   
   overrideAssets()
   {
+    this.image_iglooHealthStatus=THEME_CLASSIC_IGLOOHEALTHSTATUS;
+    this.hasPenguins=false;
+    
+    this.sfx_igloo_destroy_half=THEME_AFRIKALAN_SFX_IGLOO_DESTROY_HALF;
+    this.sfx_igloo_destroy_full=THEME_AFRIKALAN_SFX_IGLOO_DESTROY_FULL;
   }
 }
 
