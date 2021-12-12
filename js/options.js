@@ -64,3 +64,36 @@ class TmOptions
     return this.options[prm];
   }
 }
+
+
+
+
+class TmOptionsMenu
+{
+  constructor()
+  {
+    this.createListeners();
+    this.initRadioSelections();
+  }
+  
+  createListeners()
+  {
+    $("input[type=radio][name^=opt_]").click(this.evtclickRadio.bind(this));
+  }
+  
+  evtclickRadio(evt, boolFiredInternaly)
+  {
+    if ((typeof boolFiredInternaly) && (boolFiredInternaly===true))
+      return;
+    tmGlob_Options.setOption(evt.target.name, evt.target.value);
+  }
+  
+  initRadioSelections()
+  {
+    for (let i in OPTIONS_LIST)
+    {
+      let val=tmGlob_Options.get(OPTIONS_LIST[i]);
+      $("input[type=radio][name='"+OPTIONS_LIST[i]+"'][value='"+val+"']").trigger("click", true);
+    }
+  }
+}

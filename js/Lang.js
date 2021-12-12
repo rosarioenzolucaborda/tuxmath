@@ -4,25 +4,34 @@ class Lang
 {
   constructor()
   {
-    this.userLang=this.getBestLang();
-    this.langSel=new tmGlobLangClasses["Lang_"+this.userLang];
-    this.applyJqDom($("body"));
+    this.applyLang();
   }
   
-  getBestLang()
+  getBestLang(langSel=false)
   {
-    let navLang;
+    let selLang;
     
     let optLang=tmGlob_Options.get(OPT_LANG);
-    if (optLang!==false)
-      navLang=optLang;
+    
+    if (langSel!==false)
+      selLang=langSel;
+    else if (optLang!==false)
+      selLang=optLang;
     else
-      navLang=navigator.language || navigator.userLanguage;
+      selLang=navigator.language || navigator.userLanguage;
 
-    let navLangShort=navLang.substring(0,2);
-    if (tmGlobLangClasses.hasOwnProperty("Lang_"+navLang)) return navLang;
-    else if (tmGlobLangClasses.hasOwnProperty("Lang_"+navLangShort)) return navLangShort;
+    let selLangShort=selLang.substring(0,2);
+    if (tmGlobLangClasses.hasOwnProperty("Lang_"+selLang)) return selLang;
+    else if (tmGlobLangClasses.hasOwnProperty("Lang_"+selLangShort)) return selLangShort;
     else return "en"; //fallback to default english
+  }
+  
+  
+  applyLang(selLang=false)
+  {
+    let appliedLang=this.getBestLang(selLang);
+    this.langSel=new tmGlobLangClasses["Lang_"+appliedLang];
+    this.applyJqDom($("body"));
   }
   
   applyJqDom(objJq)
@@ -52,12 +61,15 @@ class Lang_en
     //Mobile Keypad
     this.kp_enter="Enter";
     
-    //Level groups
+    //Level groups and main menu options
     this.lgroup_sum="Additions";
     this.lgroup_sub="Subtractions";
     this.lgroup_mul="Multiplications";
     this.lgroup_div="Divisions";
     this.lgroup_relatives="Relative numbers";
+    this.menuitem_options="Options";
+    this.menuitem_back="Back";
+
     
     // Level group additions
     this.level_add_1_to_3="Sum from 1 to 3";
@@ -136,6 +148,22 @@ class Lang_en
     this.level_mul_table_0_to_10_relatives="Multiply relatives numbers -10 to 10";
     this.level_div_by_1_to_10_relatives="Divide relatives numbers -10 to 10";
     this.level_mix_mul_div_relatives_up_to_4_terms="Multiply and divide up to 4 relatives numbers";
+    
+    
+    //option items
+    this.optionitem_lang="Language";
+    this.optionitem_theme="Theme";
+    this.optionitem_autolevel="Autolevel";
+    this.options_back="Back to menu";
+    
+    //option choices
+    this.optionchoice_yes="Yes";
+    this.optionchoice_no="No";
+    this.optionitem_autolevel_description="When autolevel in on the game automaticaly jumps to another level if it detects that the selected level is too easy or too hard for player.";
+    this.optionchoice_theme_classic="Classic";
+    this.optionchoice_theme_original="Original";
+    this.optionchoice_theme_afrikalan="Afrikalan";
+
   }
 }
 
@@ -160,6 +188,8 @@ class Lang_fr extends Lang_en
     this.lgroup_mul="Multiplications";
     this.lgroup_div="Divisions";
     this.lgroup_relatives="Nombres relatifs";
+    this.menuitem_options="Options";
+    this.menuitem_back="Retour";
     
     
     // Level group additions
@@ -239,6 +269,24 @@ class Lang_fr extends Lang_en
     this.level_mul_table_0_to_10_relatives="Multiplication des nombres de -10 à 10";
     this.level_div_by_1_to_10_relatives="Division des nombres de -10 à 10";
     this.level_mix_mul_div_relatives_up_to_4_terms="Multiplication et division, jusqu'à 4 nombres";
+    
+    //option items
+    this.optionitem_lang="Langue";
+    this.optionitem_theme="Thème";
+    this.optionitem_autolevel="Niveau auto";
+    this.options_back="Revenir au menu";
+
+    
+    
+    //option choices
+    this.optionchoice_yes="Oui";
+    this.optionchoice_no="Non";
+    this.optionitem_autolevel_description="Lorsque le niveau automatique est activé, le jeu passe automatiquement à un autre niveau s'il détecte que le niveau sélectionné est trop facile ou trop difficile pour le joueur.";
+    this.optionchoice_theme_classic="Classique";
+    this.optionchoice_theme_original="Original";
+    this.optionchoice_theme_afrikalan="Afrikalan";
+    
+
   }
 }
 
@@ -260,6 +308,8 @@ class Lang_es extends Lang_en
     this.lgroup_mul="Multiplicaciones";
     this.lgroup_div="Divisiones";
     this.lgroup_relatives="Números relativos";
+    this.menuitem_options="Opciones";
+    this.menuitem_back="Volver";
     
     
     // Level group additions
@@ -339,6 +389,24 @@ class Lang_es extends Lang_en
     this.level_mul_table_0_to_10_relatives="Multiplicaciones, de -10 a 10";
     this.level_div_by_1_to_10_relatives="Divisiones, números de -10 a 10";
     this.level_mix_mul_div_relatives_up_to_4_terms="Multiplicaciones y Divisiones, hasta 4 números";
+    
+    
+    //option items
+    this.optionitem_lang="Idioma";
+    this.optionitem_theme="Tema";
+    this.optionitem_autolevel="Nivel auto";
+    this.options_back="Volver al menú";
+
+
+    
+    //option choices
+    this.optionchoice_yes="Sí";
+    this.optionchoice_no="No";
+    this.optionitem_autolevel_description="Cuando el nivel automático está activado, el juego salta automáticamente a otro nivel si detecta que el nivel seleccionado es demasiado fácil o demasiado difícil para el jugador.";
+    this.optionchoice_theme_classic="Clásico";
+    this.optionchoice_theme_original="Original";
+    this.optionchoice_theme_afrikalan="Afrikalan";
+
   }
 }
 

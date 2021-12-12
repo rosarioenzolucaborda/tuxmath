@@ -15,7 +15,7 @@
     </div>
     <ul class="o-menu">
     {% for grp in levelGroupsData %}        
-      <a href="index_{{ grp }}.html" class="o-menu__item">
+      <a href="index_{{ grp }}.html" class="o-menu__item o-menu__box u-w100">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_{{ grp }}.svg" class="o-menuitemblock__imgcont__img">
@@ -24,6 +24,16 @@
         </li>
       </a>
     {% endfor %}
+    
+    <a href="options.html" class="o-menu__item o-menu__box u-w100">
+      <li class="o-menuitemblock">
+        <div class="o-menuitemblock__imgcont">
+          <img height=100% src="menuassets/img/icon_options.svg" class="o-menuitemblock__imgcont__img">
+        </div>
+        <div data-lang-item="menuitem_options" class="o-menuitemblock__txt">---</div>
+      </li>
+    </a>
+
     </ul>
     
     <script>
