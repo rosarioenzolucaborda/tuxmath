@@ -164,6 +164,10 @@ class Lang_en
     this.optionchoice_theme_original="Original";
     this.optionchoice_theme_afrikalan="Afrikalan";
 
+    
+    //Messages
+    this.message_al_toast_jumpbackward="Autolevel: jumped to an easier level";
+    this.message_al_toast_jumpforward="Autolevel: jumped to a more advanced level";
   }
 }
 
@@ -287,6 +291,9 @@ class Lang_fr extends Lang_en
     this.optionchoice_theme_afrikalan="Afrikalan";
     
 
+    //Messages
+    this.message_al_toast_jumpbackward="Niveau auto: a sauté vers un niveau plus simple";
+    this.message_al_toast_jumpforward="Niveau auto: a sauté vers un niveau plus avancé";
   }
 }
 
@@ -407,6 +414,10 @@ class Lang_es extends Lang_en
     this.optionchoice_theme_original="Original";
     this.optionchoice_theme_afrikalan="Afrikalan";
 
+
+    //Messages
+    this.message_al_toast_jumpbackward="Nivel automático: saltó a un nivel más simple";
+    this.message_al_toast_jumpforward="Nivel automático: saltó a un nivel más avanzado";
   }
 }
 

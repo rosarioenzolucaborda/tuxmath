@@ -573,6 +573,13 @@ let tmGlob_levelsSettings={ //keep this header unchanged for python proccess it
 }//END_tmGlob_levelsSettings leave this so python can detect/extract data.
 
 
+
+const AL_NOJUMP=-1;
+const AL_JUMP_BACKWARD_BIG=0;
+const AL_JUMP_BACKWARD_SMALL=1;
+const AL_JUMP_FORWARD_SMALL=2;
+const AL_JUMP_FORWARD_BIG=3;
+
 let tmGlob_levelJumps={ //Format: ["big_jump_back", "jump_back", "jump_forward", "big_jump_forward"]
                         
   "add_1_to_3":           ["add_1_to_3", "add_1_to_3",              "add_sum_to_10", "add_sum_to_20"],

@@ -66,10 +66,15 @@ class Comet
   
   launch()
   {
+    this.objDateLaunch=new Date();
     if (this.isBonus)
       tmGlob_objSfxPlayer.playSfx(SFX_BONUS_INCOMING);
   }
   
+  getSecondsSinceLaunch()
+  {
+    return (new Date()-this.objDateLaunch)/1000;
+  }
   
   removeCometDraw()
   {
@@ -399,5 +404,37 @@ class Laser
 		objJqLaser.css("width", Math.round(longeur)+"px").css("transform", "rotate("+Math.round(angle*100)/100+"deg)");
     
     return objJqLaser;
+  }
+}
+
+
+const TOAST_FADEOUT_DELAY=3500;
+const TOAST_FADEOUT_DURATION=3500;
+const TOAST_ICON_AUTOLEVEL="images/icons/toasts/autolevel.svg";
+class Toast
+{
+  constructor(message, icon=false)
+  {
+    this.message=message;
+    this.icon=icon;
+    
+    this.draw();
+    setTimeout(this.fadeOut.bind(this), TOAST_FADEOUT_DELAY)
+  }
+  
+  fadeOut()
+  {
+    this.objJqToast.fadeOut(TOAST_FADEOUT_DURATION, function(){ $(this).remove(); });
+  }
+  
+  draw()
+  {
+    this.objJqToast=$("<div class='o-toast'></div>").appendTo("#layout-game")
+    if (this.icon!==false)
+    {
+      this.objJqIcone=$("<div class='o-toast__icon'></div>").appendTo(this.objJqToast);
+      $("<img src='"+this.icon+"'>").appendTo(this.objJqIcone);
+    }
+    this.objJqText=$("<div class='o-toast__text'></div>").text(this.message).appendTo(this.objJqToast);
   }
 }

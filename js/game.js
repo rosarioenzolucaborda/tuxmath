@@ -21,8 +21,7 @@
 
 const LEVEL_CARDS_NUM=40;
 const NOT_ANSWERED_REPEAT=2;
-//const NB_CORRECT_ANSWER_BONUS=10;
-const NB_CORRECT_ANSWER_BONUS=3; //HACK DEBUG
+const NB_CORRECT_ANSWER_BONUS=10;
 
 class Game
 {
@@ -68,17 +67,25 @@ class Game
     this.running=true;
     this.paused=false;
     this.waveNum=0;
+    this.sameLevelWaveNum=0;
     this.totalAnswersGood=0;
     this.totalAnswersBad=0;
     this.nextBonusAt=NB_CORRECT_ANSWER_BONUS;
     
-    this.mathCardsCollection=new MathCardsCollection();
-    this.mathCardsCollection.genCards(levelId, LEVEL_CARDS_NUM);
+    this.loadLevel(levelId);
 
     this.startWave();
     
     this.initIgloos();
     MusicPlayer.play();
+  }
+  
+  loadLevel(levelId)
+  {
+    this.sameLevelWaveNum=0;
+    this.levelId=levelId;
+    this.mathCardsCollection=new MathCardsCollection();
+    this.mathCardsCollection.genCards(this.levelId, LEVEL_CARDS_NUM);
   }
   
   getWaveComets(waveNum)
@@ -90,9 +97,10 @@ class Game
   startWave()
   {
     this.waveNum++;
+    this.sameLevelWaveNum++;
     this.objJqContainer.find(".js-background").css("background-image", "url('"+tmGlob_objTheme.chooseBackground()+"')");
     
-    let waveCards=this.mathCardsCollection.takeCards(this.getWaveComets(this.waveNum));
+    let waveCards=this.mathCardsCollection.takeCards(this.getWaveComets(this.sameLevelWaveNum));
     
     if (waveCards.length==0)
     {
@@ -198,6 +206,21 @@ class Game
   
   evtWaveFinished()
   {
+    if (tmGlob_Options.get(OPT_AUTOLEVEL)=="1")
+    {
+      let computedLJ=this.runningWave.computeLevelJump();
+      if (computedLJ!=AL_NOJUMP)
+      {
+        if (computedLJ<AL_JUMP_FORWARD_SMALL) new Toast(tmGlob_Lang.getitem("message_al_toast_jumpbackward"), TOAST_ICON_AUTOLEVEL);
+        else new Toast(tmGlob_Lang.getitem("message_al_toast_jumpforward"), TOAST_ICON_AUTOLEVEL);
+
+        let newLevelId=tmGlob_levelJumps[this.levelId][computedLJ];
+        console.log(computedLJ, "= jump from", this.levelId, "to", newLevelId);
+        if (newLevelId!=this.levelId) //prevent reloading if new and old levels are the same...
+          this.loadLevel(newLevelId);
+      }
+    }
+    
     if (this.running)
       this.startWave();
   }
@@ -250,6 +273,9 @@ const FALSE_LOCATION_SEARCH_TRIES=4;
 const FALSE_LOCATION_SEARCH_MAXCOMETDISTANCEALLOWED=65;
 const NB_ANSWER_BAD_DESTROY_IGLOO=6;
 
+const AUTOLEVEL_MEAN_ANWSER_TIME_FORWARD_SMALL=13; //was 16 in C verison
+const AUTOLEVEL_MEAN_ANWSER_TIME_FORWARD_BIG=6; //was 8 in C verison
+
 class GameWave
 {
   constructor(objGame, arMathCards)
@@ -259,7 +285,8 @@ class GameWave
     this.arLaunchedCommets=[];
     this.answersGood=0;
     this.answersBad=0;
-
+    this.answersNotAnswered=0;
+    this.answersGoodTimes=[];
   }
   
   startWave()
@@ -289,8 +316,30 @@ class GameWave
   
   evtNotAnswered(cometId, mathCard, colNumber) //comet reached bottom and exploded...
   {
+    this.answersNotAnswered++;
     this.removeComet(cometId);
     this.checkWaveFinished();
+  }
+  
+  computeLevelJump()
+  {
+    let meanSecondsAnswersGoodTime=this.answersGoodTimes.reduce((a,b) => a + b, 0) / this.answersGoodTimes.length;
+    
+    console.log({ "answGood": this.answersGood, "answBad": this.answersBad, "meanTime": meanSecondsAnswersGoodTime, "unanswered": this.answersNotAnswered });
+    
+    if ((this.answersNotAnswered*2>=this.answersGood*3) && (this.answersNotAnswered>2))
+      return AL_JUMP_BACKWARD_BIG;
+
+    if ((this.answersNotAnswered>=this.answersGood) && (this.answersNotAnswered>1))
+      return AL_JUMP_BACKWARD_SMALL;
+
+    if ((meanSecondsAnswersGoodTime<AUTOLEVEL_MEAN_ANWSER_TIME_FORWARD_BIG) && (this.answersBad<this.answersGood))
+      return AL_JUMP_FORWARD_BIG;
+  
+    if ((meanSecondsAnswersGoodTime<AUTOLEVEL_MEAN_ANWSER_TIME_FORWARD_SMALL) && (this.answersBad<this.answersGood))
+      return AL_JUMP_FORWARD_SMALL;
+    
+    return AL_NOJUMP;
   }
   
   evtUserValidatedAnswer(answer)
@@ -300,6 +349,7 @@ class GameWave
       if (this.arLaunchedCommets[i].answer==answer)
       {
         cometsMatched++;
+        this.answersGoodTimes.push(this.arLaunchedCommets[i].getSecondsSinceLaunch());
         this.arLaunchedCommets[i].destroy();
         new Laser(this.objGame, this.arLaunchedCommets[i]);
         this.removeComet(this.arLaunchedCommets[i].getId()); //remove at end of iteration!

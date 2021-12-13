@@ -199,3 +199,30 @@ body.gamePaused .anim-cometfall
   border-radius: 3px;
 }
 
+
+/*
+ * Toast messages
+ * 
+ */
+
+.o-toast {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1000;
+  padding: 1rem;
+  background: #0009;
+  border-radius: 2rem;
+  display: flex;
+}
+
+.o-toast__text {
+  color: white;
+  font-family: sans;
+  font-size: 1.25rem;
+}
+
+.o-toast__icon { margin-right: .66rem; }
+
+.o-toast__icon img { height: 3rem; }
