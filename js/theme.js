@@ -46,6 +46,7 @@ const THEME_DEFAULT_IMAGES_PENGUIN_SIT=[DEF_BASE+"sprites/penguin-flapdown.png",
 const THEME_DEFAULT_IMAGE_PENGUIN_HIT=DEF_BASE+"sprites/penguin-incoming.png";
 const THEME_DEFAULT_IMAGE_PENGUIN_STANDUP=DEF_BASE+"sprites/penguin-standing-up.png";
 const THEME_DEFAULT_ANIM_PENGUIN_ANIMWALK=DEF_BASE+"sprites/penguin-walk.png";
+const THEME_DEFAULT_ANIM_PENGUIN_ANIMDANCE=DEF_BASE+"sprites/tux-egypt-anim.png";
 
 const THEME_DEFAULT_IMAGE_CONSOLE=DEF_BASE+"sprites/console_led.png";
 const THEME_DEFAULT_IMAGE_CONSOLE_DIMS=[168, 110];
@@ -105,6 +106,7 @@ class Theme
     this.image_penguin_hit=THEME_DEFAULT_IMAGE_PENGUIN_HIT;
     this.image_penguin_standup=THEME_DEFAULT_IMAGE_PENGUIN_STANDUP;
     this.anim_penguin_animwalk=THEME_DEFAULT_ANIM_PENGUIN_ANIMWALK;
+    this.anim_penguin_animdance=THEME_DEFAULT_ANIM_PENGUIN_ANIMDANCE;
     
     this.image_console=THEME_DEFAULT_IMAGE_CONSOLE;
     this.image_console_dims=THEME_DEFAULT_IMAGE_CONSOLE_DIMS;

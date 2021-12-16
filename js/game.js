@@ -19,7 +19,8 @@
 
 
 
-const LEVEL_CARDS_NUM=40;
+//const LEVEL_CARDS_NUM=40;
+const LEVEL_CARDS_NUM=4; //HACK
 const NOT_ANSWERED_REPEAT=2;
 const NB_CORRECT_ANSWER_BONUS=10;
 
@@ -169,9 +170,13 @@ class Game
     this.cleanUp();
     
     if (boolSuccess)
-      alert("Bravo tu as gagné!");
+    {
+      new MessageGameEnd(GAME_END_WIN, this.keyboardManager);
+      for (let i in this.arIgloos)
+        this.arIgloos[i].evtWin();
+    }
     else
-      alert("Tu as perdu, ça ira mieux en t'entrainant...");
+      new MessageGameEnd(GAME_END_LOOSE, this.keyboardManager);
   }
   
   evtNotAnswered(cometId, mathCard, colNumber) //comet reached bottom and exploded...
@@ -431,6 +436,8 @@ class GameWave
   
   cleanUp()
   {
+    clearInterval(this.objIntervalLaunchComet);
+    
     for (let i in this.arLaunchedCommets)
       this.arLaunchedCommets[i].cleanUp();
   }

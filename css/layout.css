@@ -16,6 +16,7 @@ body {
 
 
 .layout-overlay-buttons {
+  display: flex;
   position: absolute;
   z-index: 10;
   top: .5rem;
@@ -105,20 +106,23 @@ body {
 }
 
 
-.layout-game__overlay-anims {
+.layout-game__tuxComand {
   position: absolute;
   z-index: 40;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.layout-game__overlay-anims {
+  position: absolute;
+  z-index: 30;
   overflow: hidden;
   width: 100%;
   height: 100%; 
 }
 
-.layout-game__tuxComand {
-  position: absolute;
-  z-index: 30;
-  height: 100%;
-  width: 100%;
-}
 
 
 .layout-game__lasers {

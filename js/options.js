@@ -19,7 +19,7 @@ class TmOptions
   {
     this.options[OPT_LANG]=false; //if OPT_LANG is false, Lang class will detect drowser language
     this.options[OPT_THEME]="classic";
-    this.options[OPT_AUTOLEVEL]="1";
+    this.options[OPT_AUTOLEVEL]="0";
   }
   
   loadCookies()

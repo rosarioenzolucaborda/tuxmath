@@ -144,6 +144,7 @@ const IGLOO_HEALTH_HALF=1;
 const IGLOO_HEALTH_DESTROYED=0;
 
 const PENGUIN_LEAVE_IMG_Y_DELTA=-12; //walking penguin height minus sit panguin height 
+const PENGUIN_DANCE_IMG_Y_DELTA=PENGUIN_LEAVE_IMG_Y_DELTA; //walking penguin height minus sit panguin height 
 
 class Igloo
 {
@@ -270,6 +271,20 @@ class Igloo
       if (tmGlob_objTheme.hasPenguins) this.updatePenguinImageSit();
       this.objJq.fadeIn(3000);
     }
+  }
+
+  penguinGoOutDance()
+  {
+    let br=$(this.objJqImagePeng)[0].getBoundingClientRect(); //br is lost at time penguinMoveOut is called...
+    this.objJqImagePeng.remove();
+    let objJqPenguinDanceContainer=this.objGame.getObjJqContainer().find(".layout-game__overlay-anims");
+    let objJqPenguinDance=$("<img src=\""+tmGlob_objTheme.anim_penguin_animdance+"\" class=\"obj_penguindance\">").appendTo(objJqPenguinDanceContainer).offset({top: br.y+PENGUIN_DANCE_IMG_Y_DELTA, left: br.x});
+  }
+  
+  evtWin() //make dancing penguin
+  {
+    if ((tmGlob_objTheme.hasPenguins) && (this.health!=IGLOO_HEALTH_DESTROYED))
+      setTimeout(this.penguinGoOutDance.bind(this), getRandomInt(0, 5000));
   }
 }
 
@@ -408,6 +423,11 @@ class Laser
 }
 
 
+
+//
+// Messages displayers
+//
+
 const TOAST_FADEOUT_DELAY=3500;
 const TOAST_FADEOUT_DURATION=3500;
 const TOAST_ICON_AUTOLEVEL="images/icons/toasts/autolevel.svg";
@@ -436,5 +456,48 @@ class Toast
       $("<img src='"+this.icon+"'>").appendTo(this.objJqIcone);
     }
     this.objJqText=$("<div class='o-toast__text'></div>").text(this.message).appendTo(this.objJqToast);
+  }
+}
+
+const GAME_END_LOOSE=0;
+const GAME_END_WIN=1;
+
+class MessageGameEnd
+{
+  static alreadyDrawed=false;
+  
+  constructor(gameEndType, keyboardManager)
+  {
+    this.gameEndType=gameEndType;
+
+    if (MessageGameEnd.checkAlreadyDrawed()) return;
+
+    this.draw();
+    setTimeout(function(){keyboardManager.fctCallBackKeyStroke.push(this.evtClicOrKey.bind(this));}.bind(this), 750);
+    this.objJqOverlay.click(this.evtClicOrKey.bind(this));
+  }
+  
+  evtClicOrKey()
+  {
+    document.location.href="index.html";
+  }
+  
+  static checkAlreadyDrawed()
+  {
+    let oVal=this.alreadyDrawed;
+    this.alreadyDrawed=true;
+    return oVal;
+  }
+  
+  draw()
+  {
+    this.objJqOverlay=$("<div class='o-overlay-messagegameend'></div>").appendTo("#layout-game");
+    this.objJqMess=$("<div class='o-overlay-messagegameend__message'></div>").appendTo(this.objJqOverlay);
+    this.objJqMessMain=$("<div class='o-overlay-messagegameend__message__main'></div>").appendTo(this.objJqMess);
+    this.objJqMessSub=$("<div class='o-overlay-messagegameend__message__sub'></div>").appendTo(this.objJqMess);
+    
+    if (this.gameEndType==GAME_END_WIN) this.objJqMessMain.text(tmGlob_Lang.getitem("message_gameEnd_win"));
+    else this.objJqMessMain.text(tmGlob_Lang.getitem("message_gameEnd_loose"));
+    this.objJqMessSub.text(tmGlob_Lang.getitem("message_gameEnd_annykeyback"));
   }
 }
