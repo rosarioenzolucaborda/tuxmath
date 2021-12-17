@@ -3,6 +3,7 @@
     <meta charset="utf-8"/>
     <script src="js/jquery.min.js"></script>
     <script src="js/options.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/Lang.js"></script>
     <link rel="stylesheet" href="menuassets/css/menus.css">
   </head>
@@ -15,7 +16,7 @@
     </div>
     <ul class="o-menu">
     
-      <a href="game.html?lvlId=div_by_2" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_2" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_2">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -24,7 +25,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_3" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_3" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_3">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -33,7 +34,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_4" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_4" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_4">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -42,7 +43,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_5" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_5" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_5">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -51,7 +52,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_1_to_5" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_1_to_5" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_1_to_5">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -60,7 +61,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_6" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_6" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_6">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -69,7 +70,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_7" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_7" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_7">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -78,7 +79,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_8" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_8" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_8">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -87,7 +88,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_9" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_9" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_9">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -96,7 +97,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_10" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_10" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_10">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -105,7 +106,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_1_to_10" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_1_to_10" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_1_to_10">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -114,7 +115,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=mix_div_mul" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=mix_div_mul" class="o-menu__item o-menu__box u-w100" data-lvlid="mix_div_mul">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -123,7 +124,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_1_to_10_missnum" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_1_to_10_missnum" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_1_to_10_missnum">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -132,7 +133,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_11_to_12" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_11_to_12" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_11_to_12">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -141,7 +142,7 @@
         </li>
       </a>
     
-      <a href="game.html?lvlId=div_by_13_to_15" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId=div_by_13_to_15" class="o-menu__item o-menu__box u-w100" data-lvlid="div_by_13_to_15">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_div.svg" class="o-menuitemblock__imgcont__img">
@@ -163,9 +164,21 @@
     </ul>
     
     <script>
+      function gold_star_manageMenu()
+      {
+        let arrGS;
+        let gsCookie=getCookie("tm_goldstars");
+        if (gsCookie!==false) arrGS=gsCookie.split(",");
+        else arrGS=[];
+
+        for (let i in arrGS)
+          $("a[data-lvlid='"+arrGS[i]+"']").addClass("has-goldstar");
+      }
+    
       $(function(){
         tmGlob_Options=new TmOptions();
         tmGlob_Lang=new Lang();
+        gold_star_manageMenu();
       });
     </script>
   </body>

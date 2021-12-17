@@ -3,6 +3,7 @@
     <meta charset="utf-8"/>
     <script src="js/jquery.min.js"></script>
     <script src="js/options.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/Lang.js"></script>
     <link rel="stylesheet" href="menuassets/css/menus.css">
   </head>
@@ -15,7 +16,7 @@
     </div>
     <ul class="o-menu">
     {% for lvlId in levelsList %}
-      <a href="game.html?lvlId={{ lvlId }}" class="o-menu__item o-menu__box u-w100">
+      <a href="game.html?lvlId={{ lvlId }}" class="o-menu__item o-menu__box u-w100" data-lvlid="{{ lvlId }}">
         <li class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_{{ grp }}.svg" class="o-menuitemblock__imgcont__img">
@@ -37,9 +38,21 @@
     </ul>
     
     <script>
+      function gold_star_manageMenu()
+      {
+        let arrGS;
+        let gsCookie=getCookie("tm_goldstars");
+        if (gsCookie!==false) arrGS=gsCookie.split(",");
+        else arrGS=[];
+
+        for (let i in arrGS)
+          $("a[data-lvlid='"+arrGS[i]+"']").addClass("has-goldstar");
+      }
+    
       $(function(){
         tmGlob_Options=new TmOptions();
         tmGlob_Lang=new Lang();
+        gold_star_manageMenu();
       });
     </script>
   </body>

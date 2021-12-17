@@ -48,15 +48,7 @@ class TmOptions
   setOption(prm, val)
   {
     this.options[prm]=val;
-    this.setCookie(prm, val);
-  }
-  
-  setCookie(cookieName, cookieVal)  
-  {
-    let expDays=3650; // ~10 years
-    let expDate = new Date();
-    expDate.setTime(expDate.getTime() + (expDays*24*60*60*1000));
-    document.cookie = cookieName + "=" + cookieVal + "; expires=" + expDate.toUTCString()+"; SameSite=lax";
+    setCookie(prm, val);
   }
   
   get(prm)

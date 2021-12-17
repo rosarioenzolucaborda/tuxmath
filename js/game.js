@@ -171,6 +171,7 @@ class Game
     
     if (boolSuccess)
     {
+      gold_star_add(this.levelId);
       new MessageGameEnd(GAME_END_WIN, this.keyboardManager);
       for (let i in this.arIgloos)
         this.arIgloos[i].evtWin();

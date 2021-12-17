@@ -35,6 +35,15 @@ body
   display: block;
 }
 
+.o-menu__item.has-goldstar
+{
+  background-image: url(../img/goldstar.svg);
+  background-repeat: no-repeat;
+  background-position-x: right .75rem;
+  background-position-y: center;
+  background-size: 1.8rem;
+}
+
 .o-menu__item--options
 {
   margin-bottom: 3.5rem;

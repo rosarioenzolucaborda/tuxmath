@@ -82,3 +82,55 @@ function array_shuffle(array) //took from https://stackoverflow.com/questions/24
         array[randomIndex], array[currentIndex]];
     }
   }
+
+
+function getCookie(cookieId, defaultVal=false)
+{
+  let cooksArray=document.cookie.split("; ");
+  
+  for (let i in cooksArray)
+  {
+    let prm, val;
+    [prm, val]=cooksArray[i].split("=");
+    
+    if (prm==cookieId) return val;
+  }
+  
+  //nothing Found
+  return defaultVal;
+}
+
+function setCookie(cookieName, cookieVal)  
+{
+  let expDays=3650; // ~10 years
+  let expDate = new Date();
+  expDate.setTime(expDate.getTime() + (expDays*24*60*60*1000));
+  document.cookie = cookieName + "=" + cookieVal + "; expires=" + expDate.toUTCString()+"; SameSite=lax";
+}
+  
+  
+  
+//
+// Gold star management
+// ---------------------
+//
+// Here beaucause i wouldn't create a separate file just for this
+
+
+
+function gold_star_add(lvlId)
+{
+  let arrGS;
+  let gsCookie=getCookie("tm_goldstars");
+  if (gsCookie!==false) arrGS=gsCookie.split(",");
+  else arrGS=[];
+  
+  if (arrGS.indexOf(arrGS)==-1)
+    arrGS.push(lvlId);
+  
+  arrGS.sort();
+  
+  setCookie("tm_goldstars", arrGS.join(","));
+}
+
+
