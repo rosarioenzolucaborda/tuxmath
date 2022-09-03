@@ -112,7 +112,8 @@
     
     
     $(window).on("resize", function(){
-      if ((screen.width < 1100) && (screen.width > screen.height) && (detectMobile())) $("#js-vp").attr("content", "width=1100, user-scalable=no");
+      if ((screen.width < 1100) && (screen.width > screen.height) && (detectMobile())) $("#js-vp").attr("content", "initial-scale="+(screen.width/1100)+", user-scalable=no");
+      else if ((screen.height < 1100) && (screen.width <= screen.height) && (detectMobile())) $("#js-vp").attr("content", "width="+(screen.height/1100))+", user-scalable=no");
       else if (screen.width < 700) $("#js-vp").attr("content", "width=700, user-scalable=no");
       else $("#js-vp").attr("content", "width=device-width, initial-scale=1.0, user-scalable=no");
     }).resize();
