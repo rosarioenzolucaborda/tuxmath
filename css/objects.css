@@ -76,6 +76,9 @@ body.gamePaused .anim-cometfall
     z-index: 0;
 }
 
+.theme-afrikalan .obj_igloo__imgpenguin {
+  transform: translate(-52%,-114%);
+}
 
 /*
  * Leaving penguins
@@ -149,23 +152,21 @@ body.gamePaused .anim-cometfall
   bottom: 0px;
   left: 50%;
   transform: translate(-50%, 0%);
+  z-index: 10;
 }
 
 .obj_console__display {
   position: absolute;
-}
-
-.obj_console__display {
-    position: absolute;
-    top: 5;
-    left: 24px;
-    width: 118;
-    height: 46;
-    color: white;
-    font-family: fixed;
-    background-color: black;
-    text-align: right;
-    font-size: 40;
+  top: 5;
+  left: 24px;
+  width: 118;
+  height: 46;
+  color: white;
+  font-family: fixed;
+  background-color: black;
+  text-align: right;
+  font-size: 40;
+  z-index: 1;
 }
 
 @keyframes redblink {
@@ -289,4 +290,121 @@ body.gamePaused .anim-cometfall
   color: white;
   font-size: 1.5rem;
   margin: 2rem;
+}
+
+@media (max-width: 1000px)
+{
+  .obj_igloo__imgpenguin {
+    max-width: 50;
+    max-height: 47;
+  }
+  .obj_igloo__imgigloo {
+    width: 75;
+  }
+  .obj_commet img {
+    width: 42;
+  }
+  .obj_commet__question {
+    font-size: 1.15rem;
+    padding: 0.15rem;
+    transform: translate(-19%, 0%);
+  }
+  
+  .layout-game__commetsIgloosColmuns__col > * {
+    transform: translate(-39%, 0%);
+  }
+  
+  .obj_penguinleave--left {
+    height: 48px;
+    padding-top: 81;
+  }
+  
+  .obj_penguinleave--right {
+    height: 48px;
+     padding-top: 81;
+  }
+  
+  .obj_penguindance {
+    max-height: 54px;
+  }
+
+}
+
+@media (max-width: 850px)
+{
+  .o-overlay-messagegameend__message {
+    margin: 2rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 700px)
+{
+  .obj_igloo__imgpenguin {
+    max-width: 34;
+    max-height: 32;
+  }
+  .obj_igloo__imgigloo {
+    width: 51;
+  }
+  .obj_commet img {
+    width: 28;
+  }
+  .obj_commet__question {
+    font-size: 1rem;
+    padding: 0;
+  }
+  
+  .layout-game__commetsIgloosColmuns__col > * {
+    transform: translate(-39%, 0%);
+  }
+  
+  .obj_console__display {
+    top: 3;
+    left: 18px;
+    width: 85;
+    height: 34;
+    font-family: fixed;
+    font-size: 32;
+  }
+  
+  .obj_console__tux {
+    height: 48px;
+  }
+  
+  .obj_console {
+    background-size: contain;
+    width: 122px !important;
+    height: 80px !important;
+  }
+  
+    .obj_penguinleave--left {
+    height: 35px;
+    padding-top: 13;
+  }
+  
+  .obj_penguinleave--right {
+    height: 35px;
+     padding-top: 13;
+  }
+  
+  .obj_penguindance {
+    max-height: 385px;
+  }
+}
+
+@media (max-width: 520px)
+{
+  .o-overlay-messagegameend__message {
+    margin: 2rem;
+    width: auto;
+  }
+  .o-overlay-messagegameend__message__main {
+    font-size: 3rem;
+    margin: 1rem;
+  }
+  .o-overlay-messagegameend__message__sub {
+    font-size: 1.15rem;
+    margin: 1.5rem;
+  }
 }

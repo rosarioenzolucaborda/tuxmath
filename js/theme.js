@@ -205,6 +205,12 @@ const THEME_AFRIKALAN_IGLOOHEALTHSTATUS=[
   DEF_BASE+"sprites/theme-afrikalan/igloo-intact.png"
 ];
 
+const THEME_AFRIKALAN_IMAGE_CONSOLETUX_NORMAL=DEF_BASE+"sprites/theme-afrikalan/tux-sit.png";
+const THEME_AFRIKALAN_IMAGE_CONSOLETUX_PRESTART=DEF_BASE+"sprites/theme-afrikalan/tux-relax-prestart.png";
+const THEME_AFRIKALAN_IMAGE_CONSOLETUX_ANIMSTART=DEF_BASE+"sprites/theme-afrikalan/tux-startLevel-anim.png";
+const THEME_AFRIKALAN_IMAGES_CONSOLETUX_TYPING=[DEF_BASE+"sprites/theme-afrikalan/tux-console1.png", DEF_BASE+"sprites/theme-afrikalan/tux-console2.png", DEF_BASE+"sprites/theme-afrikalan/tux-console3.png", DEF_BASE+"sprites/theme-afrikalan/tux-console4.png"];
+const THEME_AFRIKALAN_IMAGE_CONSOLETUX_ANIMIGLOODESTROYED=DEF_BASE+"sprites/theme-afrikalan/tux-fist-anim.png";
+
 class Theme_afrikalan extends Theme
 {
   constructor()
@@ -217,6 +223,11 @@ class Theme_afrikalan extends Theme
   {
     this.background_images=THEME_AFRIKALAN_BACKGROUDS;
     this.image_iglooHealthStatus=THEME_AFRIKALAN_IGLOOHEALTHSTATUS;
+    this.image_consoletux_normal=THEME_AFRIKALAN_IMAGE_CONSOLETUX_NORMAL;
+    this.image_consoletux_prestart=THEME_AFRIKALAN_IMAGE_CONSOLETUX_PRESTART;
+    this.image_consoletux_animstart=THEME_AFRIKALAN_IMAGE_CONSOLETUX_ANIMSTART;
+    this.images_consoletux_typing=THEME_AFRIKALAN_IMAGES_CONSOLETUX_TYPING;
+    this.image_consoletux_animigloodestroyed=THEME_AFRIKALAN_IMAGE_CONSOLETUX_ANIMIGLOODESTROYED;
   }
 }
 

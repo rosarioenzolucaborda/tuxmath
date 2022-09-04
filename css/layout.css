@@ -36,6 +36,7 @@ body {
 .layout-overlay-buttons__icon
 {
   width: 2rem;
+  padding-bottom: 1rem;
 }
 
 .layout-page {
@@ -44,6 +45,7 @@ body {
   overflow: hidden;
   display: flex;
   position: relative;
+  z-index: 5;
 }
 
 @media (orientation: portrait) {
@@ -85,6 +87,7 @@ body {
     font-family: sans;
     font-weight: bold;
     text-shadow: 3px 0px 2px #787878, -3px 0px 2px #787878, 0px 3px 2px #787878, 0px -3px 2px #787878;
+    white-space: nowrap;  
 }
 
 .layout-topline__image {
@@ -183,6 +186,11 @@ body {
     flex-basis: 3rem;
 }
 
+.obj-osk__block--validcancel
+{
+    flex-basis: 4rem;
+}
+
   .obj-osk__block--logo {
     display: none;
     background: url("../images/logoTm.svg");
@@ -196,6 +204,11 @@ body {
 @media (orientation: landscape) {
   .obj-osk__block {
     flex-basis: 5rem;
+  }
+  
+  .obj-osk__block--validcancel
+  {
+      flex-basis: 6rem;
   }
   
   .obj-osk__block--logo {
@@ -236,4 +249,61 @@ body {
 {
   background: red;
   flex-grow: 1;
+}
+
+
+@media (max-height: 400px), (max-width: 850px)
+{
+  .layout-game__overlay__topline__cell {
+    font-size: 1.15rem;
+  }
+  .layout-topline__image {
+  height: 1.15rem;
+  }
+}
+
+
+@media (max-height: 300px), (max-width: 650px)
+{
+  .layout-game__overlay__topline__cell {
+    font-size: 1rem;
+  }
+  .layout-topline__image {
+  height: 1rem;
+  }
+
+  .layout-topline_cell_counters__cell {
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+}
+
+@media (max-width: 400px)
+{
+  .layout-overlay-buttons {
+    flex-direction: column;
+  }
+  
+  .layout-overlay-buttons__icon {
+    width: 1.5rem;
+    padding-left: .5rem;
+    padding-right: .2rem;
+  }
+  
+  élément {
+
+}
+
+  .layout-overlay-buttons__button {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (max-height: 250px)
+{
+  .obj-osk__key {
+    font-size: 9vh;
+    padding: 1.25vh;
+  }
 }
