@@ -107,7 +107,7 @@
   //     console.log(cardsCol.arCards[i].calcResult(), "###", cardsCol.arCards[i].questionText());
   //     
 
-    /*if (detectMobile())*/ $(".js-osk").show();
+    /*if (detectMobile())*/ 
     
     
 
@@ -122,6 +122,9 @@
     const urlParams = new URLSearchParams(window.location.search);
     let objGame=new Game($(".layout-game"));
     $("body").addClass("theme-"+idtheme);    
+    
+    if (tmGlob_Options.get(OPT_OSK)=="1") $(".js-osk").show();
+    
     objGame.startGame(urlParams.get("lvlId"));
     
     window.dumpCards=function(){ objGame.mathCardsCollection.dump() }

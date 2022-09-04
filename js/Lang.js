@@ -154,11 +154,14 @@ class Lang_en
     this.optionitem_lang="Language";
     this.optionitem_theme="Theme";
     this.optionitem_autolevel="Autolevel";
+    this.optionitem_osk="On screen Keyboard";
     this.options_back="Back to menu";
     
     //option choices
     this.optionchoice_yes="Yes";
     this.optionchoice_no="No";
+    this.optionchoice_show="Show";
+    this.optionchoice_hide="Hide";
     this.optionitem_autolevel_description="When autolevel in on the game automaticaly jumps to another level if it detects that the selected level is too easy or too hard for player.";
     this.optionchoice_theme_classic="Classic";
     this.optionchoice_theme_original="Original";
@@ -282,6 +285,7 @@ class Lang_fr extends Lang_en
     this.optionitem_lang="Langue";
     this.optionitem_theme="Thème";
     this.optionitem_autolevel="Niveau auto";
+    this.optionitem_osk="Clavier tactile";
     this.options_back="Revenir au menu";
 
     
@@ -289,6 +293,8 @@ class Lang_fr extends Lang_en
     //option choices
     this.optionchoice_yes="Oui";
     this.optionchoice_no="Non";
+    this.optionchoice_show="Montrer";
+    this.optionchoice_hide="Cacher";
     this.optionitem_autolevel_description="Lorsque le niveau automatique est activé, le jeu passe automatiquement à un autre niveau s'il détecte que le niveau sélectionné est trop facile ou trop difficile pour le joueur.";
     this.optionchoice_theme_classic="Classique";
     this.optionchoice_theme_original="Original";
@@ -409,6 +415,7 @@ class Lang_es extends Lang_en
     this.optionitem_lang="Idioma";
     this.optionitem_theme="Tema";
     this.optionitem_autolevel="Nivel auto";
+    this.optionitem_osk="Teclado virtual";
     this.options_back="Volver al menú";
 
 
@@ -416,6 +423,8 @@ class Lang_es extends Lang_en
     //option choices
     this.optionchoice_yes="Sí";
     this.optionchoice_no="No";
+    this.optionchoice_show="Mostrar";
+    this.optionchoice_hide="Esconder";
     this.optionitem_autolevel_description="Cuando el nivel automático está activado, el juego salta automáticamente a otro nivel si detecta que el nivel seleccionado es demasiado fácil o demasiado difícil para el jugador.";
     this.optionchoice_theme_classic="Clásico";
     this.optionchoice_theme_original="Original";

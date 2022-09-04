@@ -1,8 +1,9 @@
 const OPT_LANG="opt_lang";
 const OPT_THEME="opt_theme";
 const OPT_AUTOLEVEL="opt_autolevel";
+const OPT_OSK="opt_osk";
 
-const OPTIONS_LIST=[OPT_LANG, OPT_THEME, OPT_AUTOLEVEL];
+const OPTIONS_LIST=[OPT_LANG, OPT_THEME, OPT_AUTOLEVEL, OPT_OSK];
 
 class TmOptions
 {
@@ -20,6 +21,7 @@ class TmOptions
     this.options[OPT_LANG]=false; //if OPT_LANG is false, Lang class will detect drowser language
     this.options[OPT_THEME]="classic";
     this.options[OPT_AUTOLEVEL]="0";
+    this.options[OPT_OSK]="1";
   }
   
   loadCookies()

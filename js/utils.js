@@ -82,18 +82,26 @@ function array_shuffle(array) //took from https://stackoverflow.com/questions/24
         array[randomIndex], array[currentIndex]];
     }
   }
-
-
-function getCookie(cookieId, defaultVal=false)
-{
-  let cooksArray=document.cookie.split("; ");
   
-  for (let i in cooksArray)
+  
+function getCookie(cookieName, defaultVal=false)
+{
+  if (typeof CookiesStoreInterface != "undefined") //android app
   {
-    let prm, val;
-    [prm, val]=cooksArray[i].split("=");
+    if (CookiesStoreInterface.have(cookieName))
+      return CookiesStoreInterface.get(cookieName);
+  }
+  else //on web
+  {
+    let cooksArray=document.cookie.split("; ");
     
-    if (prm==cookieId) return val;
+    for (let i in cooksArray)
+    {
+      let prm, val;
+      [prm, val]=cooksArray[i].split("=");
+      
+      if (prm==cookieName) return val;
+    }
   }
   
   //nothing Found
@@ -102,10 +110,17 @@ function getCookie(cookieId, defaultVal=false)
 
 function setCookie(cookieName, cookieVal)  
 {
-  let expDays=3650; // ~10 years
-  let expDate = new Date();
-  expDate.setTime(expDate.getTime() + (expDays*24*60*60*1000));
-  document.cookie = cookieName + "=" + cookieVal + "; expires=" + expDate.toUTCString()+"; SameSite=lax";
+  if (typeof CookiesStoreInterface != "undefined") //android app
+  {
+      CookiesStoreInterface.set(cookieName, cookieVal);
+  }
+  else
+  {
+    let expDays=3650; // ~10 years
+    let expDate = new Date();
+    expDate.setTime(expDate.getTime() + (expDays*24*60*60*1000));
+    document.cookie = cookieName + "=" + cookieVal + "; expires=" + expDate.toUTCString()+"; SameSite=lax";
+  }
 }
   
   
