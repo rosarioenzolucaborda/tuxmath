@@ -133,6 +133,8 @@ class Comet
   getCenterCoords()
   {
     let  br=this.objJq[0].getBoundingClientRect();
+    if (typeof br.x=="undefined") br.x=br.left;
+    if (typeof br.y=="undefined") br.y=br.top;
     let yOffset=50; //target the core of the comet as the center of drawing is on tail...
     return [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2+yOffset)];
   }
@@ -175,6 +177,8 @@ class Igloo
   getCenterCoords()
   {
     let  br=this.objJqImageIgloo[0].getBoundingClientRect();
+    if (typeof br.x=="undefined") br.x=br.left;
+    if (typeof br.y=="undefined") br.y=br.top;
     return [Math.round(br.x+br.width/2), Math.round(br.y+br.height/2)];
   }
   
@@ -240,6 +244,8 @@ class Igloo
       {
         clearTimeout(this.toUpdatePengImage);
         let br=$(this.objJqImagePeng)[0].getBoundingClientRect(); //br is lost at time penguinMoveOut is called...
+        if (typeof br.x=="undefined") br.x=br.left;
+        if (typeof br.y=="undefined") br.y=br.top;
         this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_hit;
         setTimeout(function(){this.objJqImagePeng[0].src=tmGlob_objTheme.image_penguin_standup;}.bind(this), 3000);
         setTimeout(this.penguinMoveOut.bind(this, br), 4000);
@@ -276,6 +282,8 @@ class Igloo
   penguinGoOutDance()
   {
     let br=$(this.objJqImagePeng)[0].getBoundingClientRect(); //br is lost at time penguinMoveOut is called...
+    if (typeof br.x=="undefined") br.x=br.left;
+    if (typeof br.y=="undefined") br.y=br.top;
     this.objJqImagePeng.remove();
     let objJqPenguinDanceContainer=this.objGame.getObjJqContainer().find(".layout-game__overlay-anims");
     let objJqPenguinDance=$("<img src=\""+tmGlob_objTheme.anim_penguin_animdance+"\" class=\"obj_penguindance\">").appendTo(objJqPenguinDanceContainer).offset({top: br.y+PENGUIN_DANCE_IMG_Y_DELTA, left: br.x});
@@ -379,6 +387,8 @@ class Laser
   {
     let originJqObject=this.objGame.getObjJqContainer().find(".js-laser-origin");
     let br=originJqObject[0].getBoundingClientRect();
+    if (typeof br.x=="undefined") br.x=br.left;
+    if (typeof br.y=="undefined") br.y=br.top;
     let originCoords=[Math.round(br.x+br.width/2), Math.round(br.y+br.height/2)];
     
     let targetCoords;
@@ -464,8 +474,8 @@ const GAME_END_WIN=1;
 
 class MessageGameEnd
 {
-  static alreadyDrawed=false;
-  
+  //static alreadyDrawed=false; //pas supporté partout, ex: android 6
+
   constructor(gameEndType, keyboardManager)
   {
     this.gameEndType=gameEndType;
@@ -484,9 +494,13 @@ class MessageGameEnd
   
   static checkAlreadyDrawed()
   {
-    let oVal=this.alreadyDrawed;
-    this.alreadyDrawed=true;
-    return oVal;
+    if (typeof window.global_MessageGameEnd_alreadyDrawed!="undefined")
+        return true;
+    else
+    {
+        window.global_MessageGameEnd_alreadyDrawed=true;
+        return false;
+    }
   }
   
   draw()
