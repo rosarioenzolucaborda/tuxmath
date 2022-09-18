@@ -41,6 +41,10 @@ class Lang
       let txt=that.getitem(this.getAttribute("data-lang-item"));
       this.innerHTML=txt;
     });
+    objJq.find("a[data-lang-target]").each(function(){
+      let href=that.getitem(this.getAttribute("data-lang-target"));
+      $(this).prop("href", href);
+    });
   }
   
   getitem(itemId)
@@ -69,6 +73,8 @@ class Lang_en
     this.lgroup_relatives="Relative numbers";
     this.menuitem_options="Options";
     this.menuitem_back="Back";
+    this.menuitem_infos="Help and informations"
+    this.menuitem_infos__url="infos/infos-en.html"
 
     
     // Level group additions
@@ -154,7 +160,7 @@ class Lang_en
     this.optionitem_lang="Language";
     this.optionitem_theme="Theme";
     this.optionitem_autolevel="Autolevel";
-    this.optionitem_osk="On screen Keyboard";
+    this.optionitem_osk="Keyboard";
     this.options_back="Back to menu";
     
     //option choices
@@ -201,6 +207,8 @@ class Lang_fr extends Lang_en
     this.lgroup_relatives="Nombres relatifs";
     this.menuitem_options="Options";
     this.menuitem_back="Retour";
+    this.menuitem_infos="Aide et informations"
+    this.menuitem_infos__url="infos/infos-fr.html"
     
     
     // Level group additions
@@ -285,7 +293,7 @@ class Lang_fr extends Lang_en
     this.optionitem_lang="Langue";
     this.optionitem_theme="Thème";
     this.optionitem_autolevel="Niveau auto";
-    this.optionitem_osk="Clavier tactile";
+    this.optionitem_osk="Clavier";
     this.options_back="Revenir au menu";
 
     
@@ -330,6 +338,8 @@ class Lang_es extends Lang_en
     this.lgroup_relatives="Números relativos";
     this.menuitem_options="Opciones";
     this.menuitem_back="Volver";
+    this.menuitem_infos="Ayuda y información"
+    this.menuitem_infos__url="infos/infos-es.html"
     
     
     // Level group additions
@@ -415,7 +425,7 @@ class Lang_es extends Lang_en
     this.optionitem_lang="Idioma";
     this.optionitem_theme="Tema";
     this.optionitem_autolevel="Nivel auto";
-    this.optionitem_osk="Teclado virtual";
+    this.optionitem_osk="Teclado";
     this.options_back="Volver al menú";
 
 

@@ -1,0 +1,149 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="infos.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+</head>
+<body>
+  <header class="o-head">
+    <div class="u-nogrow o-head__logoAfkl">
+      <img src=logo.png style="max-height: 120px;">
+    </div>
+    <div class="u-grow o-head__slogan">
+      <div style="color: #6faa2f; font-family: sans; font-style: italic; font-size: 0.9em; max-width:23em; text-align: right"><b STYLE="color: #ea7345">kalan</b> <i>\kà.la~\</i>: Verb in bambara language meaning to read, to learn, to teach.</div>		
+    </div>
+    <div class="u-nogrow o-head__logoTm">
+      <img src=../images/logoTm--white.svg style="max-height: 120px;">
+    </div>
+	</header>
+	<section>
+    <p>We are proud to present the legendary Tuxmath, rewritten in Javascript/HTML5. This allows you to play TuxMath (without having to install it), from any web browser, but also on phones and tablets. This new version of Tuxmath was created as part of the <a href=#afrikalan>Afrikalan project</a>.</p>
+    <p>The Original version of TuxMath is available on the Tux4Kids website:  <a href=http://www.tux4kids.com/tuxmath.html>http://www.tux4kids.com/tuxmath.html</a>. A large part of the graphic and sound elements come from the original version.</p>
+    <p>Some improvements have been made in this new version:</p>
+    <ul>
+      <li>The "auto level" option: when this option is activated, the game will automatically switch to another level if the player has too much ease or too much difficulty with the operations that he must solve.
+      <li>Added levels with operations involving 3 numbers or more.
+      <li> A penalty (igloo destroyed) in case of too many wrong answers (To discourage the strategy of trying all possible answers).
+      <li>Possibility to play with 3 graphic themes: "Classic", "Original" and "Afrikalan".
+    </ul>
+    <p>This application is distributed under the terms of the <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>, which gives you the right to use and share it freely. The computer source code is accessible to any person who want it at <a href=https://gitlab.com/Afrikalan/tuxmath-js>https://gitlab.com/Afrikalan/tuxmath-js</a>.</p>
+  </section>
+  <section>
+    <h2>How to play:</h2>
+    <div class="o-img-text">
+      <div class="o-img-text__text">
+        <ul>
+          <li>Choose the desired level from the menu.
+          <li>Asteroids fall from the sky. Destroy them before they hit the ground! To correctly target an asteroid with the laser beam, resolve the operation written on the asteroid, enter the result on the keyboard, and validate with the "Enter" key. If the answer is correct, the laser hits and destroys the asteroid. Do the same with all the asteroids present on the screen. In the event of a wrong answer, the laser goes in the wrong direction (Beware of collateral damage!).
+          <li>The TAB key of the keyboard allows you to pause the game.
+          <li class=u-hide-on-android>The <div class=inline-white-icon-holder><img src=../images/icons/expand.svg></div> icon toggles full screen/windowed display.
+        </ul>
+      </div>
+      <div class="o-img-text__img">
+        <img src="gameplay-anim.webp">
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Direct URL to a level:</h2>
+    <p>It is possible to provide a direct URL to a level. (useful for teachers who would like their pupils to practice a given multiplication table for example).</p>
+    <p>To do this, go to http://www.tuxmath.org, then in the menu, right-click on the desired level, and select "Copy link location". You get a URL of the form http://tuxmath.org/game.html?lvlId=xxxxxxxxxx, where xxxxxxxxxx is the selected level.
+    <p>It is possible to add different options to the URL:</p>
+    <table>
+      <tr>
+        <th>Option</th>
+        <th>Effect</th>
+        <th>Possible values</th>
+      </tr>
+      <tr>
+        <td>&opt_lang=X</td>
+        <td>Sets the game language (replace X with the desired language).</td>
+        <td>X=fr french.<br>X=en  english.<br>X=es spanish.</td>
+      </tr>
+      <tr>
+        <td>&opt_autolevel=X</td>
+        <td>Enables or disables automatic level switching when the selected level is too easy or too difficult for the pupil. (disabled by default)</td>
+        <td>X=1 enabled.<br>X=0 disabled (default).</td>
+      </tr>
+      <tr>
+        <td>&opt_theme=X</td>
+        <td>Selects the game theme (replace X with the desired theme).</td>
+        <td>X=classic (default).<br>X=original.<br>X=afrikalan.</td>
+      </tr>
+      <tr>
+        <td>&opt_osk=X</td>
+        <td>Shows or hides on screen keyboard.</td>
+        <td>X=1 Show OSK.<br>X=0 Hide OSK.</td>
+      </tr>
+    </table>
+    <p>For example the URL http://www.tuxmath.org/game.html?lvlId=mul_table_5&opt_lang=en&opt_osk=1 will lead directly to the "multiplication table of 5" level, ensuring that the selected language is english and that the virtual keyboard is enabled.</p>
+	</section>
+	<section>
+    <h2>Contact:</h2>
+    <p>Julien Marin, the developer, can be reached at <a href="mailto:apps@afrikalan.org">apps@afrikalan.org</a>.</p>
+	</section>
+	<section id=afrikalan>
+    <h2>What is Afrikalan?</h2>
+    <p>This version of TuxMath was created as part of the Afrikalan project.</p>
+    <p>Afrikalan is a project aiming to make free educational software accessible to children in the developing countries.</p>
+    <p>This involves the creation of computers specifically designed for educational use, which are donated to public or non-profit structures receiving children: schools, libraries, helping centers, etc...</p>
+    <p>In Mali, in partnership with the french association Bilou Toguna, more than 100 libraries have been equipped with educational computers. Our website will give you more information about the actions carried out.</p>
+    <center>
+      <a class="calltoaction u-hide-on-android" href="http://afrikalan.org/mobile-www?o=tuxmath" >
+        <img src="earth.svg" class="inline-icon inline-icon--bigger">Visit afrikalan.org
+      </a>
+      <a class="calltoaction u-show-on-android-only" href="http://afrikalan.org/mobile-www?o=tuxmathDroid" >
+        <img src="earth.svg" class="inline-icon inline-icon--bigger">Visit afrikalan.org
+      </a>
+    </center>
+
+  </section>
+  <center><img src=koutiala.jpg class="u-fit"></center>
+  <section>
+    <p>Afrikalan also involves creating educational content adapted to the cultural context in which these educational computers are given</p>
+    <p>The application you are using was created for this purpose. It is distributed under the terms of the <a href="https://en.wikipedia.org/wiki/GNU_General_Public_License">GNU General Public License</a>, which gives you the right to use and share it freely.</p>
+    <p><center><img src=md.jpg class="u-fit"></center></p>
+    <p>If you like this application, you can support the Afrikalan project to allow more children in West Africa to benefit from it.</p>
+    <center>
+      <a class="calltoaction u-hide-on-android" href="http://afrikalan.org/mobile-soutient?o=tuxmath" >
+        <img src="heart.svg" class="inline-icon">Support Afrikalan
+      </a>
+      <a class="calltoaction u-show-on-android-only" href="http://afrikalan.org/mobile-soutient?o=tuxmathDroid" >
+        <img src="heart.svg" class="inline-icon">Support Afrikalan
+      </a>
+    </center>
+    <p>Thanks for your attention.</p>
+    <p><a class="" href="javascript:history.back()">&lt;- Back to menu</a></p>
+  </section>
+  
+  
+  <div class="pied">
+    <img class="principale" src="site_basPageGen2b.png">
+    <img class="village" src="village.png">
+  </div>
+</body>
+
+<script>
+
+function evtClickLink(evt)
+{
+  var url=evt.target.href;
+  if (typeof url=="undefined") url="";
+  
+  if ((typeof externalEvtHandler!="undefined") && (typeof externalEvtHandler.openUrl!="undefined") && url.startsWith("http"))
+  { 
+    externalEvtHandler.openUrl(url);
+    evt.preventDefault();
+  }
+  
+}
+if (typeof externalEvtHandler!="undefined") document.querySelector("body").classList.add("android");
+
+var arLinkNodes=document.querySelectorAll('a'); 
+for (var i=0; i<arLinkNodes.length; i++)
+  arLinkNodes[i].addEventListener("click", evtClickLink);
+
+</script>
+
+
+</html>

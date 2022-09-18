@@ -149,3 +149,29 @@ function gold_star_add(lvlId)
 }
 
 
+class FullscreenSwitcher
+{
+  constructor(objJq)
+  {
+    this.objJq=objJq;
+    this.expanded=false;
+    this.objJq.click(this.evtswitch.bind(this));
+  }
+  
+  evtswitch()
+  {
+    this.expanded=!this.expanded;
+    if (this.expanded)
+    {
+      window.requestFullScreen();
+      this.objJq.find(".js-icon-fs-on").show();
+      this.objJq.find(".js-icon-fs-off").hide();
+    }
+    else
+    {
+      document.exitFullscreen();
+      this.objJq.find(".js-icon-fs-on").hide();
+      this.objJq.find(".js-icon-fs-off").show();
+    }
+  }
+}

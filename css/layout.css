@@ -13,6 +13,8 @@ body {
   height: 100%;
 }
 
+body.android .u-hide-on-android { display: none }
+body:not(.android) .u-show-on-android-only { display: none }
 
 
 .layout-overlay-buttons {
@@ -181,7 +183,7 @@ body {
   justify-content: flex-end;
 }
 
-.obj-osk__block {
+.obj-osk__block--keysblock {
     display: flex;
     flex-basis: 3rem;
 }
@@ -191,18 +193,26 @@ body {
     flex-basis: 4rem;
 }
 
-  .obj-osk__block--logo {
-    display: none;
-    background: url("../images/logoTm.svg");
-    background-size: contain;
-    flex-grow: 1;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 1.5rem;
-  }
+.obj-osk__block--margintopforbuttons {
+  flex-grow: 0;
+  flex-shrink: 25;
+  flex-basis: 2.25rem;
+}
+
+
+.obj-osk__block--logo {
+  display: none;
+  background: url("../images/logoTm.svg");
+  background-size: contain;
+  flex-grow: 1;
+  background-position: top center;
+  background-repeat: no-repeat;
+  margin: .5rem 1.5rem;
+  flex-basis: 7.5rem;
+}
 
 @media (orientation: landscape) {
-  .obj-osk__block {
+  .obj-osk__block--keysblock {
     flex-basis: 5rem;
   }
   
@@ -213,6 +223,11 @@ body {
   
   .obj-osk__block--logo {
     display: block;
+  }
+}
+@media (orientation: portrait) {
+  .obj-osk__block--margintopforbuttons{
+    display: none;
   }
 }
 
@@ -290,20 +305,40 @@ body {
     padding-right: .2rem;
   }
   
-  élément {
-
 }
 
-  .layout-overlay-buttons__button {
-    width: 3rem;
-    height: 3rem;
+
+
+@media (max-height: 300px) and (orientation: landscape)
+{
+  .layout-osk {
+    padding-top: 2.5rem;
+  }
+  .obj-osk__block.obj-osk__block--logo {
+    display: none;
+  }
+  
+  .obj-osk__key {
+    font-size: 8vh;
+    padding: 1.25vh;
+  }
+  
+  .layout-overlay-buttons__button{
+    height: 2rem;
   }
 }
 
-@media (max-height: 250px)
+@media (max-height: 500px)  and  (orientation: portrait)
 {
   .obj-osk__key {
-    font-size: 9vh;
-    padding: 1.25vh;
+    font-size: 6vh;
+    padding: .5vh;
+  }
+
+  .obj-osk__block--keysblock {
+    flex-basis: 0;
+  }
+  .layout-osk {
+    flex-basis: 50vh;
   }
 }

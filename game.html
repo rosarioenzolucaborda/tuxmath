@@ -24,8 +24,9 @@
     <a class="layout-overlay-buttons__button" onclick="history.back();">
       <img src="images/icons/back.svg" class="layout-overlay-buttons__icon">
     </a>
-    <a class="layout-overlay-buttons__button" onclick="requestFullScreen();">
-      <img src="images/icons/expand.svg" class="layout-overlay-buttons__icon">
+    <a class="layout-overlay-buttons__button js-fullscreenswitch u-hide-on-android">
+      <img src="images/icons/expand.svg" class="layout-overlay-buttons__icon js-icon-fs-off">
+      <img src="images/icons/minimise.svg" class="layout-overlay-buttons__icon js-icon-fs-on" style="display: none;">
     </a>
   </div>
   <div class="layout-page">
@@ -70,27 +71,28 @@
     </div>
     
     <div class="layout-osk obj-osk js-osk" style="display: none;">
+      <div class="obj-osk__block--margintopforbuttons"></div>
       <div class="obj-osk__block obj-osk__block--logo"></div>
-      <div class="obj-osk__block">
+      <div class="obj-osk__block obj-osk__block--keysblock">
         <a class="obj-osk__key" data-osk-kcode=103>7</a>
         <a class="obj-osk__key" data-osk-kcode=104>8</a>
         <a class="obj-osk__key" data-osk-kcode=105>9</a>
       </div>
-      <div class="obj-osk__block">
+      <div class="obj-osk__block obj-osk__block--keysblock">
         <a class="obj-osk__key" data-osk-kcode=100>4</a>
         <a class="obj-osk__key" data-osk-kcode=101>5</a>
         <a class="obj-osk__key" data-osk-kcode=102>6</a>
       </div>
-      <div class="obj-osk__block">
+      <div class="obj-osk__block obj-osk__block--keysblock">
         <a class="obj-osk__key" data-osk-kcode=97>1</a>
         <a class="obj-osk__key" data-osk-kcode=98>2</a>
         <a class="obj-osk__key" data-osk-kcode=99>3</a>
       </div>
-      <div class="obj-osk__block">
+      <div class="obj-osk__block obj-osk__block--keysblock">
         <a class="obj-osk__key" data-osk-kcode=96>0</a>
         <a class="obj-osk__key" data-osk-kcode=109>+ / -</a>
       </div>
-      <div class="obj-osk__block obj-osk__block--validcancel">
+      <div class="obj-osk__block  obj-osk__block--keysblock obj-osk__block--validcancel">
         <a class="obj-osk__key osk__key--enter" data-osk-kcode=13 data-lang-item=kp_enter>Enter</a>
         <a class="obj-osk__key osk__key--backspace" data-osk-kcode=8>x</a>
       </div>
@@ -120,14 +122,16 @@
     MusicPlayer=new MusicPlayer(tmGlob_objTheme);
   
     const urlParams = new URLSearchParams(window.location.search);
-    let objGame=new Game($(".layout-game"));
+    window.objGame=new Game($(".layout-game"));
     $("body").addClass("theme-"+idtheme);    
     
     if (tmGlob_Options.get(OPT_OSK)=="1") $(".js-osk").show();
     
     objGame.startGame(urlParams.get("lvlId"));
     
-    window.dumpCards=function(){ objGame.mathCardsCollection.dump() }
+    window.dumpCards=function(){ objGame.mathCardsCollection.dump(); }
+    window.fullscreenSwitcher=new FullscreenSwitcher($(".js-fullscreenswitch"));
+    if (typeof externalEvtHandler!="undefined") $("body").addClass("android");
   });
   
   

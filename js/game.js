@@ -150,15 +150,25 @@ class Game
         return  this.arIgloos[rndMap[i]];
   }
   
+
+  pause()
+  {
+    this.paused=true;
+    $("body").addClass("gamePaused");
+    MusicPlayer.pause();
+  }
+
+  unPause()
+  {
+    this.paused=false;
+    $("body").removeClass("gamePaused");
+    MusicPlayer.unPause();
+  }
+  
   evtPauseUnpause()
   {
-    this.paused=!this.paused;
-    $("body").toggleClass("gamePaused", this.paused);
-    
-    if (this.paused)
-      MusicPlayer.pause();
-    else
-      MusicPlayer.unPause();
+    if (this.paused) this.unPause();
+    else this.pause();
   }
   
   ispaused() { return this.paused; }

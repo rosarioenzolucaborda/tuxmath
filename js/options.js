@@ -26,15 +26,24 @@ class TmOptions
   
   loadCookies()
   {
-    let cooksArray=document.cookie.split("; ");
-    
-    for (let i in cooksArray)
+    if (typeof CookiesStoreInterface != "undefined") //android app
     {
-      let prm, val;
-      [prm, val]=cooksArray[i].split("=");
-      
       for (let j in OPTIONS_LIST)
-        if (OPTIONS_LIST[j]==prm) this.options[OPTIONS_LIST[j]]=val;
+        if (CookiesStoreInterface.have(OPTIONS_LIST[j]))
+          this.options[OPTIONS_LIST[j]]=CookiesStoreInterface.get(OPTIONS_LIST[j]);
+     }
+    else //on web
+    {
+      let cooksArray=document.cookie.split("; ");
+      
+      for (let i in cooksArray)
+      {
+        let prm, val;
+        [prm, val]=cooksArray[i].split("=");
+        
+        for (let j in OPTIONS_LIST)
+          if (OPTIONS_LIST[j]==prm) this.options[OPTIONS_LIST[j]]=val;
+      }
     }
   }
   
