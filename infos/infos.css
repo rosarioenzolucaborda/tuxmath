@@ -195,3 +195,15 @@ th, td {
 @media (max-width: 750px){
   .o-head__slogan {display: none;}
 }
+
+
+.o-btnbar > * {
+  margin: 0;
+}
+.o-btnbar {
+  display: flex;
+  justify-content: center;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  flex-wrap: wrap;
+}

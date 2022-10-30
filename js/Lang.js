@@ -5,6 +5,7 @@ class Lang
   constructor()
   {
     this.applyLang();
+    this.addAlternates(); 
   }
   
   getBestLang(langSel=false)
@@ -31,7 +32,7 @@ class Lang
   {
     let appliedLang=this.getBestLang(selLang);
     this.langSel=new tmGlobLangClasses["Lang_"+appliedLang];
-    this.applyJqDom($("body"));
+    this.applyJqDom($(document));
   }
   
   applyJqDom(objJq)
@@ -39,7 +40,9 @@ class Lang
     let that=this;
     objJq.find("[data-lang-item]").each(function(){
       let txt=that.getitem(this.getAttribute("data-lang-item"));
-      this.innerHTML=txt;
+      if (this.tagName=="META") this.setAttribute("content", txt);
+      if (this.tagName=="TITLE") this.innerHTML="Tux Math  - "+txt;
+      else this.innerHTML=txt;
     });
     objJq.find("a[data-lang-target]").each(function(){
       let href=that.getitem(this.getAttribute("data-lang-target"));
@@ -51,6 +54,20 @@ class Lang
   {
     return this.langSel[itemId];
   }
+  
+  addAlternates()
+  {
+    for (let i in tmGlobLangClasses)
+    {
+      let lang=i.replace("Lang_", "");
+      let url = new URL(window.location.href);
+      var search_params = url.searchParams;
+      search_params.set('opt_lang', lang);
+      url.search = search_params.toString();
+
+      $('<link rel="alternate" hreflang="'+lang+'" href="'+url.toString()+'" />').appendTo("head");
+    }
+  }
 }
 
 
@@ -59,6 +76,10 @@ class Lang_en
 {
   constructor()
   {
+    //Global data
+    this.meta_desc="Play tuxMath online. Tuxmath is a math game to practice additions subtractions multiplications divisions tables, based from the popular TuxMath for PC. This is a javascript version playable on the web. Tux math is free educational software under open source license.";
+    this.meta_keywords="tux math javascript game addition additions subtractions multiplications divisions tables";
+    
     //top screen counters
     this.counters_level="Level";
     
@@ -193,6 +214,10 @@ class Lang_fr extends Lang_en
   {
     super();
     
+    //Global data
+    this.meta_desc="Jouer en Tux Math en ligne. Tux Math est un jeu mathématique pour s'entraîner aux additions soustractions multiplications divisions tables, basé sur le célèbre TuxMath pour PC, version javascript jouable sur le web. Tux math est un logiciel éducatif libre sous licence open source.";
+    this.meta_keywords="tux math javascript jeu additions soustractions multiplications divisions tables";
+    
     //top screen counters
     this.counters_level="Niveau";
     
@@ -323,6 +348,11 @@ class Lang_es extends Lang_en
   constructor()
   {
     super();
+   
+    //Global data
+    this.meta_desc="Jugar Tux Math en línea. Tux Math es un juego de matemáticas para practicar las tablas de división, suma, resta, multiplicación, basado en el famoso TuxMath para PC, versión de javascript jugable en la web. Tux math es un software educativo gratuito bajo una licencia de código abierto.";
+    this.meta_keywords="tux math javascript juego sumas restas multiplicaciones divisiones tablas";
+
     
     //top screen counters
     this.counters_level="Nivel";
