@@ -24,7 +24,7 @@ let tmGlob_levelsGroups={ //keep this header unchanged for python proccess it
   "mul": ["mul_table_2", "mul_table_3", "mul_table_4", "mul_table_5", "mul_table_1_to_5", "mul_table_6", "mul_table_7", "mul_table_0_to_7", "mul_table_8", "mul_table_9", "mul_table_10", "mul_table_0_to_10", "mul_table_2_3_miss_num", "mul_table_4_5_miss_num", "mul_table_6_7_miss_num", "mul_table_8_9_miss_num", "mul_table_0_to_10_miss_num", "mul_table_11_to_12", "mul_table_13_to_15"],
   "div": ["div_by_2", "div_by_3", "div_by_4", "div_by_5", "div_by_1_to_5", "div_by_6", "div_by_7", "div_by_8", "div_by_9", "div_by_10", "div_by_1_to_10", "mix_div_mul", "div_by_1_to_10_missnum", "div_by_11_to_12", "div_by_13_to_15"],
   "relatives": ["sub_0_to_20_negresults", "add_0_to_10_relatives", "add_0_to_20_relatives", "sub_0_to_10_relatives", "sub_0_to_20_relatives", "mix_add_sub_relatives_3_terms", "mix_add_sub_relatives_up_to_5_terms", "mul_table_0_to_10_relatives", "div_by_1_to_10_relatives", "mix_mul_div_relatives_up_to_4_terms"]
-}//END_tmGlob_levelsGroups leave this so python can detect/extract data.
+};//END_tmGlob_levelsGroups leave this so python can detect/extract data.
 
 
 let tmGlob_levelsSettings={ //keep this header unchanged for python proccess it

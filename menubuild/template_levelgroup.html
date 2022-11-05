@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title data-lang-item="lgroup_{{ grp }}">Tux Math</title>
+    <title data-lang-item="lgroup_{{ grp }}">{{langs['en']['lgroup_'+grp]}}</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -31,7 +31,7 @@
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_{{ grp }}.svg" class="o-menuitemblock__imgcont__img">
           </div>
-          <div data-lang-item="level_{{ lvlId }}" class="o-menuitemblock__txt">---</div>
+          <div data-lang-item="level_{{ lvlId }}" class="o-menuitemblock__txt">{{langs['en']['level_'+lvlId]}}</div>
         </li>
       </a>
     {% endfor %}
@@ -41,7 +41,7 @@
         <div class="o-menuitemblock__imgcont">
           <img height=100% src="menuassets/img/icon_back.svg" class="o-menuitemblock__imgcont__img">
         </div>
-        <div data-lang-item="menuitem_back" class="o-menuitemblock__txt">---</div>
+        <div data-lang-item="menuitem_back" class="o-menuitemblock__txt">{{langs['en']['menuitem_back']}}</div>
       </li>
     </a>
     

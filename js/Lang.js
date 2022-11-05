@@ -5,7 +5,7 @@ class Lang
   constructor()
   {
     this.applyLang();
-    this.addAlternates(); 
+//     this.addAlternates(); Now done by python in dom = more chance search engine will get it. #NB: Dom uses relative link so we may neeed to turn it on back to turn relative link to absolute once the page loaded?langs
   }
   
   getBestLang(langSel=false)
@@ -55,19 +55,21 @@ class Lang
     return this.langSel[itemId];
   }
   
-  addAlternates()
-  {
-    for (let i in tmGlobLangClasses)
-    {
-      let lang=i.replace("Lang_", "");
-      let url = new URL(window.location.href);
-      var search_params = url.searchParams;
-      search_params.set('opt_lang', lang);
-      url.search = search_params.toString();
-
-      $('<link rel="alternate" hreflang="'+lang+'" href="'+url.toString()+'" />').appendTo("head");
-    }
-  }
+  //#Now done by python in dom = more chance search engine will get it
+  //#Dom uses relative link so we may neeed to turn it on back to turn relative link to absolute once the page loaded?langs
+  //   addAlternates()
+  //   {
+  //     for (let i in tmGlobLangClasses)
+  //     {
+  //       let lang=i.replace("Lang_", "");
+  //       let url = new URL(window.location.href);
+  //       var search_params = url.searchParams;
+  //       search_params.set('opt_lang', lang);
+  //       url.search = search_params.toString();
+  // 
+  //       $('<link rel="alternate" hreflang="'+lang+'" href="'+url.toString()+'" />').appendTo("head");
+  //     }
+  //   }
 }
 
 
@@ -94,8 +96,8 @@ class Lang_en
     this.lgroup_relatives="Relative numbers";
     this.menuitem_options="Options";
     this.menuitem_back="Back";
-    this.menuitem_infos="Help and informations"
-    this.menuitem_infos__url="infos/infos-en.html"
+    this.menuitem_infos="Help and informations";
+    this.menuitem_infos__url="infos/infos-en.html";
 
     
     // Level group additions
@@ -215,7 +217,7 @@ class Lang_fr extends Lang_en
     super();
     
     //Global data
-    this.meta_desc="Jouer en Tux Math en ligne. Tux Math est un jeu mathématique pour s'entraîner aux additions soustractions multiplications divisions tables, basé sur le célèbre TuxMath pour PC, version javascript jouable sur le web. Tux math est un logiciel éducatif libre sous licence open source.";
+    this.meta_desc="Jouer en Tux Math en ligne. Tux Math est un jeu mathématique pour s'entraîner aux additions soustractions multiplications divisions, basé sur le célèbre TuxMath pour PC, version javascript jouable sur le web. Tux math est un logiciel éducatif libre sous licence open source.";
     this.meta_keywords="tux math javascript jeu additions soustractions multiplications divisions tables";
     
     //top screen counters
@@ -232,8 +234,8 @@ class Lang_fr extends Lang_en
     this.lgroup_relatives="Nombres relatifs";
     this.menuitem_options="Options";
     this.menuitem_back="Retour";
-    this.menuitem_infos="Aide et informations"
-    this.menuitem_infos__url="infos/infos-fr.html"
+    this.menuitem_infos="Aide et informations";
+    this.menuitem_infos__url="infos/infos-fr.html";
     
     
     // Level group additions
@@ -368,8 +370,8 @@ class Lang_es extends Lang_en
     this.lgroup_relatives="Números relativos";
     this.menuitem_options="Opciones";
     this.menuitem_back="Volver";
-    this.menuitem_infos="Ayuda y información"
-    this.menuitem_infos__url="infos/infos-es.html"
+    this.menuitem_infos="Ayuda y información";
+    this.menuitem_infos__url="infos/infos-es.html";
     
     
     // Level group additions
@@ -485,4 +487,4 @@ var tmGlobLangClasses={
   Lang_en: Lang_en,
   Lang_fr: Lang_fr,
   Lang_es: Lang_es
-};
+};//END_tmGlobLangClasses leave this so python can detect/extract data.

@@ -16,6 +16,8 @@
     <script src="js/Lang.js"></script>
     <script src="js/utils.js"></script>
     <link rel="stylesheet" href="menuassets/css/menus.css">
+    {% for lang in langs %}
+    <link rel="alternate" hreflang="{{ lang }}" href="index.html?opt_lang={{ lang }}" />{% endfor %}
   </head>
   <body>
     <div class="o-title">
@@ -24,36 +26,38 @@
     <div class="o-bigtux">
       <img src="menuassets/img/bigtux-anim.png">
     </div>
-    <ul class="o-menu">
+    <nav class="o-menu">
     {% for grp in levelGroupsData %}        
       <a href="index_{{ grp }}.html" class="o-menu__item o-menu__box u-w100">
-        <li class="o-menuitemblock">
+        <div class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
             <img height=100% src="menuassets/img/icon_lvlgroup_{{ grp }}.svg" class="o-menuitemblock__imgcont__img">
           </div>
-          <div data-lang-item="lgroup_{{ grp }}" class="o-menuitemblock__txt">---</div>
-        </li>
+          <div data-lang-item="lgroup_{{ grp }}" class="o-menuitemblock__txt">{{langs['en']['lgroup_'+grp]}}</div>
+        </div>
       </a>
     {% endfor %}
     
     <a href="options.html" class="o-menu__item o-menu__box u-w100">
-      <li class="o-menuitemblock">
+      <div class="o-menuitemblock">
         <div class="o-menuitemblock__imgcont">
           <img height=100% src="menuassets/img/icon_options.svg" class="o-menuitemblock__imgcont__img">
         </div>
-        <div data-lang-item="menuitem_options" class="o-menuitemblock__txt">---</div>
-      </li>
+        <div data-lang-item="menuitem_options" class="o-menuitemblock__txt">{{langs['en']['menuitem_options']}}</div>
+      </div>
     </a>
     <a data-lang-target="menuitem_infos__url" href="#" class="o-menu__item o-menu__box u-w100">
       <li class="o-menuitemblock">
         <div class="o-menuitemblock__imgcont">
           <img height=100% src="menuassets/img/icon_helpinfo.svg" class="o-menuitemblock__imgcont__img">
         </div>
-        <div data-lang-item="menuitem_infos" class="o-menuitemblock__txt">---</div>
+        <div data-lang-item="menuitem_infos" class="o-menuitemblock__txt">{{langs['en']['menuitem_infos']}}</div>
       </li>
     </a>
-
-    </ul>
+    {#<header class="o-menu__box o-menu__box--infos">
+      This website allows you to play tuxmath online, free and without ads. It is a full rewrite of Tuxmath in javascript language, under AGPL 3.0, provided by Afrikalan. <a data-lang-target="menuitem_infos__url" href="#">More informations</a>. If you look for the original (SDL based) Tux Math, go to <a href="http://www.tux4kids.com">Tux 4 kids</a>.
+    </header>#}
+    </nav>
     
     <script>
       $(function(){
