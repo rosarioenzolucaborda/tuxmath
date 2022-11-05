@@ -20,7 +20,7 @@ This new version of TuxMath brings some new features:
 
 This web version of Tux Math doesn't need to be downloaded ans installed to play it.
 
-If you just need to play the game, and don't need the source code, simply go to (https://tuxmath.org).
+If you just need to play the game, and don't need the source code, simply go to [https://tuxmath.org](https://tuxmath.org).
 
 This will allow you to play Tux Math in your browser without needing to download/install anything.
 
@@ -42,7 +42,7 @@ In Mali, in partnership with the french association Bilou Toguna, more than 133 
 
 The developper doesn't collect donations for himseft, but if you like this web version of Tux Math, he'll be glad if you [make a donation to afrikalan](www.afrikalan.org/mobile-soutient). That will help him to spread Tux Math and others great free educative software to children in Western Africa.
 
-You can get more information about the actions carried out at (https://www.afrikalan.org).
+You can get more information about the actions carried out at [https://www.afrikalan.org](https://www.afrikalan.org).
 
 ## Contact
 
@@ -77,7 +77,7 @@ Cette nouvelle version de TuxMath apporte sont lot de nouveautés:
 
 Cette version web de Tux Math n'a pas besoin d'être téléchargée ou installée pour y jouer.
 
-Si vous avez juste besoin de jouer au jeu et que vous n'avez pas besoin du code source, allez simplement sur (https://tuxmath.org).
+Si vous avez juste besoin de jouer au jeu et que vous n'avez pas besoin du code source, allez simplement sur [https://tuxmath.org](https://tuxmath.org).
 
 Cela vous permettra de jouer à Tux Math dans votre navigateur sans avoir à télécharger/installer quoi que ce soit.
 
@@ -102,7 +102,7 @@ Au Mali, en partenariat avec l'association française Bilou Toguna, plus de 133 
 
 Le développeur ne collecte pas de dons pour lui-même, mais si vous aimez cette version web de Tux Math, il sera ravi si vous [faites un don à afrikalan](www.afrikalan.org/mobile-soutient). Cela l'aidera à diffuser Tux Math et d'autres excellents logiciels éducatifs gratuits aux enfants d'Afrique de l'Ouest.
 
-Vous pouvez obtenir plus d'informations sur les actions menées sur (https://www.afrikalan.org).
+Vous pouvez obtenir plus d'informations sur les actions menées sur [https://www.afrikalan.org](https://www.afrikalan.org).
 
 
 ## Contact.
@@ -140,7 +140,7 @@ En esta nueva versión se han realizado algunas mejoras:
 
 Esta versión web de Tux Math no necesita ser descargada ni instalada para jugarla.
 
-Si solo necesita jugar y no necesita el código fuente, simplemente vaya a (https://tuxmath.org).
+Si solo necesita jugar y no necesita el código fuente, simplemente vaya a [https://tuxmath.org](https://tuxmath.org).
 
 Esto le permitirá jugar Tux Math en su navegador sin necesidad de descargar/instalar nada.
 
@@ -166,7 +166,7 @@ En Malí, en colaboración con la asociación francesa Bilou Toguna, más de 133
 
 El desarrollador no recolecta donaciones para sí mismo, pero si le gusta esta versión web de Tux Math, se alegrará si [hace una donación a afrikalan](www.afrikalan.org/mobile-soutient). Eso lo ayudará a difundir Tux Math y otros excelentes programas educativos libres para niños en África occidental.
 
-Puede obtener más información sobre las acciones realizadas en (https://www.afrikalan.org).
+Puede obtener más información sobre las acciones realizadas en [https://www.afrikalan.org](https://www.afrikalan.org).
 
 
 ## Contact.
