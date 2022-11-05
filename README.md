@@ -6,7 +6,7 @@ A bunch of asteroids are falling on the city and only you can stop them. Armed w
 
 The game has many levels of difficulty, allowing you to train with additions, subtractions, multiplications, divisions and finally relative numbers. It will be perfect for schoolchildren who have to revise their tables, as well as adults who would like to challenge themselves with more difficult calculations.
 
-This game is a rewrite in JavaScript/HTML5 of the famous free software TuxMath, a very popular educational software for PC. This JavaScript verion allows you to play TuxMath (without having to install it), from any web browser, but also on phones and tablets. If you look for the source code of the original (SDL based) TuxMath, you will find it [https://github.com/tux4kids/tuxmath](here)
+This game is a rewrite in JavaScript/HTML5 of the famous free software TuxMath, a very popular educational software for PC. This JavaScript verion allows you to play TuxMath (without having to install it), from any web browser, but also on phones and tablets. If you look for the source code of the original (SDL based) TuxMath, you will find it (https://github.com/tux4kids/tuxmath)[here]
 
 Just like the original game, it's totally open source and free (AGPL v3 license), and without any advertising.
 
