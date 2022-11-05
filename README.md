@@ -1,6 +1,6 @@
 # Tux Math
 
-<img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png" style="margin: auto;">
+<p><img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png"></p>
 
 ## A very fun game to learn tables and practice calculation.
 
@@ -57,7 +57,7 @@ Fell free to contact us at [apps@afrikalan.org](mailto:apps@afrikalan.org).
 
 # Tux Math
 
-<center><img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png"></center>
+<p><img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png"></p>
 
 ## Un jeu vidéo pour apprendre ses tables et s'entrainer au calcul.
 
