@@ -6,7 +6,7 @@ A bunch of asteroids are falling on the city and only you can stop them. Armed w
 
 The game has many levels of difficulty, allowing you to train with additions, subtractions, multiplications, divisions and finally relative numbers. It will be perfect for schoolchildren who have to revise their tables, as well as adults who would like to challenge themselves with more difficult calculations.
 
-This game is a rewrite in JavaScript/HTML5 of the famous free software TuxMath, a very popular educational software for PC. This JavaScript verion allows you to play TuxMath (without having to install it), from any web browser, but also on phones and tablets. If you look for the source code of the original (SDL based) TuxMath, you will find it [here](https://github.com/tux4kids/tuxmath)
+This game is a rewrite in JavaScript/HTML5 of the famous free software TuxMath, a very popular educational software for PC. This JavaScript verion allows you to play TuxMath (without having to install it), from any web browser, but also on phones and tablets. If you look for the source code of the original (SDL based) TuxMath, you will find it [here](https://github.com/tux4kids/tuxmath).
 
 Just like the original game, it's totally open source and free (AGPL v3 license), and without any advertising.
 
@@ -20,7 +20,7 @@ This new version of TuxMath brings some new features:
 
 This web version of Tux Math doesn't need to be downloaded ans installed to play it.
 
-If you just need to play the game, and don't need the source code, simply go to [https://tuxmath.org].
+If you just need to play the game, and don't need the source code, simply go to (https://tuxmath.org).
 
 This will allow you to play Tux Math in your browser without needing to download/install anything.
 
@@ -40,9 +40,9 @@ This involves the creation of computers specifically designed for educational us
 
 In Mali, in partnership with the french association Bilou Toguna, more than 133 libraries have been equipped with educational computers. In Guinea 14 libraries have been equiped in partnership with the french NGO Les enfants de l'Aïr.
 
-The developper doesn't collect donations for himseft, but if you like this web version of Tux Math, he'll be glad if you [www.afrikalan.org/mobile-soutient](make a donation to afrikalan). That will help him to spread Tux Math and others great free educative software to children in Western Africa.
+The developper doesn't collect donations for himseft, but if you like this web version of Tux Math, he'll be glad if you [make a donation to afrikalan](www.afrikalan.org/mobile-soutient). That will help him to spread Tux Math and others great free educative software to children in Western Africa.
 
-You can get more information about the actions carried out at [https://www.afrikalan.org].
+You can get more information about the actions carried out at (https://www.afrikalan.org).
 
 ## Contact
 
@@ -61,7 +61,7 @@ Une pluie d'astéroïdes s'abat sur la ville et vous seul pouvez l'arreter. Arm�
 
 Le jeu dispose de nombreux niveaux de difficultés, permetant de s'entrainer avec les additions, soustractions, multiplications, divisions et enfin les nombres relatifs. Il conviendra parfaitement pour les écoliers qui doivent réviser leur tables, tout comme les adultes qui voudraient se mettre à l'épreuve avec des calculs plus difficiles.
 
-Ce jeu est une réécriture en JavaScript/HTML5 du célèbre logiciel libre TuxMath, un logiciel libre éducatif très populaire pour PC. Cette version JavaScript permet de jouer à TuxMath (sans avoir à l'installer), depuis n'importe quel navigateur web, mais aussi sur téléphones et tablettes. Si vous recherchez le code source du TuxMath original (basé sur SDL), vous le trouverez [https://github.com/tux4kids/tuxmath](ici)
+Ce jeu est une réécriture en JavaScript/HTML5 du célèbre logiciel libre TuxMath, un logiciel libre éducatif très populaire pour PC. Cette version JavaScript permet de jouer à TuxMath (sans avoir à l'installer), depuis n'importe quel navigateur web, mais aussi sur téléphones et tablettes. Si vous recherchez le code source du TuxMath original (basé sur SDL), vous le trouverez [ici](https://github.com/tux4kids/tuxmath).
 
 Tout comme le jeu original, il est totalement libre et gratuit (licence AGPL v3), et sans aucune publicité.
 
@@ -77,7 +77,7 @@ Cette nouvelle version de TuxMath apporte sont lot de nouveautés:
 
 Cette version web de Tux Math n'a pas besoin d'être téléchargée ou installée pour y jouer.
 
-Si vous avez juste besoin de jouer au jeu et que vous n'avez pas besoin du code source, allez simplement sur [https://tuxmath.org].
+Si vous avez juste besoin de jouer au jeu et que vous n'avez pas besoin du code source, allez simplement sur (https://tuxmath.org).
 
 Cela vous permettra de jouer à Tux Math dans votre navigateur sans avoir à télécharger/installer quoi que ce soit.
 
@@ -100,9 +100,9 @@ Cela passe par la création d'ordinateurs spécifiquement conçus pour un usage 
 
 Au Mali, en partenariat avec l'association française Bilou Toguna, plus de 133 bibliothèques ont été équipées d'ordinateurs pédagogiques. En Guinée 14 bibliothèques ont été équipées en partenariat avec l'ONG française Les enfants de l'Aïr.
 
-Le développeur ne collecte pas de dons pour lui-même, mais si vous aimez cette version web de Tux Math, il sera ravi si vous [www.afrikalan.org/mobile-soutient](faites un don à afrikalan). Cela l'aidera à diffuser Tux Math et d'autres excellents logiciels éducatifs gratuits aux enfants d'Afrique de l'Ouest.
+Le développeur ne collecte pas de dons pour lui-même, mais si vous aimez cette version web de Tux Math, il sera ravi si vous [faites un don à afrikalan](www.afrikalan.org/mobile-soutient). Cela l'aidera à diffuser Tux Math et d'autres excellents logiciels éducatifs gratuits aux enfants d'Afrique de l'Ouest.
 
-Vous pouvez obtenir plus d'informations sur les actions menées sur [https://www.afrikalan.org].
+Vous pouvez obtenir plus d'informations sur les actions menées sur (https://www.afrikalan.org).
 
 
 ## Contact.
@@ -124,7 +124,7 @@ Una lluvia de asteroides está cayendo sobre la ciudad y solo tú puedes detener
 
 El juego tiene muchos niveles de dificultad, permitiéndote entrenar con sumas, restas, multiplicaciones, divisiones y finalmente números relativos. Será perfecto para escolares que tengan que repasar sus tablas, así como para adultos que quieran ponerse a prueba con cálculos más difíciles.
 
-Este juego es una reescritura en JavaScript/HTML5 del famoso software gratuito TuxMath, un software educativo muy popular para PC. Esta versión de JavaScript te permite jugar TuxMath (sin tener que instalarlo), desde cualquier navegador web, pero también en teléfonos y tabletas. Si busca el código fuente del TuxMath original (basado en SDL), lo encontrará [https://github.com/tux4kids/tuxmath](aquí)
+Este juego es una reescritura en JavaScript/HTML5 del famoso software gratuito TuxMath, un software educativo muy popular para PC. Esta versión de JavaScript te permite jugar TuxMath (sin tener que instalarlo), desde cualquier navegador web, pero también en teléfonos y tabletas. Si busca el código fuente del TuxMath original (basado en SDL), lo encontrará [aquí](https://github.com/tux4kids/tuxmath).
 
 Al igual que el juego original, es totalmente de código abierto y gratuito (licencia AGPL v3), y sin ningún tipo de publicidad.
 
@@ -140,7 +140,7 @@ En esta nueva versión se han realizado algunas mejoras:
 
 Esta versión web de Tux Math no necesita ser descargada ni instalada para jugarla.
 
-Si solo necesita jugar y no necesita el código fuente, simplemente vaya a [https://tuxmath.org].
+Si solo necesita jugar y no necesita el código fuente, simplemente vaya a (https://tuxmath.org).
 
 Esto le permitirá jugar Tux Math en su navegador sin necesidad de descargar/instalar nada.
 
@@ -164,9 +164,9 @@ Se trata de la creación de ordenadores específicamente diseñados para uso edu
 
 En Malí, en colaboración con la asociación francesa Bilou Toguna, más de 133 bibliotecas han sido equipadas con ordenadores educativos. En Guinea se han equipado 14 bibliotecas en colaboración con la ONG francesa Les enfants de l'Aïr.
 
-El desarrollador no recolecta donaciones para sí mismo, pero si le gusta esta versión web de Tux Math, se alegrará si [www.afrikalan.org/mobile-soutient](hace una donación a afrikalan). Eso lo ayudará a difundir Tux Math y otros excelentes programas educativos libres para niños en África occidental.
+El desarrollador no recolecta donaciones para sí mismo, pero si le gusta esta versión web de Tux Math, se alegrará si [hace una donación a afrikalan](www.afrikalan.org/mobile-soutient). Eso lo ayudará a difundir Tux Math y otros excelentes programas educativos libres para niños en África occidental.
 
-Puede obtener más información sobre las acciones realizadas en [https://www.afrikalan.org].
+Puede obtener más información sobre las acciones realizadas en (https://www.afrikalan.org).
 
 
 ## Contact.
