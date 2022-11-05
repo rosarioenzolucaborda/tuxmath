@@ -1,6 +1,6 @@
 # Tux Math
 
-<center><img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png"></center>
+<img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png" style="margin: auto;">
 
 ## A very fun game to learn tables and practice calculation.
 
