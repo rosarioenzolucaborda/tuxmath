@@ -1,5 +1,7 @@
 # Tux Math
 
+<center><img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png"></center>
+
 ## A very fun game to learn tables and practice calculation.
 
 A bunch of asteroids are falling on the city and only you can stop them. Armed with a laser cannon, you will have to correctly perform the calculations indicated on the asteroids in order to be able to aim them correctly and destroy them.
@@ -54,6 +56,8 @@ Fell free to contact us at [apps@afrikalan.org](mailto:apps@afrikalan.org).
 
 
 # Tux Math
+
+<center><img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png"></center>
 
 ## Un jeu vidéo pour apprendre ses tables et s'entrainer au calcul.
 
@@ -117,6 +121,8 @@ N'hésitez pas à nous contacter à [apps@afrikalan.org](mailto:apps@afrikalan.o
 
 
 # Tux Math
+
+<center><img src="http://download.tuxfamily.org/afrikalan/ext-assets/tuxmath-presentation-512.png"></center>
 
 ## Un videojuego para aprender tablas y practicar el cálculo.
 
