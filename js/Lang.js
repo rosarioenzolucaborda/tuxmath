@@ -39,9 +39,11 @@ class Lang
   {
     let that=this;
     objJq.find("[data-lang-item]").each(function(){
-      let txt=that.getitem(this.getAttribute("data-lang-item"));
+      let item=this.getAttribute("data-lang-item");
+      let txt=that.getitem(item);
+      
       if (this.tagName=="META") this.setAttribute("content", txt);
-      if (this.tagName=="TITLE") this.innerHTML="Tux Math  - "+txt;
+      if ((this.tagName=="TITLE") && (item.substring(0,7) == "lgroup_")) this.innerHTML="Tux Math  - "+txt;
       else this.innerHTML=txt;
     });
     objJq.find("a[data-lang-target]").each(function(){
@@ -79,7 +81,8 @@ class Lang_en
   constructor()
   {
     //Global data
-    this.meta_desc="Play tuxMath online. Tuxmath is a math game to practice additions subtractions or to kearn multiplications tables. Tux Math has been rewritten in javascript to be playable on the web without having to be installed. Tux math is free educational software under an open source license.";
+    this.index_title="Play tuxMath online";
+    this.meta_desc="Tuxmath is a math game to practice additions subtractions or to kearn multiplications tables. Tux Math has been rewritten in javascript to be playable on the web without having to be installed. Tux math is free educational software under an open source license.";
     this.meta_keywords="tux math javascript free educative game gnu gpl agpl tables addition additions subtractions multiplications divisions";
     
     //top screen counters
@@ -217,7 +220,8 @@ class Lang_fr extends Lang_en
     super();
     
     //Global data
-    this.meta_desc="Jouer à Tux Math en ligne. Tux Math est un jeu de calcul pour s'entraîner aux additions soustractions, ou réviser ses tables de multiplications. Tux Math a été réécrit en javascript pour être jouable sur le web sans besoin d'être installé. Tux math est un logiciel éducatif libre sous licence open source.";
+    this.index_title="Jouer à Tux Math en ligne";
+    this.meta_desc="Tux Math est un jeu de calcul pour s'entraîner aux additions soustractions, ou réviser ses tables de multiplications. Tux Math a été réécrit en javascript pour être jouable sur le web sans besoin d'être installé. Tux math est un logiciel éducatif libre sous licence open source.";
     this.meta_keywords="tux math javascript jeu éducatif libre gnu gpl agpl tables additions soustractions multiplications divisions";
     
     //top screen counters
@@ -352,7 +356,8 @@ class Lang_es extends Lang_en
     super();
    
     //Global data
-    this.meta_desc="Jugar Tux Math en línea. Tux Math es un juego de cálculo para practicar sumas y restas, o repasar las tablas de multiplicar. Tux Math ha sido reescrito en javascript para poder jugar en la web sin tener que instalarlo. Tux math es un software educativo gratuito bajo una licencia de código abierto.";
+    this.index_title="Jugar Tux Math en línea";
+    this.meta_desc="Tux Math es un juego de cálculo para practicar sumas y restas, o repasar las tablas de multiplicar. Tux Math ha sido reescrito en javascript para poder jugar en la web sin tener que instalarlo. Tux math es un software educativo gratuito bajo una licencia de código abierto.";
     this.meta_keywords="tux math javascript juego tablas sumas restas multiplicaciones divisiones gnu gpl agpl";
 
     

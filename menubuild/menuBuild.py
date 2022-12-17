@@ -5,6 +5,7 @@ import pprint
 import re
 import jinja2
 from collections import OrderedDict
+import argparse
 
 def extractJsData(data, start, end):
     obj = data[data.find(start)+len(start)-1 : data.rfind(end)+1]
@@ -39,8 +40,12 @@ def getLangs():
 
 
 def writeIndex(levelsGroupsData, langsList):
-  content = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template('template_index.html').render(levelGroupsData=levelGroupsData, langs=langsList)
+  content = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template('template_index.html').render(levelGroupsData=levelGroupsData, langs=langsList, actLang='en', args=args)
   with open("../index.html",'w') as f: f.write(content)
+  
+  for lang in langsList:
+    content = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template('template_index.html').render(levelGroupsData=levelGroupsData, langs=langsList, actLang=lang, args=args)
+    with open("../index-"+lang+".html",'w') as f: f.write(content)
 
 
 def writeSubIndexes(levelsGroupsData, langsList):
@@ -50,6 +55,13 @@ def writeSubIndexes(levelsGroupsData, langsList):
     content = jinja2.Environment(loader=jinja2.FileSystemLoader('./')).get_template('template_levelgroup.html').render(levelsList=levelsGroupsData[gid], grp=gid, langs=langsList)
     with open("../index_"+gid+".html",'w') as f: f.write(content)
 
+
+parser = argparse.ArgumentParser(
+  prog = 'MenuBuild',
+  description = 'Build tuxmath index and menu files from templates')
+
+parser.add_argument('-o', '--official', help="Build menu for official website https://tuxmath.org", action='store_true')
+args = parser.parse_args()
 
 levelGroupsData=loadLevelGroups()
 langsData=getLangs()
