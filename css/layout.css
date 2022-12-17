@@ -336,7 +336,7 @@ body:not(.android) .u-show-on-android-only { display: none }
   }
 
   .obj-osk__block--keysblock {
-    flex-basis: 0;
+    flex-basis: unset;
   }
   .layout-osk {
     flex-basis: 50vh;
