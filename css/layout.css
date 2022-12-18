@@ -21,24 +21,31 @@ body:not(.android) .u-show-on-android-only { display: none }
   display: flex;
   position: absolute;
   z-index: 10;
-  top: .5rem;
-  right: .5rem;
+/*   top: .5rem; */
+/*   right: .5rem; */
+  top: -.5rem;
+  right: -.5rem;
 }
 
 .layout-overlay-buttons__button{
   position: relative;
-  display: block;
+/*   display: block; */
   
   /*Make it bigger, else doesn't well work on Chrome*/
   width: 4rem;
-  text-align: right;
+/*   text-align: right; */
   height: 4rem;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .layout-overlay-buttons__icon
 {
   width: 2rem;
-  padding-bottom: 1rem;
+/*   padding-bottom: 1rem; */
+  margin: auto;
 }
 
 .layout-page {
@@ -304,7 +311,7 @@ body:not(.android) .u-show-on-android-only { display: none }
     padding-left: .5rem;
     padding-right: .2rem;
   }
-  
+
 }
 
 
@@ -336,7 +343,7 @@ body:not(.android) .u-show-on-android-only { display: none }
   }
 
   .obj-osk__block--keysblock {
-    flex-basis: unset;
+    flex-basis: auto;
   }
   .layout-osk {
     flex-basis: 50vh;

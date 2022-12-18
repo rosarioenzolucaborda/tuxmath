@@ -163,13 +163,15 @@ class FullscreenSwitcher
     this.expanded=!this.expanded;
     if (this.expanded)
     {
-      window.requestFullScreen();
+      if (typeof window.requestFullScreen!="undefined")
+        window.requestFullScreen();
       this.objJq.find(".js-icon-fs-on").show();
       this.objJq.find(".js-icon-fs-off").hide();
     }
     else
     {
-      document.exitFullscreen();
+      if (typeof document.exitFullscreen!="undefined")
+        document.exitFullscreen();
       this.objJq.find(".js-icon-fs-on").hide();
       this.objJq.find(".js-icon-fs-off").show();
     }
