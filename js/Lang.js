@@ -82,7 +82,7 @@ class Lang_en
   {
     //Global data
     this.index_title="Play tuxMath online";
-    this.meta_desc="Tuxmath is a math game to practice additions subtractions or to kearn multiplications tables. Tux Math has been rewritten in javascript to be playable on the web without having to be installed. Tux math is free educational software under an open source license.";
+    this.meta_desc="Tuxmath is a math game to practice additions subtractions or to learn multiplications tables. Tux Math has been rewritten in javascript to be playable on the web without having to be installed. Tux math is free educational software under an open source license.";
     this.meta_keywords="tux math javascript free educative game gnu gpl agpl tables addition additions subtractions multiplications divisions";
     
     //top screen counters
