@@ -1,6 +1,10 @@
 <html>
   <head>
-    <title data-lang-item="index_title">{{langs[actLang]['index_title']}}</title>
+    {% if title is not false %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title data-lang-item="index_title">{{langs[actLang]['index_title']}}</title>
+    {% endif %}
     <meta charset="utf-8">
     <meta http-equiv="Content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,8 +20,11 @@
     <script src="js/Lang.js"></script>
     <script src="js/utils.js"></script>
     <link rel="stylesheet" href="menuassets/css/menus.css">
+    {% if suffix=="" %}
     {% for lang in langs %}
-    <link rel="alternate" hreflang="{{ lang }}" href="{% if args.official %}https://tuxmath.org/{% endif %}index-{{ lang }}.html?opt_lang={{ lang }}" />{% endfor %}
+    <link rel="alternate" hreflang="{{ lang }}" href="{% if args.official %}https://tuxmath.org/{% endif %}index-{{ lang }}.html?opt_lang={{ lang }}" />
+    {% endfor %}
+    {% endif %}
   </head>
   <body>
     <div class="o-title">
@@ -27,33 +34,56 @@
       <img src="menuassets/img/bigtux-anim.png">
     </div>
     <nav class="o-menu">
-    {% for grp in levelGroupsData %}        
-      <a href="index_{{ grp }}.html" class="o-menu__item o-menu__box u-w100">
+    {% if indextype=="typeop" %}
+      {% for grp in levelGroupsData %}        
+        <a href="index{{ suffix }}_{{ grp }}.html" class="o-menu__item o-menu__box u-w100">
+          <div class="o-menuitemblock">
+            <div class="o-menuitemblock__imgcont">
+              <img height=100% src="menuassets/img/icon_lvlgroup_{{ grp }}.svg" class="o-menuitemblock__imgcont__img">
+            </div>
+            <div data-lang-item="lgroup_{{ grp }}" class="o-menuitemblock__txt">{{langs[actLang]['lgroup_'+grp]}}</div>
+          </div>
+        </a>
+      {% endfor %}
+    {% endif %}
+    
+    {% if indextype=="classlist" %}
+      {% for grp, name in levelGroupsData.items() %}        
+        <a href="index-{{ grp }}.html" class="o-menu__item o-menu__box u-w100">
+          <div class="o-menuitemblock">
+            <div class="o-menuitemblock__txt">{{ name }}</div>
+          </div>
+        </a>
+      {% endfor %}
+    {% endif %}
+    
+    {% if suffix!="" %}
+      <a href="javascript:history.back()" class="o-menu__item o-menu__box">
+        <li class="o-menuitemblock">
+          <div class="o-menuitemblock__imgcont">
+            <img height=100% src="menuassets/img/icon_back.svg" class="o-menuitemblock__imgcont__img">
+          </div>
+          <div data-lang-item="menuitem_back" class="o-menuitemblock__txt">{{langs['en']['menuitem_back']}}</div>
+        </li>
+      </a>
+    {% else %}
+      <a href="options.html" class="o-menu__item o-menu__box u-w100">
         <div class="o-menuitemblock">
           <div class="o-menuitemblock__imgcont">
-            <img height=100% src="menuassets/img/icon_lvlgroup_{{ grp }}.svg" class="o-menuitemblock__imgcont__img">
+            <img height=100% src="menuassets/img/icon_options.svg" class="o-menuitemblock__imgcont__img">
           </div>
-          <div data-lang-item="lgroup_{{ grp }}" class="o-menuitemblock__txt">{{langs[actLang]['lgroup_'+grp]}}</div>
+          <div data-lang-item="menuitem_options" class="o-menuitemblock__txt">{{langs[actLang]['menuitem_options']}}</div>
         </div>
       </a>
-    {% endfor %}
-    
-    <a href="options.html" class="o-menu__item o-menu__box u-w100">
-      <div class="o-menuitemblock">
-        <div class="o-menuitemblock__imgcont">
-          <img height=100% src="menuassets/img/icon_options.svg" class="o-menuitemblock__imgcont__img">
-        </div>
-        <div data-lang-item="menuitem_options" class="o-menuitemblock__txt">{{langs[actLang]['menuitem_options']}}</div>
-      </div>
-    </a>
-    <a data-lang-target="menuitem_infos__url" href="#" class="o-menu__item o-menu__box u-w100">
-      <li class="o-menuitemblock">
-        <div class="o-menuitemblock__imgcont">
-          <img height=100% src="menuassets/img/icon_helpinfo.svg" class="o-menuitemblock__imgcont__img">
-        </div>
-        <div data-lang-item="menuitem_infos" class="o-menuitemblock__txt">{{langs[actLang]['menuitem_infos']}}</div>
-      </li>
-    </a>
+      <a data-lang-target="menuitem_infos__url" href="#" class="o-menu__item o-menu__box u-w100">
+        <li class="o-menuitemblock">
+          <div class="o-menuitemblock__imgcont">
+            <img height=100% src="menuassets/img/icon_helpinfo.svg" class="o-menuitemblock__imgcont__img">
+          </div>
+          <div data-lang-item="menuitem_infos" class="o-menuitemblock__txt">{{langs[actLang]['menuitem_infos']}}</div>
+        </li>
+      </a>
+    {% endif %}
     {#<header class="o-menu__box o-menu__box--infos">
       This website allows you to play tuxmath online, free and without ads. It is a full rewrite of Tuxmath in javascript language, under AGPL 3.0, provided by Afrikalan. <a data-lang-target="menuitem_infos__url" href="#">More informations</a>. If you look for the original (SDL based) Tux Math, go to <a href="http://www.tux4kids.com">Tux 4 kids</a>.
     </header>#}

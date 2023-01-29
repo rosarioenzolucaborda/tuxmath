@@ -19,7 +19,7 @@
 
 
 let tmGlob_levelsGroups={ //keep this header unchanged for python proccess it
-  "sum": ["add_1_to_3", "add_0_to_5", "add_sum_to_10", "add_sum_to_15", "add_sum_to_20", "add_2_digits", "add_miss_num", "add_3_terms_0_10", "add_3_terms_0_20", "add_up_to_5_terms", "add_3_digits", "add_harder"],
+  "sum": ["add_1_to_3", "add_0_to_5", "add_sum_to_10", "add_sum_to_15", "add_sum_to_20", "add_3_terms_0_10", "add_3_terms_0_20", "add_2_digits", "add_miss_num", "add_up_to_5_terms", "add_3_digits", "add_harder"],
   "sub": ["sub_0_to_5", "sub_0_to_10", "sub_0_to_20_10", "sub_0_to_20_20", "mix_add_sum_0_20", "sub_miss_num", "sub_3_terms_0_10", "mix_add_sum_0_15_3_terms", "mix_add_sum_0_15_up_to_5_terms", "sub_2_digits", "sub_3_digits", "sub_harder"],
   "mul": ["mul_table_2", "mul_table_3", "mul_table_4", "mul_table_5", "mul_table_1_to_5", "mul_table_6", "mul_table_7", "mul_table_0_to_7", "mul_table_8", "mul_table_9", "mul_table_10", "mul_table_0_to_10", "mul_table_2_3_miss_num", "mul_table_4_5_miss_num", "mul_table_6_7_miss_num", "mul_table_8_9_miss_num", "mul_table_0_to_10_miss_num", "mul_table_11_to_12", "mul_table_13_to_15"],
   "div": ["div_by_2", "div_by_3", "div_by_4", "div_by_5", "div_by_1_to_5", "div_by_6", "div_by_7", "div_by_8", "div_by_9", "div_by_10", "div_by_1_to_10", "mix_div_mul", "div_by_1_to_10_missnum", "div_by_11_to_12", "div_by_13_to_15"],
