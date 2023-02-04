@@ -12,9 +12,10 @@ const SFX_BONUS_DESTROYED=10;
 
 class SfxPlayer
 {
-  constructor(objTheme)
+  constructor(objTheme, boolPlaySfx=true)
   {
     this.objTheme=objTheme;
+    this.boolPlaySfx=boolPlaySfx;
     this.sfxUrls=[];
     this.getSfxUrls();
     this.genPlayers();
@@ -52,6 +53,8 @@ class SfxPlayer
   
   playSfx(id)
   {
+    if (! this.boolPlaySfx) return false;
+    
 //     this.arObjDomPlayers[id].pause();
     this.arObjDomPlayers[id].currentTime=0;
     this.arObjDomPlayers[id].play();    
@@ -60,9 +63,10 @@ class SfxPlayer
 
 class MusicPlayer
 {
-  constructor(objTheme)
+  constructor(objTheme, boolPlayMusic=true)
   {
     this.objTheme=objTheme;
+    this.boolPlayMusic=boolPlayMusic;
     this.genPlayer();
     
     this.playing=false;
@@ -86,6 +90,8 @@ class MusicPlayer
   
   playNewSong()
   {
+    if (! this.boolPlayMusic) return false;
+    
     this.objDomPlayer.src=this.objTheme.chooseBackgroundMusic();
     this.objDomPlayer.play();
     this.playing=true;

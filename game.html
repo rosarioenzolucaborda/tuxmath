@@ -103,11 +103,14 @@
   <script>
   $(function(){
     tmGlob_Options=new TmOptions();
+    let boolPlayMusic=(tmGlob_Options.get(OPT_MUSIC)==1);
+    let boolPlaySfx=(tmGlob_Options.get(OPT_SFX)==1);
+    
     tmGlob_Lang=new Lang();
     let idtheme=tmGlob_Options.get(OPT_THEME);
     tmGlob_objTheme=new THEMES[idtheme]();
-    tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme);
-    MusicPlayer=new MusicPlayer(tmGlob_objTheme);
+    tmGlob_objSfxPlayer=new SfxPlayer(tmGlob_objTheme, boolPlaySfx);
+    MusicPlayer=new MusicPlayer(tmGlob_objTheme, boolPlayMusic);
   
     const urlParams = new URLSearchParams(window.location.search);
     window.objGame=new Game($(".layout-game"));

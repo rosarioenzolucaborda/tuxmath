@@ -2,8 +2,10 @@ const OPT_LANG="opt_lang";
 const OPT_THEME="opt_theme";
 const OPT_AUTOLEVEL="opt_autolevel";
 const OPT_OSK="opt_osk";
+const OPT_SFX="opt_sfx";
+const OPT_MUSIC="opt_music";
 
-const OPTIONS_LIST=[OPT_LANG, OPT_THEME, OPT_AUTOLEVEL, OPT_OSK];
+const OPTIONS_LIST=[OPT_LANG, OPT_THEME, OPT_AUTOLEVEL, OPT_OSK, OPT_SFX, OPT_MUSIC];
 
 class TmOptions
 {
@@ -22,6 +24,8 @@ class TmOptions
     this.options[OPT_THEME]="classic";
     this.options[OPT_AUTOLEVEL]="0";
     this.options[OPT_OSK]="1";
+    this.options[OPT_SFX]="1";
+    this.options[OPT_MUSIC]="1";
   }
   
   loadCookies()

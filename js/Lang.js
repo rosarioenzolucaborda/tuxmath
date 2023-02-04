@@ -186,6 +186,8 @@ class Lang_en
     this.optionitem_lang="Language";
     this.optionitem_theme="Theme";
     this.optionitem_autolevel="Autolevel";
+    this.optionitem_music="Music";
+    this.optionitem_sfx="Sfx";
     this.optionitem_osk="Keyboard";
     this.options_back="Back to menu";
     
@@ -324,6 +326,8 @@ class Lang_fr extends Lang_en
     this.optionitem_lang="Langue";
     this.optionitem_theme="Thème";
     this.optionitem_autolevel="Niveau auto";
+    this.optionitem_music="Musique";
+    this.optionitem_sfx="Effets sonores";
     this.optionitem_osk="Clavier";
     this.options_back="Revenir au menu";
 
@@ -462,6 +466,8 @@ class Lang_es extends Lang_en
     this.optionitem_lang="Idioma";
     this.optionitem_theme="Tema";
     this.optionitem_autolevel="Nivel auto";
+    this.optionitem_music="Música";
+    this.optionitem_sfx="Efectos especiales";
     this.optionitem_osk="Teclado";
     this.options_back="Volver al menú";
 
