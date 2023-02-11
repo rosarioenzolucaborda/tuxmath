@@ -74,8 +74,6 @@ class Lang
   //   }
 }
 
-
-
 class Lang_en
 {
   constructor()
@@ -353,6 +351,9 @@ class Lang_fr extends Lang_en
   }
 }
 
+
+
+
 class Lang_es extends Lang_en
 {
   constructor()
@@ -494,8 +495,148 @@ class Lang_es extends Lang_en
 }
 
 
+class Lang_pt extends Lang_en
+{
+  constructor()
+  {
+    super();
+   
+    //Global data
+    this.index_title="Jogar tuxMath online";
+    this.meta_desc="Tuxmath é um jogo de matemática para praticar adições, subtrações ou aprender tabelas de multiplicação. Tux Math foi reescrito em javascript para ser reproduzido na web sem ter que ser instalado. Tux math é um software educacional gratuito sob uma licença de código aberto.";
+    this.meta_keywords="tux math javascript jogo educativo gratuito gnu gpl agpl tabelas adição adições subtrações multiplicações divisões";
+
+    
+    //top screen counters
+    this.counters_level="Nível";
+    
+    //Mobile Keypad
+    this.kp_enter="Entrar";
+    
+    //Level groups and main menu options
+    this.lgroup_sum="Adição";
+    this.lgroup_sub="Subtração";
+    this.lgroup_mul="Multiplicação";
+    this.lgroup_div="Divisão";
+    this.lgroup_relatives="Numeros Relativos";
+    this.menuitem_options="Opções";
+    this.menuitem_back="Voltar";
+    this.menuitem_infos="Ajuda e informações";
+    this.menuitem_infos__url="infos/infos-pt.html";
+    
+    
+    // Level group additions
+    this.level_add_1_to_3="Adição de 1 a 3";
+    this.level_add_0_to_5="Adição de 1 a 5";
+    this.level_add_sum_to_10="Adição acima de 10";
+    this.level_add_sum_to_15="Adição acima de 15";
+    this.level_add_sum_to_20="Adição acima de 20"; 
+    this.level_add_2_digits="Quaisquer números de 2 dígitos"; 
+    this.level_add_miss_num="Adicionar com números ausentes";
+    this.level_add_3_terms_0_10="Adição 3 números, de 0 a 10";
+    this.level_add_3_terms_0_20="Adição 3 números, de 0 a 20";
+    this.level_add_up_to_5_terms="Adição acima de 5 números";
+    this.level_add_3_digits="Adição acima de 1000";
+    this.level_add_harder="Adições difíceis";
+    
+    // Level group subtractions
+    this.level_sub_0_to_5="Subtração de 0 a 5";
+    this.level_sub_0_to_10="Subtração de 0 a 10";
+    this.level_sub_0_to_20_10="Subtração de 0 a 20 fácil";
+    this.level_sub_0_to_20_20="Subtração de 0 a 20";
+    this.level_mix_add_sum_0_20="adições e subtrações 0 a 20";
+    this.level_sub_miss_num="Subtrair com números ausentes"
+    this.level_sub_3_terms_0_10="Subtrair 3 números";
+    this.level_mix_add_sum_0_15_3_terms="adições e subtrações 3 números";
+    this.level_mix_add_sum_0_15_up_to_5_terms="adições e subtrações acima de 5 números",
+    this.level_sub_2_digits="Subtração de 0 a 100";
+    this.level_sub_3_digits="Subtração de 0 a 1000";
+    this.level_sub_harder="Subtrações difíceis";
+    
+    // Level group multiplications
+    this.level_mul_table_2="Tabuada de 2";
+    this.level_mul_table_3="Tabuada de 3";
+    this.level_mul_table_4="Tabuada de 4";
+    this.level_mul_table_5="Tabuada de 5";
+    this.level_mul_table_1_to_5="Tabuada de 1 a 5";
+    this.level_mul_table_6="Tabuada de 6";
+    this.level_mul_table_7="Tabuada de 7";
+    this.level_mul_table_0_to_7="tabuada de 0 a 7";
+    this.level_mul_table_8="Tabuada de 8";
+    this.level_mul_table_9="Tabuada de 9";
+    this.level_mul_table_10="Tabuada de 10";
+    this.level_mul_table_0_to_10="Tabuada de 0 a 10";
+    this.level_mul_table_2_3_miss_num="Tabuada de 2 e 3 (números em falta)";
+    this.level_mul_table_4_5_miss_num="Tabuada de 4 e 5 (números em falta)";
+    this.level_mul_table_6_7_miss_num="Tabuada de 6 e 7 (números em falta)";
+    this.level_mul_table_8_9_miss_num="Tabuada de 8 e 9 (números em falta)";
+    this.level_mul_table_0_to_10_miss_num="Tabuada de 0 a 10 (números em falta)";
+    this.level_mul_table_11_to_12="Tabuada de 11 a 12";
+    this.level_mul_table_13_to_15="Tabuada de 13 a 15";
+    
+    // Level group divisions
+    this.level_div_by_2="Divisão por 2";
+    this.level_div_by_3="Divisão por 3";
+    this.level_div_by_4="Divisão por 4";
+    this.level_div_by_5="Divisão por 5";
+    this.level_div_by_1_to_5="Divisão por 1 a 5";
+    this.level_div_by_6="Divisão por 6";
+    this.level_div_by_7="Divisão por 7";
+    this.level_div_by_8="Divisão por 8";
+    this.level_div_by_9="Divisão por 9";
+    this.level_div_by_10="Divisão por 10";
+    this.level_div_by_1_to_10="Divisão por 1 a 10";
+    this.level_mix_div_mul="Multiplicação e Divisão, de 1 a 10";
+    this.level_div_by_1_to_10_missnum="Divisão por 1 a 10, números ausentes";
+    this.level_div_by_11_to_12="Divisão por 11 a 12";
+    this.level_div_by_13_to_15="Divisão por 13 a 15";
+    
+    // Level group relatives
+    this.level_sub_0_to_20_negresults="Subtrair com resultados negativos";
+    this.level_add_0_to_10_relatives="Somar numeros relativos -10 a 10";
+    this.level_add_0_to_20_relatives="Somar numeros relativos -20 a 20";
+    this.level_sub_0_to_10_relatives="Subtrair Numeros Relativos -10 a 10";
+    this.level_sub_0_to_20_relatives="Subtrair Numeros Relativos -20 a 20";
+    this.level_mix_add_sub_relatives_3_terms="Adicionar e Subtrair Numeros Relativos -10 a 10, 3 termos";
+    this.level_mix_add_sub_relatives_up_to_5_terms="Adicionar e Subtrair Numeros Relativos, acima de 5 termos";
+    this.level_mul_table_0_to_10_relatives="Multiplicar Numeros Relativos -10 to 10";
+    this.level_div_by_1_to_10_relatives="Dividir Numeros Relativos -10 to 10";
+    this.level_mix_mul_div_relatives_up_to_4_terms="Multiplicar e dividir até 4 números de parentes";
+    
+    
+    //option items
+    this.optionitem_lang="Linguagem";
+    this.optionitem_theme="Tema";
+    this.optionitem_autolevel="Nível automático";
+    this.optionitem_music="Música";
+    this.optionitem_sfx="Sfx";
+    this.optionitem_osk="Teclado";
+    this.options_back="Voltar ao menu";
+    
+    //option choices
+    this.optionchoice_yes="Sim";
+    this.optionchoice_no="Não";
+    this.optionchoice_show="Mostrar";
+    this.optionchoice_hide="Esconder";
+    this.optionitem_autolevel_description="Quando o nível automático é ativado, o jogo pula automaticamente para outro nível se detectar que o nível selecionado é muito fácil ou muito difícil para o jogador.";
+    this.optionchoice_theme_classic="Classico";
+    this.optionchoice_theme_original="Original";
+    this.optionchoice_theme_afrikalan="Afrikalan";
+
+    
+    //Messages
+    this.message_al_toast_jumpbackward="Nível automático: pulou para um nível mais fácil";
+    this.message_al_toast_jumpforward="Nível automático: pulou para um nível mais avançado";
+    this.message_gameEnd_win="Parabéns, você venceu!";
+    this.message_gameEnd_loose="Fim do jogo";
+    this.message_gameEnd_annykeyback="Pressione qualquer tecla ou clique / toque aqui para voltar ao menu principal";
+  }
+}
+
+
 var tmGlobLangClasses={
   Lang_en: Lang_en,
   Lang_fr: Lang_fr,
-  Lang_es: Lang_es
+  Lang_es: Lang_es,
+  Lang_pt: Lang_pt
 };//END_tmGlobLangClasses leave this so python can detect/extract data.

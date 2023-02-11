@@ -1,0 +1,158 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="infos.css">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+</head>
+<body>
+  <header class="o-head">
+    <div class="u-nogrow o-head__logoAfkl">
+      <img src=logo.png style="max-height: 120px;">
+    </div>
+    <div class="u-grow o-head__slogan">
+      <div style="color: #6faa2f; font-family: sans; font-style: italic; font-size: 0.9em; max-width:23em; text-align: right"><b STYLE="color: #ea7345">kalan</b> <i>\kà.la~\</i>: Verbo en lengua bambara que significa leer, aprender, enseñar.</div>		
+    </div>
+    <div class="u-nogrow o-head__logoTm">
+      <img src=../images/logoTm--white.svg style="max-height: 120px;">
+    </div>
+	</header>
+	<section>
+    <p>Estamos orgullosos de apresentar o lendário Tuxmath, reescrito em Javascript/HTML5. Isso permite jogar o TuxMath (sem ter que instalá-lo), a partir de qualquer navegador da web, mas também em telefones e tablets. Esta nova versão do Tuxmath foi criada como parte do <a href=#afrikalan>projeto Afrikalan</a>, cujo objetivo é fazer com que o software educativo gratuito seja acessível na África ocidental. Se você gosta deste aplicativo, convidamos você a descobrir e apoiar as ações do projeto Afrikalan com escolas e bibliotecas na África Ocidental.</p>
+    <center class="o-btnbar">
+      <a class="calltoaction" href="#afrikalan" >
+        Descobrir Afrikalan
+      </a>
+      <a class="calltoaction" href="http://afrikalan.org/mobile-soutient?o=tuxmathDroid" >
+        <img src="heart.svg" class="inline-icon">Apoiar Afrikalan
+      </a>
+    </center>
+    <p>A versão original do TuxMath está disponível no site do Tux4Kids: <a href=http://www.tux4kids.com/tuxmath.html>http://www.tux4kids.com/tuxmath.html</a>. La mayor parte de los elementos gráficos y sonoros proceden de esta última.</p>
+    <p>Nesta nova versão foram feitas algumas melhorias:</p>
+    <ul>
+      <li>A opção "nível automático": Ao ativar esta opção, o jogo mudará automaticamente para outro nível se o aluno achar muito fácil ou muito difícil com as operações a serem resolvidas.
+      <li>Níveis adicionados com três ou mais operações numéricas.
+      <li>Uma penalidade (iglu destruído) em caso de muitas respostas incorretas (para que a estratégia de tentar todas as respostas não vença).
+      <li>Possibilidade de jogar com 3 temas gráficos: "Classico", "Original" y "Afrikalan".
+    </ul>
+    <p>
+      Este aplicativo é distribuído sob <a href="https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU">licencia GNU GPL V3</a>, que le garantiza el derecho a usarla y compartirla libremente. Las personas que lo deseen pueden acceder al código fuente en <a href=https://gitlab.com/Afrikalan/tuxmath-js>https://gitlab.com/Afrikalan/tuxmath-js</a>.</p>
+  </section>
+  <section>
+    <h2>Como jogar:</h2>
+    <div class="o-img-text">
+      <div class="o-img-text__text">
+        <ul>
+          <li>Escolha o nível desejado no menu.
+          <li>Asteroides caem do céu. Destrua-os antes que caiam no chão! Para apontar corretamente para um asteroide com o feixe de laser, resolva a operação escrita no asteroide, insira o resultado no teclado e valide com a tecla "Enter". Se a resposta estiver correta, o laser atinge e destrói o asteroide. Faça o mesmo para todos os asteróides presentes na tela. Em caso de resposta errada, o laser vai na direção errada (Cuidado com danos colaterais!).
+          <li> A tecla TAB no teclado permite pausar o jogo.
+          <li class=u-hide-on-android>O ícone <div class=inline-white-icon-holder><img src=../images/icons/expand.svg></div> cambia a pantalla completa.
+        </ul>
+      </div>
+      <div class="o-img-text__img">
+        <img src="gameplay-anim.webp">
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>URL direto para um determinado nível:</h2>
+    <p>É possível fornecer um URL direto para um nível. (Útil para professores que desejam orientar seus alunos na revisão de uma tabela de multiplicação precisa, por exemplo.)</p>
+    <p>Para fazer isso, vá para http://www.tuxmath.org e, no menu, clique com o botão direito do mouse no nível desejado e selecione "copiar caminho do link"). Obtém uma URL no formato http://tuxmath.org/game.html?lvlId=xxxxxxxxxx, onde xxxxxxxxxx é o nível selecionado.
+    <p>É possível adicionar diferentes opções ao URL:</p>
+    <table>
+      <tr>
+        <th>Opção</th>
+        <th>Efeito</th>
+        <th>Valores possíveis</th>
+      </tr>
+      <tr>
+        <td>&opt_lang=X</td>
+        <td>Selecione o idioma do jogo (substitua X pelo idioma desejado).</td>
+        <td>X=fr français.<br>X=pt  Portugues.<br>X=en  anglais.<br>X=es espagnol.</td>
+      </tr>
+      <tr>
+        <td>&opt_autolevel=X</td>
+        <td>Ativa ou desativa a mudança automática de nível quando o nível selecionado é muito fácil ou muito difícil para o aluno. (desativado por padrão)</td>
+        <td>X=1 nível automático habilitado.<br>X=0 nível automático desabilitado (padrão).</td>
+      </tr>
+      <tr>
+        <td>&opt_theme=X</td>
+        <td>Selecione o tema gráfico (substitua o X pelo tema desejado).</td>
+        <td>X=Classico (por defecto).<br>X=original.<br>X=afrikalan.</td>
+      </tr>
+      <tr>
+        <td>&opt_osk=X</td>
+        <td>Mostra ou oculta o teclado virtual na tela.</td>
+        <td>X=1 Teclado visível (padrão).<br>X=0 Teclado oculto.</td>
+      </tr>
+    </table>
+    <p>Por exemplo, a URL http://www.tuxmath.org/game.html?lvlId=mul_table_5&opt_lang=es&opt_osk=1 levará diretamente ao nível "tabela de multiplicação de 5", garantindo que o idioma selecionado seja o espanhol e que o virtual teclado está ativado.</p>
+	</section>
+	<section>
+    <h2>Contato:</h2>
+    <p>Julien Marin, o desenvolvedor, pode ser contatado em <a href="mailto:apps@afrikalan.org">apps@afrikalan.org</a>.</p>
+	</section>
+	<section id=afrikalan>
+    <h2>O que é Afrikalan?</h2>
+    <p>Esta versão do TuxMath foi criada como parte do projeto Afrikalan.</p>
+    <p>Afrikalan é um projeto que visa tornar o software educacional gratuito acessível a crianças nos países do sul.</p>
+    <p>Trata-se da criação de computadores especificamente concebidos para uso educativo, que são doados a estruturas públicas ou sem fins lucrativos de acolhimento de crianças: escolas, bibliotecas, abrigos, etc...</p>
+    <p>No Mali, em colaboração com a associação francesa Bilou Toguna, mais de 133 bibliotecas foram equipadas com computadores educativos. Na Guiné, 14 bibliotecas foram equipadas em colaboração com a ONG francesa Les enfants de l'Aïr. Nosso site permitirá que você conheça mais sobre as ações realizadas.</p>
+    <center>
+      <a class="calltoaction u-hide-on-android" href="http://afrikalan.org/mobile-www?o=tuxmath" >
+        <img src="earth.svg" class="inline-icon inline-icon--bigger">Visite afrikalan.org
+      </a>
+      <a class="calltoaction u-show-on-android-only" href="http://afrikalan.org/mobile-www?o=tuxmathDroid" >
+        <img src="earth.svg" class="inline-icon inline-icon--bigger">Visite afrikalan.org
+      </a>
+    </center>
+
+  </section>
+  <center><img src=koutiala.jpg class="u-fit"></center>
+  <section>
+    <p>Afrikalan também é um trabalho de criação de conteúdo educacional adaptado ao contexto cultural em que esses computadores educacionais são fornecidos.</p>
+    <p>É neste contexto que esta versão do Tuxmath foi criada. Este aplicativo é distribuído sob o <a href="https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU">Licença GNU GPL V3</a>, que concede a você o direito de usá-la e compartilhá-la livremente.</p>
+    <p><center><img src=md.jpg class="u-fit"></center></p>
+    <p>Se você achar este aplicativo útil, você pode apoiar o projeto Afrikalan para que as crianças na África Ocidental possam se beneficiar dele.</p>
+    <center>
+      <a class="calltoaction u-hide-on-android" href="http://afrikalan.org/mobile-soutient?o=tuxmath" >
+        <img src="heart.svg" class="inline-icon">Apoiar Afrikalan
+      </a>
+      <a class="calltoaction u-show-on-android-only" href="http://afrikalan.org/mobile-soutient?o=tuxmathDroid" >
+        <img src="heart.svg" class="inline-icon">Apoiar Afrikalan
+      </a>
+    </center>
+    <p>Obrigado pelo seu tempo.</p>
+    <p><a class="" href="javascript:history.back()">&lt;- Voltar ao Menu</a></p>
+  </section>
+  
+  
+  <div class="pied">
+    <img class="principale" src="site_basPageGen2b.png">
+    <img class="village" src="village.png">
+  </div>
+</body>
+
+<script>
+
+function evtClickLink(evt)
+{
+  var url=evt.target.href;
+  if (typeof url=="undefined") url="";
+  
+  if ((typeof externalEvtHandler!="undefined") && (typeof externalEvtHandler.openUrl!="undefined") && url.startsWith("http"))
+  { 
+    externalEvtHandler.openUrl(url);
+    evt.preventDefault();
+  }
+  
+}
+if (typeof externalEvtHandler!="undefined") document.querySelector("body").classList.add("android");
+
+var arLinkNodes=document.querySelectorAll('a'); 
+for (var i=0; i<arLinkNodes.length; i++)
+  arLinkNodes[i].addEventListener("click", evtClickLink);
+
+</script>
+
+
+</html>
