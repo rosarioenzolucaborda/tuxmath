@@ -150,6 +150,9 @@ class MathsCardsGenerator
       throw "many chained division are note possible for now on...";
     }
     
+    if ((this.genSettings.div_divisor_min==0) && (this.genSettings.div_divisor_max==0))
+      throw "can't force divisor to be zero!";
+    
     if ((! this.genSettings.sub_negative_result_allowed) && (this.genSettings.oper.indexOf("sub")!=-1) && ( (this.genSettings.oper.indexOf("mul")!=-1) || (this.genSettings.oper.indexOf("div")!=-1) ) )
     {
       throw "sub_negative_result_allowed can't be correcctly enforced when sub mixed with higher priority ops like mul or div.";
@@ -215,6 +218,7 @@ class MathsCardsGenerator
         case "div":
           if (mathcard.operators.length>0) continue; //can't handle cases where division is not in first place
           let divisor=getRandomInt(this.genSettings.div_divisor_min, this.genSettings.div_divisor_max);
+          if (divisor==0) continue;
           let minResult=Math.ceil(this.genSettings.div_dividand_min/divisor);
           let maxResult=Math.floor(this.genSettings.div_dividand_max/divisor);
           minResult=Math.max(minResult, this.genSettings.div_result_min);
