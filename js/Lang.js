@@ -345,9 +345,9 @@ class Lang_fr extends Lang_en
     //Messages
     this.message_al_toast_jumpbackward="Niveau auto: a sauté vers un niveau plus simple";
     this.message_al_toast_jumpforward="Niveau auto: a sauté vers un niveau plus avancé";
-    this.message_gameEnd_win="Féliciations, tu as gagné!";
+    this.message_gameEnd_win="Félicitations, tu as gagné!";
     this.message_gameEnd_loose="Game Over";
-    this.message_gameEnd_annykeyback="Appuye sur n'importe quelle touche, ou clique / tape ici pour revenir au menu principal";
+    this.message_gameEnd_annykeyback="Appuie sur n'importe quelle touche, ou clique / tape ici pour revenir au menu principal";
   }
 }
 
