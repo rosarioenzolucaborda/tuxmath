@@ -29,7 +29,7 @@ class Comet
     this.objGame=objGame;
     this.isBonus=this.objGame.nextCometIsBonus();
     this.mathCard=mathCard;
-    this.answer=this.mathCard.getAnswer();
+    this.answer=this.mathCard.getPossibleAnswer();
     this.colNumber=getRandomInt(1, GAME_COLUMNS_NUMBER);
     this.id=tmGlob_cometIdCounter;
     tmGlob_cometIdCounter++;

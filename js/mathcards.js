@@ -97,6 +97,20 @@ class MathCard
       return this.operands[this.questionLocation];
   }
 
+  isValid()
+  {
+    let result=this.calcResult();
+    
+    if (isNan(result))
+      return false;
+    
+    if ((this.questionLocation==MATHCARD_QUESTION_LOC_ANSWER) && (result==0)) //check that there is not multiply by zero if answer is zero to avoid situations like 0 x ? = 0 that admite infinite solutions...
+    {
+      for(let i=0; i<this.operands.length
+    }
+      
+    return true
+  }
 }
 
 
@@ -218,7 +232,7 @@ class MathsCardsGenerator
         case "div":
           if (mathcard.operators.length>0) continue; //can't handle cases where division is not in first place
           let divisor=getRandomInt(this.genSettings.div_divisor_min, this.genSettings.div_divisor_max);
-          if (divisor==0) continue;
+          //if (divisor==0) continue; //checked by Mathcard.isvalid()
           let minResult=Math.ceil(this.genSettings.div_dividand_min/divisor);
           let maxResult=Math.floor(this.genSettings.div_dividand_max/divisor);
           minResult=Math.max(minResult, this.genSettings.div_result_min);
@@ -238,6 +252,8 @@ class MathsCardsGenerator
     
     return mathcard;
   }
+  
+
 }
 
 class MathCardsCollection
@@ -252,8 +268,12 @@ class MathCardsCollection
     let cardGenerator=new MathsCardsGenerator();
     cardGenerator.loadGenSettings(tmGlob_levelsSettings[lvlId]);
     
-    for (let i=0; i<num; i++)
-      this.arCards.push(cardGenerator.genCard());
+    for (let i=0; i<num; let card=cardGenerator.genCard())
+      if (card.isValid())
+      {
+        this.arCards.push(card);
+        i++;
+      }
   }
   
   addMathCard(mathCard, copies)
