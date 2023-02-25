@@ -35,7 +35,7 @@ class MathCard
   {
     return this.operators.length;
   }
-  
+
   calcResult()
   {
     let calcString=this.formatNegNumStr(this.operands[0]); //Formated negstrings needed, else "--" will cause erros
@@ -89,7 +89,7 @@ class MathCard
     return genString;
   }
   
-  getAnswer()
+  getPossibleAnswer()
   {
     if (this.questionLocation==MATHCARD_QUESTION_LOC_ANSWER)
       return this.calcResult();
@@ -101,12 +101,15 @@ class MathCard
   {
     let result=this.calcResult();
     
-    if (isNan(result))
+    if (isNaN(result))
       return false;
     
-    if ((this.questionLocation==MATHCARD_QUESTION_LOC_ANSWER) && (result==0)) //check that there is not multiply by zero if answer is zero to avoid situations like 0 x ? = 0 that admite infinite solutions...
+    if ((this.questionLocation!=MATHCARD_QUESTION_LOC_ANSWER)) //check that there is not multiply by zero if answer is zero to avoid situations like 0 x ? = 0 that admite infinite solutions...
     {
-      for(let i=0; i<this.operands.length
+      for(let i=this.questionLocation; i<this.operators.length && this.operators[i]=="*"; i++)
+        if (this.operands[i+1]=="0") return false;
+      for(let i=this.questionLocation; i>0 && this.operators[i-1]=="*"; i--)
+        if (this.operands[i-1]=="0") return false;
     }
       
     return true
@@ -268,12 +271,13 @@ class MathCardsCollection
     let cardGenerator=new MathsCardsGenerator();
     cardGenerator.loadGenSettings(tmGlob_levelsSettings[lvlId]);
     
-    for (let i=0; i<num; let card=cardGenerator.genCard())
+    for (let i=0; i<num; i++)
+    {
+      let card=cardGenerator.genCard()
       if (card.isValid())
-      {
         this.arCards.push(card);
-        i++;
-      }
+      //else console.log("carte refusée: ", card.questionText(), card.questionText(true), card);
+    }
   }
   
   addMathCard(mathCard, copies)
@@ -298,6 +302,6 @@ class MathCardsCollection
   dump()
   {
     for (let i in this.arCards)
-      console.log(this.arCards[i].questionText(), this.arCards[i].getAnswer())
+      console.log(this.arCards[i].questionText(), this.arCards[i].getPossibleAnswer())
   }
 }

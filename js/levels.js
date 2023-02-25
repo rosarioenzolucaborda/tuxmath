@@ -359,7 +359,7 @@ let tmGlob_levelsSettings={ //keep this header unchanged for python proccess it
     "mul_multiplacand_min": 1,
     "mul_multiplacand_max": 10,
     "allowed_question_location": [0, 1, MATHCARD_QUESTION_LOC_ANSWER]
-  },  
+  },
   "mul_table_11_to_12":  {
     "oper": ["mul"],
     "first_operand_min": 11,
