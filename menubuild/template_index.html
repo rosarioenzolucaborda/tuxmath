@@ -87,6 +87,12 @@
     {#<header class="o-menu__box o-menu__box--infos">
       This website allows you to play tuxmath online, free and without ads. It is a full rewrite of Tuxmath in javascript language, under AGPL 3.0, provided by Afrikalan. <a data-lang-target="menuitem_infos__url" href="#">More informations</a>. If you look for the original (SDL based) Tux Math, go to <a href="http://www.tux4kids.com">Tux 4 kids</a>.
     </header>#}
+    {% if args.official %}
+      <div class="o-menuitemblock--getappicons">
+        <a href="https://f-droid.org/fr/packages/org.afrikalan.tuxmath"><img src="http://download.tuxfamily.org/afrikalan/assets/badge--f-droid-33px.png" height=32></a>
+        <a href="https://play.google.com/store/apps/details?id=org.afrikalan.tuxmath"><img src="http://download.tuxfamily.org/afrikalan/assets/badge--googlePlay-33px.png" height=32></a>
+      </div>
+    {% endif %}
     </nav>
     
     <script>

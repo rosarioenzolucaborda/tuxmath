@@ -76,6 +76,15 @@ a.o-menu__box { text-decoration: none; }
   display: flex;
 }
 
+.o-menuitemblock--getappicons
+{
+  display: flex;
+  justify-content: right;
+  column-gap: 2rem;
+  margin-top: 3rem;
+}
+
+
 .o-menuitemblock__imgcont
 {
   display: flex;
