@@ -170,6 +170,7 @@ body:not(.android) .u-show-on-android-only { display: none }
   background-position-y: bottom;
   position: absolute;
   z-index: 0;
+  background-color: #3c3c3c;
 }
 
 
