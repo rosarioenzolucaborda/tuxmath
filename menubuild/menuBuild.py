@@ -35,9 +35,10 @@ def getLangs():
         alang=line[11:13]
         lang_data[alang]={}
       
-      m = re.match(" *this.([^=]*)=\"(.*)\";", line)
-      if m:
-        lang_data[alang][m.group(1)]=m.group(2)
+      if alang is not False:
+        m = re.match(" *this.([^=]*)=\"(.*)\";", line)
+        if m:
+          lang_data[alang][m.group(1)]=m.group(2)
       
   return lang_data
 

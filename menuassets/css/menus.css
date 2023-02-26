@@ -15,6 +15,41 @@ body
     left: 1.5rem;
 }
 
+.o-announce {
+  background: white;
+  min-height: 5rem;
+  background-color: #8a8989ba;
+  border-radius: 1rem;
+  margin: 1rem;
+  margin-left: 20rem;
+  margin-top: 2rem;
+  margin-bottom: -3rem;
+  margin-right: 2rem;
+  
+  display: flex;
+}
+
+.o-announce__message {
+  flex-grow: 1;
+  margin: .5rem;
+  color: white;
+  font-family: sans;
+  align-self: center;
+/*   font-size: 1.1rem; */
+}
+.o-announce__icon {
+  margin: .5em;
+  text-align: center;
+  margin-right: 0;
+  align-self: center;
+}
+.o-announce__icon img {
+}
+.js-announce-close {
+  padding: .5rem;
+  display: block;
+}
+
 .o-menu
 {
 /*   display: flex; */
@@ -146,6 +181,7 @@ a.o-menu__box { text-decoration: none; }
   
   .o-menu { margin-top: 3rem; }
   
+  .o-announce { margin: 1rem; }
 }
 
 @media (max-width: 640px) {

@@ -4,6 +4,7 @@ class Lang
 {
   constructor()
   {
+    this.appliedLang="";
     this.applyLang();
 //     this.addAlternates(); Now done by python in dom = more chance search engine will get it. #NB: Dom uses relative link so we may neeed to turn it on back to turn relative link to absolute once the page loaded?langs
   }
@@ -30,8 +31,8 @@ class Lang
   
   applyLang(selLang=false)
   {
-    let appliedLang=this.getBestLang(selLang);
-    this.langSel=new tmGlobLangClasses["Lang_"+appliedLang];
+    this.appliedLang=this.getBestLang(selLang);
+    this.langSel=new tmGlobLangClasses["Lang_"+this.appliedLang];
     this.applyJqDom($(document));
   }
   

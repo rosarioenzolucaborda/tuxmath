@@ -31,6 +31,11 @@
     
   </head>
   <body>
+    <div class="o-announce js-announce" style="display: none;">
+      <div class="o-announce__icon"><img src="menuassets/img/announce-icon.svg" height=65></div>
+      <div class="o-announce__message js-announce__message"></div>
+      <div class="o-announce__close"><a class="js-announce-close" href=#><img src="menuassets/img/announce-close.svg" height=20 ></a></div>
+    </div>
     <div class="o-title">
       <img src="images/logoTm.svg">
     </div>
@@ -115,6 +120,14 @@
       $(function(){
         tmGlob_Options=new TmOptions();
         tmGlob_Lang=new Lang();
+        
+        $(".js-announce-close").click(function(){ $(".js-announce").hide(); });
+        let announces={};
+        if (Object.hasOwn(announces, tmGlob_Lang.appliedLang))
+        {
+          $(".js-announce__message").html(announces[tmGlob_Lang.appliedLang]);
+          $(".js-announce").show();
+        }
       });
     </script>
   </body>
