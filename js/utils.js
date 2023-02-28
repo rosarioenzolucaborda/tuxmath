@@ -177,3 +177,31 @@ class FullscreenSwitcher
     }
   }
 }
+
+//handle click on the "back" button (in game).
+//NB: this function needs acces top Toast class and tmGlob_Lang variable
+const SECOND_CLICK_EXIT_DELAY_MS=5000;
+function handleBackClickEvt(evt)
+{
+  if (typeof handleBackClickEvt.lastClickTs=="undefined") handleBackClickEvt.lastClickTs=0;
+  if (typeof handleBackClickEvt.mobileDetected=="undefined") handleBackClickEvt.mobileDetected=false;
+  
+  if (evt.type=='touchend') 
+  { 
+    handleBackClickEvt.mobileDetected=true;
+    return ;
+  }
+  
+  if (! handleBackClickEvt.mobileDetected)
+    history.back(); //event triggered by mouse, no risk of error, exit immediately
+  else //event triggered by touch, ask confiration by second touch before exit.
+  {
+    let thisClickTs=new Date();
+    if (thisClickTs-handleBackClickEvt.lastClickTs < SECOND_CLICK_EXIT_DELAY_MS)
+      history.back();
+    else
+      new Toast(tmGlob_Lang.getitem("message_toast_clickagainexit"));
+  
+    handleBackClickEvt.lastClickTs=thisClickTs;
+  }
+}

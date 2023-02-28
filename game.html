@@ -21,7 +21,7 @@
 
 <body>
   <div class="layout-overlay-buttons">
-    <a class="layout-overlay-buttons__button" onclick="history.back();">
+    <a class="layout-overlay-buttons__button js-icon-back">
       <img src="images/icons/back.svg" class="layout-overlay-buttons__icon">
     </a>
     <a class="layout-overlay-buttons__button js-fullscreenswitch u-hide-on-android">
@@ -122,6 +122,7 @@
     
     window.dumpCards=function(){ objGame.mathCardsCollection.dump(); }
     window.fullscreenSwitcher=new FullscreenSwitcher($(".js-fullscreenswitch"));
+    $(".js-icon-back").on("touchend click", handleBackClickEvt);
     if (typeof externalEvtHandler!="undefined") $("body").addClass("android");
   });
   

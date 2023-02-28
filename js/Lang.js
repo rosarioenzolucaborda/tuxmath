@@ -204,6 +204,7 @@ class Lang_en
     //Messages
     this.message_al_toast_jumpbackward="Autolevel: jumped to an easier level";
     this.message_al_toast_jumpforward="Autolevel: jumped to a more advanced level";
+    this.message_toast_clickagainexit="Press the back button again to quit the game";
     this.message_gameEnd_win="Congratulations, you won!";
     this.message_gameEnd_loose="Game Over";
     this.message_gameEnd_annykeyback="Press any key, or click / tap here to get back to main menu";
@@ -346,6 +347,7 @@ class Lang_fr extends Lang_en
     //Messages
     this.message_al_toast_jumpbackward="Niveau auto: a sauté vers un niveau plus simple";
     this.message_al_toast_jumpforward="Niveau auto: a sauté vers un niveau plus avancé";
+    this.message_toast_clickagainexit="Appuyez à nouveau sur le bouton de retour pour quitter le jeu";
     this.message_gameEnd_win="Félicitations, tu as gagné!";
     this.message_gameEnd_loose="Game Over";
     this.message_gameEnd_annykeyback="Appuie sur n'importe quelle touche, ou clique / tape ici pour revenir au menu principal";
@@ -489,6 +491,7 @@ class Lang_es extends Lang_en
     //Messages
     this.message_al_toast_jumpbackward="Nivel automático: saltó a un nivel más simple";
     this.message_al_toast_jumpforward="Nivel automático: saltó a un nivel más avanzado";
+    this.message_toast_clickagainexit="Presione el botón Atrás nuevamente para salir del juego";
     this.message_gameEnd_win="¡Felicitaciones, has ganado!";
     this.message_gameEnd_loose="Game Over";
     this.message_gameEnd_annykeyback="Pulse cualquier tecla, o haz clic / toque aquí para volver al menú principal";
@@ -628,6 +631,7 @@ class Lang_pt extends Lang_en
     //Messages
     this.message_al_toast_jumpbackward="Nível automático: pulou para um nível mais fácil";
     this.message_al_toast_jumpforward="Nível automático: pulou para um nível mais avançado";
+    this.message_toast_clickagainexit="Pressione o botão Voltar novamente para sair do jogo";
     this.message_gameEnd_win="Parabéns, você venceu!";
     this.message_gameEnd_loose="Fim do jogo";
     this.message_gameEnd_annykeyback="Pressione qualquer tecla ou clique / toque aqui para voltar ao menu principal";
