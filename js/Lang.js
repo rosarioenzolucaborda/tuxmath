@@ -638,10 +638,149 @@ class Lang_pt extends Lang_en
   }
 }
 
+class Lang_nl extends Lang_en
+{
+  constructor()
+  {
+    super();
+
+    //Global data
+    this.index_title="Play tuxMath online";
+    this.meta_desc="Tuxmath is a math game to practice additions subtractions or to learn multiplications tables. Tux Math has been rewritten in javascript to be playable on the web without having to be installed. Tux math is free educational software under an open source license.";
+    this.meta_keywords="tux math javascript free educative game gnu gpl agpl tables addition additions subtractions multiplications divisions";
+
+    //top screen counters
+    this.counters_level="Level";
+
+    //Mobile Keypad
+    this.kp_enter="Enter";
+
+    //Level groups and main menu options
+    this.lgroup_sum="Additions";
+    this.lgroup_sub="Subtractions";
+    this.lgroup_mul="Multiplications";
+    this.lgroup_div="Divisions";
+    this.lgroup_relatives="Relative numbers";
+    this.menuitem_options="Options";
+    this.menuitem_back="Back";
+    this.menuitem_infos="Help and informations";
+    this.menuitem_infos__url="infos/infos-nl.html";
+
+
+    // Level group additions
+    this.level_add_1_to_3="Sum from 1 to 3";
+    this.level_add_0_to_5="Sum from 0 to 5";
+    this.level_add_sum_to_10="Sum up to 10";
+    this.level_add_sum_to_15="Sum up to 15";
+    this.level_add_sum_to_20="Sum up to 20";
+    this.level_add_2_digits="Any 2 digits numbers";
+    this.level_add_miss_num="Add with missing numbers";
+    this.level_add_3_terms_0_10="Sum 3 numbers, 0 to 10";
+    this.level_add_3_terms_0_20="Sum 3 numbers, 0 to 20";
+    this.level_add_up_to_5_terms="Sum up to 5 numbers";
+    this.level_add_3_digits="Sum up to 1000";
+    this.level_add_harder="Harder sums";
+
+    // Level group subtractions
+    this.level_sub_0_to_5="Subtract from 0 to 5";
+    this.level_sub_0_to_10="Subtract from 0 to 10";
+    this.level_sub_0_to_20_10="Subtract from 0 to 20 easy";
+    this.level_sub_0_to_20_20="Subtract from 0 to 20";
+    this.level_mix_add_sum_0_20="additions et subtraction 0 to 20";
+    this.level_sub_miss_num="Subtract with missing numbers"
+    this.level_sub_3_terms_0_10="Subtract 3 numbers";
+    this.level_mix_add_sum_0_15_3_terms="additions et subtraction 3 numbers";
+    this.level_mix_add_sum_0_15_up_to_5_terms="additions et subtraction up to 5 numbers",
+    this.level_sub_2_digits="Subtract from 0 to 100";
+    this.level_sub_3_digits="Subtract from 0 to 1000";
+    this.level_sub_harder="Harder subtractions";
+
+    // Level group multiplications
+    this.level_mul_table_2="2 times table";
+    this.level_mul_table_3="3 times table";
+    this.level_mul_table_4="4 times table";
+    this.level_mul_table_5="5 times table";
+    this.level_mul_table_1_to_5="1 to 5 times tables";
+    this.level_mul_table_6="6 times table";
+    this.level_mul_table_7="7 times table";
+    this.level_mul_table_0_to_7="0 to 7 times tables";
+    this.level_mul_table_8="8 times table";
+    this.level_mul_table_9="9 times table";
+    this.level_mul_table_10="10 times table";
+    this.level_mul_table_0_to_10="0 to 10 times tables";
+    this.level_mul_table_2_3_miss_num="2 and 3 times tables (missing numbers)";
+    this.level_mul_table_4_5_miss_num="4 and 5 times tables (missing numbers)";
+    this.level_mul_table_6_7_miss_num="6 and 7 times tables (missing numbers)";
+    this.level_mul_table_8_9_miss_num="8 and 9 times tables (missing numbers)";
+    this.level_mul_table_0_to_10_miss_num="0 to 10 times tables (missing numbers)";
+    this.level_mul_table_11_to_12="11 to 12 times tables";
+    this.level_mul_table_13_to_15="13 to 15 times tables";
+
+    // Level group divisions
+    this.level_div_by_2="Division by 2";
+    this.level_div_by_3="Division by 3";
+    this.level_div_by_4="Division by 4";
+    this.level_div_by_5="Division by 5";
+    this.level_div_by_1_to_5="Division by 1 to 5";
+    this.level_div_by_6="Division by 6";
+    this.level_div_by_7="Division by 7";
+    this.level_div_by_8="Division by 8";
+    this.level_div_by_9="Division by 9";
+    this.level_div_by_10="Division by 10";
+    this.level_div_by_1_to_10="Division by 1 to 10";
+    this.level_mix_div_mul="Multiplication and Division, from 1 to 10";
+    this.level_div_by_1_to_10_missnum="Division by 1 to 10, missing numbers";
+    this.level_div_by_11_to_12="Division by 11 to 12";
+    this.level_div_by_13_to_15="Division by 13 to 15";
+
+    // Level group relatives
+    this.level_sub_0_to_20_negresults="Subtract with negatives results";
+    this.level_add_0_to_10_relatives="Sum relative numbers -10 to 10";
+    this.level_add_0_to_20_relatives="Sum relative numbers -20 to 20";
+    this.level_sub_0_to_10_relatives="Subtract relative numbers -10 to 10";
+    this.level_sub_0_to_20_relatives="Subtract relative numbers -20 to 20";
+    this.level_mix_add_sub_relatives_3_terms="Add and subtract relative numbers -10 to 10, 3 terms";
+    this.level_mix_add_sub_relatives_up_to_5_terms="Add and subtract relative numbers, up to 5 terms";
+    this.level_mul_table_0_to_10_relatives="Multiply relatives numbers -10 to 10";
+    this.level_div_by_1_to_10_relatives="Divide relatives numbers -10 to 10";
+    this.level_mix_mul_div_relatives_up_to_4_terms="Multiply and divide up to 4 relatives numbers";
+
+
+    //option items
+    this.optionitem_lang="Language";
+    this.optionitem_theme="Theme";
+    this.optionitem_autolevel="Autolevel";
+    this.optionitem_music="Music";
+    this.optionitem_sfx="Sfx";
+    this.optionitem_osk="Keyboard";
+    this.options_back="Back to menu";
+
+    //option choices
+    this.optionchoice_yes="Yes";
+    this.optionchoice_no="No";
+    this.optionchoice_show="Show";
+    this.optionchoice_hide="Hide";
+    this.optionitem_autolevel_description="When autolevel in on the game automaticaly jumps to another level if it detects that the selected level is too easy or too hard for player.";
+    this.optionchoice_theme_classic="Classic";
+    this.optionchoice_theme_original="Original";
+    this.optionchoice_theme_afrikalan="Afrikalan";
+
+
+    //Messages
+    this.message_al_toast_jumpbackward="Autolevel: jumped to an easier level";
+    this.message_al_toast_jumpforward="Autolevel: jumped to a more advanced level";
+    this.message_toast_clickagainexit="Press the back button again to quit the game";
+    this.message_gameEnd_win="Congratulations, you won!";
+    this.message_gameEnd_loose="Game Over";
+    this.message_gameEnd_annykeyback="Press any key, or click / tap here to get back to main menu";
+  }
+}
+
 
 var tmGlobLangClasses={
   Lang_en: Lang_en,
   Lang_fr: Lang_fr,
   Lang_es: Lang_es,
-  Lang_pt: Lang_pt
+  Lang_pt: Lang_pt,
+  Lang_nl: Lang_nl
 };//END_tmGlobLangClasses leave this so python can detect/extract data.
